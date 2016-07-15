@@ -1,37 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php echo empty($this_setting['station_name'])?'':$this_setting['station_name']; ?></title>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <script src="<?php echo base_url('js/jquery.js');?>"></script>
-    <link href="<?php echo base_url('styles/login.css');?>" rel="stylesheet" type="text/css"  />
-</head>
-<body>
-    <div class="header">
-        <h1><a href="#"><img class="logo" src="<?php echo empty($this_setting['logo_name'])?'':$this->config->item('front_url').'/uploads/logo/'.$this_setting['logo_name'];?>" alt="CRM" /></a></h1>
-    </div>
 
-    <div class="main cf">
-        <form class="login_form" id="login_form" method="post" action="<?php echo site_url('login/do_login');?>">
-            <p><label for="user_name" class="es-name">用户名:</label><input id="user_name" name="user_name" type="text" maxlength="50" /></p>
-            <p><label for="password" class="es-password">密&nbsp;&nbsp;&nbsp;码:</label><input id="password" name="password" type="password" autocomplete="off" maxlength="50"/></p>
-            <p id="p_cap" <?php if(!empty($this_setting['use_captcha']) && $this_setting['use_captcha'] == '1'){ ?> style="display:block;" <?php }else{ ?> style="display:none;" <?php } ?> >
-                <label for="verification_code" class="es-verification">验证码:</label><input id="verification_code" type="text" class="w50" />
-                <img style="vertical-align: middle;" src="<?php echo site_url('login/get_captcha');?>" id="cap" onclick="change_captcha();"/>&nbsp;
-                <a class="es-refresh" href="javascript:void(0);" onclick="change_captcha()">&nbsp;&nbsp;</a>
-            </p>
-            <p class="login_bt" ><input type="button" onclick="login_submit();" /><span id="message"><?php echo $msg;?></span></p>
+    <!-- Bootstrap Core CSS -->
+    <link href="<?php echo base_url('css/bootstrap.min.css');?>" rel='stylesheet' type='text/css' />
+    <!-- Login CSS -->
+    <link href="<?php echo base_url('css/login.css');?>" rel='stylesheet' type='text/css' />
+    <script src="<?php echo base_url('js/bootstrap.min.js');?>"></script>
+</head>
+<body id="login" onkeydown="if(event.keyCode==13){login_submit();}">
+
+    <div class="login-logo">
+        <a href="#"><img src="<?php echo empty($this_setting['logo_name'])?'':$this->config->item('front_url').'/uploads/logo/'.$this_setting['logo_name'];?>" alt=""/></a>
+    </div>
+    <h2 class="form-heading">login</h2>
+    <div class="app-cam">
+        <form id="login_form" method="post" action="<?php echo site_url('login/do_login');?>">
+            <input id="user_name" name="user_name" type="text" class="text" value="" placeholder="用户名" maxlength="50">
+            <input id="password" name="password" type="password" value="" placeholder="密码" maxlength="50">
+            <div id="p_cap" <?php if(!empty($this_setting['use_captcha']) && $this_setting['use_captcha'] == '1'){ ?> style="display:block;" <?php }else{ ?> style="display:none;" <?php } ?>>
+                <input id="verification_code" type="text" class="hf" placeholder="验证码"/>
+                <img class="captcha" src="<?php echo site_url('login/get_captcha');?>" id="cap" onclick="change_captcha();"/>
+            </div>
+            <div class="submit"><input type="button" onclick="login_submit();" onclick="myFunction()" value="登录"></div>
+            <span id="message" class="error-block"><?php echo $msg;?></span>
         </form>
-        <div class="info">
-            <p> </p>
-            <p><img src="<?php echo base_url('images/login/decoration.png');?>" alt="" /></p>
-        </div>
     </div>
-    <div class="footer">
-        <p>Copyright © 2015 <a href="#">ERP</a></p>
-    </div>
-    <div class="ssoOverlay dn" id="AjaxProgress" style="top: 0px; left: 0px; position: fixed;">
-        <div class="load_content"><span class="close"></span></div>
+    <div class="copy_layout login">
+        <p>Copyright &copy; 2016.Ming All rights reserved.</p>
     </div>
 
 <script type="text/javascript">

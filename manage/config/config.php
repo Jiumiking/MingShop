@@ -509,12 +509,12 @@ $config['proxy_ips'] = '';
 /*
 *站点URL
 */
-$config['front_url'] = 'http://www.qw.com';
+$config['front_url'] = 'http://www.mingshop.com';
 /*
 *上传路径
 */
 //$config['upload_path'] = '/home/k723528197qk87421365t2j8o1a9y7/wwwroot/uploads';
-$config['upload_path'] = 'E:/workspace/qw/uploads/';
+$config['upload_path'] = 'E:/workspace/MingShop/uploads/';
 /*
 *上传图片配置
 */

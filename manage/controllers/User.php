@@ -46,13 +46,16 @@ class User extends MY_Controller{
      */
     public function is_pwd(){
         if(empty($_GET['id']) || empty($_GET['pwd'])){
-            echo 2;exit;
+            $this->ajax_views['msg'] = '参数错误';
+            $this->ajax_end();
         }
+        $this->ajax_views['msg'] = '密码错误';
         $user_info = $this->mdl_user->my_select($_GET['id']);
         if(!empty($user_info['password']) && $user_info['password'] == password_encrypt($_GET['pwd'])){
-            echo 1;exit;
+            $this->ajax_views['sta'] = '1';
+            $this->ajax_views['msg'] = '密码正确';
         }
-        echo 2;
+        $this->ajax_end();
     }
     /**
      * ajax修改密码
@@ -76,15 +79,17 @@ class User extends MY_Controller{
      * @access  public
      * @return  void
      */
-    public function update_pwd(){
+    public function change_pwd_do(){
         if( empty($_GET['id']) || empty($_GET['pwd']) ){
-            echo 2;exit;
+            $this->ajax_views['msg'] = '参数错误';
+            $this->ajax_end();
         }
         $user_data['password'] = password_encrypt($_GET['pwd']);
         if($this->mdl_user->my_update($_GET['id'],$user_data)){
-            echo 1;exit;
+            $this->ajax_views['sta'] = '1';
+            $this->ajax_views['msg'] = '修改成功';
         }
-        echo 2;
+        $this->ajax_end();
     }
     /**
      * ajax锁定/解锁

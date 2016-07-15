@@ -1,12 +1,12 @@
 <?php if(!empty($data)){ ?>
 <?php foreach($data as $info){ ?>
 <tr>
-    <td><?php echo $info['number']; ?></td>
+    <td><?php echo $info['goods_no']; ?></td>
     <td><?php echo $info['name']; ?></td>
     <td>
     <?php if(!empty($data_goods_type)){
     foreach( $data_goods_type as $v ){
-        if( $v['id'] == $info['type'] ){
+        if( $v['id'] == $info['type_id'] ){
             echo $v['name'];
         }
     }
@@ -17,13 +17,20 @@
     <td><?php if($info['status'] == '1'){echo '上架';}else if($info['status'] == '2'){echo '下架';} ?></td>
     <td>
         <?php if( !empty($info['status']) && $info['status'] == '1' ){ ?>
-        <a href="javascript:void(0);" onclick="status_edit('<?php echo $info['id'];?>','2')"><img src="<?php echo base_url('images/ondesc.png');?>" title="下架"></a>
+        <button type="button" class="btn btn-primary btn-xs" title="下架" onclick="status_edit('<?php echo $info['id'];?>','2')" >
+            <i class="fa fa-arrow-down "></i>
+        </button>
         <?php }else{ ?>
-        <a href="javascript:void(0);" onclick="status_edit('<?php echo $info['id'];?>','1')"><img src="<?php echo base_url('images/onasc.png');?>" title="上架"></a>
+        <button type="button" class="btn btn-primary btn-xs" title="上架" onclick="status_edit('<?php echo $info['id'];?>','1')" >
+            <i class="fa fa-arrow-up "></i>
+        </button>
         <?php } ?>
-        <a href="javascript:void(0);" onclick="edit('<?php echo $info['id'];?>')"><img src="<?php echo base_url('images/icon_modify.gif');?>" title="编辑"></a>
-        <a href="javascript:void(0);" onclick="amount('<?php echo $info['id'];?>')"><img src="<?php echo base_url('images/icon_copy.gif');?>" title="库存"></a>
-        <a href="javascript:void(0);" onclick="del('<?php echo $info['id'];?>')"><img src="<?php echo base_url('images/icon_delete.png');?>" title="删除"></a>
+        <button type="button" class="btn btn-primary btn-xs" title="编辑" onclick="edit('<?php echo $info['id'];?>')" >
+            <i class="fa fa-edit "></i>
+        </button>
+        <button type="button" class="btn btn-danger btn-xs" title="删除" onclick="del('<?php echo $info['id'];?>')" >
+            <i class="fa fa-trash-o "></i>
+        </button>
     </td>
 </tr>
 <?php } ?>

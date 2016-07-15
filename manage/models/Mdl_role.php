@@ -29,12 +29,11 @@ class Mdl_role extends MY_Model{
         }
         $sql = "
             SELECT
-                access_id,role_id,node_id
+                `role_id`,`key`
             FROM
                 {$this->db->dbprefix('role_access')}
             WHERE
-                status = 1
-                AND role_id='$role_id'
+                role_id='$role_id'
         ";
         $query = $this->db->query($sql);
         $info = $query->result_array();
@@ -47,16 +46,16 @@ class Mdl_role extends MY_Model{
      * @param   array
      * @return  boolen
      */
-    public function access_insert( $role_id='',$nodes = array() ){
+    public function access_insert( $role_id='',$keys = array() ){
         if( empty($role_id) ){
             return false;
         }
         $this->db->delete( 'role_access', array('role_id'=>$role_id) );
-        if( !empty($nodes) ){
+        if( !empty($keys) ){
             $data = array();
-            foreach($nodes as $key=>$value){
+            foreach($keys as $key=>$value){
                 $data[$key]['role_id'] = $role_id;
-                $data[$key]['node_id'] = $value;
+                $data[$key]['key'] = $value;
             }
             return $this->db->insert_batch( 'role_access', $data );
         }

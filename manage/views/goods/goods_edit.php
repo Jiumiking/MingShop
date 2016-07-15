@@ -1,86 +1,88 @@
-<form name="edit_form" id="edit_form" action="<?php echo site_url($this_controller.'/my_edit_do');?>" method="post">
-    <table class="table_info">
-        <?php if(empty($data['id'])){ ?>
-        <tr>
-            <th></th>
-            <td>
-                <input name="status" id="status_1" type="radio" class="cp" value="1" <?php if( empty($data['status']) || $data['status'] == '1' ){ ?> checked="checked" <?php } ?>"><label class="cp" for="status_1">上架</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input name="status" id="status_2" type="radio" class="cp" value="2" <?php if( !empty($data['status']) && $data['status'] == '2' ){ ?> checked="checked" <?php } ?>"><label class="cp" for="status_2">下架</label>
-            </td>
-        </tr>
-        <?php } ?>
-        <tr>
-            <th>商品类型：</th>
-            <td>
-                <select name="type" id="type">
-                    <option value="0">请选择</option>
-                    <?php if(!empty($data_goods_type)){ ?>
-                    <?php foreach($data_goods_type as $key=>$value){ ?>
-                    <option value="<?php echo $value['id'];?>" <?php if(!empty($data['type']) && $data['type']==$value['id'] ){ ?> selected="selected" <?php } ?>><?php echo $value['name'];?></option>
-                    <?php } ?>
-                    <?php } ?>
-                </select>
-                <span id="m_type" class="error-block"></span>
-            </td>
-        </tr>
-        <tr>
-            <th>商品名称：</th>
-            <td><input name="name" id="name" value="<?php echo empty($data['name'])?'':$data['name']; ?>"><span id="m_name" class="error-block"></span></td>
-        </tr>
-        <tr>
-            <th>商品价格：</th>
-            <td><input name="money" id="money" value="<?php echo empty($data['money'])?'':$data['money']; ?>"><span id="m_money" class="error-block"></span></td>
-        </tr>
-        <tr>
-            <th>尺寸：</th>
-            <td id="size_td">
-                <input type="button" value="新增" id="size_btn" cnt="<?php echo empty($data_size)?0:count($data_size); ?>" onclick="size_add()">
-                <?php if(!empty($data_size)){ ?>
-                <?php foreach($data_size as $key=>$value){ ?>
-                <p class="mt10">
-                    <input type="hidden" name="size[<?php echo $key; ?>][id]" value="<?php echo $value['id']; ?>">
-                    <input type="text" name="size[<?php echo $key; ?>][name]" value="<?php echo $value['name']; ?>">&nbsp;&nbsp;
-                    <img class="cp" title="删除" onclick="p_del(this)" src="<?php echo base_url('images/icon_delete.png');?>">
-                </p>
-                <?php } ?>
-                <?php } ?>
-            </td>
-        </tr>
-        <tr>
-            <th>颜色：</th>
-            <td id="colour_td"><input type="button" value="新增" id="colour_btn" cnt="<?php echo empty($data_colour)?0:count($data_colour); ?>" onclick="colour_add()">
-                <?php if(!empty($data_colour)){ ?>
-                <?php foreach($data_colour as $key=>$value){ ?>
-                <p class="mt10">
-                    <input type="hidden" name="colour[<?php echo $key; ?>][id]" value="<?php echo $value['id']; ?>">
-                    颜色：<input type="text" name="colour[<?php echo $key; ?>][name]" value="<?php echo $value['name']; ?>">&nbsp;&nbsp;
-                    起伏价格：<input type="text" name="colour[<?php echo $key; ?>][money]" value="<?php echo $value['money']; ?>">&nbsp;&nbsp;
-                    <img class="cp" title="删除" onclick="p_del(this)" src="<?php echo base_url('images/icon_delete.png');?>">
-                </p>
-                <?php } ?>
-                <?php } ?>
-            </td>
-        </tr>
-        <tr>
-            <th>详情：</th>
-            <td>
-                <script id="detail" name="detail" type="text/plain" style="width:1024px;height:500px;"><?php echo empty($data_detail['detail'])?'':$data_detail['detail']; ?></script>
-                <span id="m_detail" class="error-block"></span>
-            </td>
-        </tr>
-
-        <tr>
-            <th></th>
-            <td>
-                <input type="button" class="formbtn" name="submit" id="edit_submit_button" value="提交" onclick="edit_do()">
-                <input type="button" class="formbtn" name="submit" value="返回" onclick="back()">
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2><i class="fa fa-indent red"></i><strong>编辑</strong></h2>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="edit_form" id="edit_form" action="<?php echo site_url($this_controller.'/my_edit_do');?>" method="post">
                 <input type="hidden" name="id" value="<?php echo empty($data['id'])?'':$data['id']; ?>">
-            </td>
-        </tr>
-    </table>
-</form>
-<script type="text/javascript">
-    //实例化编辑器
-    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-    //var ue = UE.getEditor('detail');
-</script>
+                <?php if(empty($data['id'])){ ?>
+                <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label" for="text-input">上下架</label>
+                    <div class="col-lg-10 col-md-10">
+                        <label class="radio-inline" >
+                            <input name="status" type="radio" value="1" <?php if( empty($data['status']) || $data['status'] == '1' ){ ?> checked="checked" <?php } ?>>
+                            上架
+                        </label>
+                        <label class="radio-inline">
+                            <input name="status" type="radio" value="2" <?php if( !empty($data['status']) && $data['status'] == '2' ){ ?> checked="checked" <?php } ?>>
+                            下架
+                        </label>
+                    </div>
+                </div>
+                <?php } ?>
+                <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label" for="text-input">商品类型</label>
+                    <div class="col-lg-10 col-md-10">
+                        <select class="form-control" name="type_id" id="type_id" onchange="type_change()">
+                            <option value="">请选择</option>
+                            <?php if(!empty($data_goods_type)){ ?>
+                            <?php foreach($data_goods_type as $key=>$value){ ?>
+                            <option value="<?php echo $value['id'];?>" <?php if(!empty($data['type_id']) && $data['type_id']==$value['id'] ){ ?> selected="selected" <?php } ?>><?php echo $value['name'];?></option>
+                            <?php } ?>
+                            <?php } ?>
+                        </select>
+                        <span class="error-block" id="m_type_id"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label" for="text-input">商品名称</label>
+                    <div class="col-lg-10 col-md-10">
+                        <input type="text" class="form-control" name="name" id="name" value="<?php echo empty($data['name'])?'':$data['name']; ?>" placeholder="输入商品名称">
+                        <span class="error-block" id="m_name"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label" for="text-input">副标题</label>
+                    <div class="col-lg-10 col-md-10">
+                        <input type="text" class="form-control" name="title" id="title" value="<?php echo empty($data['title'])?'':$data['title']; ?>" placeholder="输入商品副标题">
+                        <span class="error-block" id="m_title"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label" for="text-input">成本价格</label>
+                    <div class="col-lg-10 col-md-10">
+                        <input type="text" class="form-control" name="money_in" id="money_in" value="<?php echo empty($data['money_in'])?'':$data['money_in']; ?>" placeholder="输入成本价格">
+                        <span class="error-block" id="m_money_in"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label" for="text-input">出售价格</label>
+                    <div class="col-lg-10 col-md-10">
+                        <input type="text" class="form-control" name="money_out" id="money_out" value="<?php echo empty($data['money_out'])?'':$data['money_out']; ?>" placeholder="输入出售价格">
+                        <span class="error-block" id="m_money_out"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label" for="text-input">商品规格</label>
+                    <div class="col-lg-10 col-md-10">
+                        <div id="format_div"></div>
+                        <div id="format_value_div"></div>
+                        <span class="error-block" id="m_format"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label" for="text-input">详情</label>
+                    <div class="col-lg-10 col-md-10">
+                        <script id="detail" name="detail" type="text/plain"><?php echo empty($data_detail['detail'])?'':$data_detail['detail']; ?></script>
+                        <span class="error-block" id="m_detail"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <input type="button" class="btn btn-sm btn-success" value="确认" onclick="edit_do()">
+            <input type="button" class="btn btn-sm btn-danger" value="返回" onclick="back()">
+        </div>
+    </div>
+</div>

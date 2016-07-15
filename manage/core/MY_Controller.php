@@ -59,23 +59,16 @@
      * @return  void
      */
     private function ini(){
-        $this->load->model('mdl_menu');
         $this->load->model('mdl_role');
-        $this->check_login();
-        $this->get_bread();
+        $this->check_login();   //登录验证
+        $this->check_auth();    //权限验证
         $this->this_controller = $this->uri->rsegment(1);
         $this->this_model = 'Mdl_'.$this->this_controller;
         if( file_exists(APPPATH.'models/'.$this->this_model.'.php') ){
             $this->load->model( $this->this_model );
         }
         $this->this_page_size = empty($this->this_setting['page_number'])?10:$this->this_setting['page_number'];
-        $this->_views['_js'][] = 'jquery';
         $this->_views['_js'][] = 'authen';
-        $this->_views['_css'][] = 'reset';
-        $this->_views['_css'][] = 'header';
-        $this->_views['_css'][] = 'footer';
-        $this->_views['_css'][] = 'sidebar';
-        $this->_views['_css'][] = 'main';
         $this->_views['this_controller'] = $this->this_controller;
         $this->_views['data_role'] = $this->mdl_role->my_selects();
     }
@@ -93,29 +86,69 @@
         }
     }
     /**
-     * 面包屑
+     * 检查用户是否有访问权限
      * @access  protected
      * @return  void
      */
-    private function get_bread(){
-        $menus_1_all = $this->mdl_menu->get_menus( array('deep'=>'1') );
-        if( $this->this_user['role'] != '1' ){
-            $access_list = $this->mdl_role->access_get( $this->this_user['role'] );
-            $menus_1 = array();
-            if( !empty( $access_list ) ){
-                foreach( $access_list as $k => $v ){
-                    foreach( $menus_1_all as $kk => $vv ){
-                        if( $vv['menu_id'] == $v['node_id'] ){
-                            $menus_1[] = $vv;
-                        }
+    private function check_auth(){
+        $this->config->load('menu');
+        $menu = $this->config->item('menu');
+        if($this->this_user['role'] != 1){ //非超级管理员
+            $this->this_uri_string = $this->uri->uri_string;//当前访问key
+            $this->this_access = $this->mdl_role->access_get($this->this_user['role']);
+            $access = false;
+            if( !empty($this->this_access) ){
+                foreach($this->this_access as $k=>$v){
+                    if( $v['key'] == $this->this_uri_string ){
+                        $access = true;
+                        break;
                     }
                 }
             }
-        }else{
-            $menus_1 = $menus_1_all;
+            /**如果后缀是_do，前缀是is_/na_的请求，直接通过**/
+            $url_check_front = substr($this->uri->rsegment(2),0,3);
+            $url_check_back = substr($this->uri->rsegment(2),-3);
+            if( $url_check_front == 'is_' || $url_check_back == '_do' ){
+                $access = true;
+            }
+            /**_do end**/
+            if( !$access ){
+                if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"])=="xmlhttprequest"){ 
+                    // ajax 请求的处理方式 
+                    $this->ajax_views['sta'] = '0';
+                    $this->ajax_views['msg'] = '没有权限';
+                    $this->ajax_end();
+                }else{ 
+                    // 正常请求的处理方式 
+                    echo $this->load->view( 'errors/error500',$this->_views,true);
+                    exit;
+                };
+            }
+            foreach( $menu as $k=>$v ){
+                foreach($this->this_access as $a){
+                    $mark = false;
+                    if( $v['key'] == $a['key'] ){
+                        $mark = true;
+                        break;
+                    }
+                }
+                if($mark && !empty($v['sons'])){
+                    foreach( $v['sons'] as $kk=>$vv ){
+                        $mark2 = false;
+                        if( $vv['key'] == $a['key'] ){
+                            $mark2 = true;
+                            break;
+                        }
+                    }
+                    if(!$mark2){
+                        unset($menu[$k]['sons'][$kk]);
+                    }
+                }else{
+                    unset($menu[$k]);
+                }
+            }
         }
-        $this->_views['menus_1'] = $menus_1;
-        $this->_views['bread'] = $this->mdl_menu->get_bread( $this->this_user['role'] );
+        $this->_views['menu'] = $menu;
     }
     /**
      * 接口结束返回
@@ -160,6 +193,21 @@
         $this->ajax_views['page'] = $page;
         $this->ajax_views['count'] = $this->{$this->this_model}->my_count($filter);
         $this->ajax_views['page_count'] = ceil($this->ajax_views['count']/$this->this_page_size)==0?1:ceil($this->ajax_views['count']/$this->this_page_size);
+        $this->ajax_end();
+    }
+    /**
+     * 查看ajax
+     * @access  protected
+     * @param   mixed
+     * @return  mixed
+     */
+    public function my_show(){
+        if( !empty($_GET['id']) ){
+            $this->_views['data'] = $this->{$this->this_model}->my_select( $_GET['id'] );
+        }
+        $this->ajax_views['dat'] = $this->load->view( $this->this_controller.'/'.$this->this_controller.'_show', $this->_views, true );
+        $this->ajax_views['sta'] = '1';
+        $this->ajax_views['msg'] = '获取成功';
         $this->ajax_end();
     }
     /**

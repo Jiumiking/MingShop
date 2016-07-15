@@ -9,8 +9,15 @@
     <td><?php echo $info['integral']; ?></td>
     <td><?php echo $info['date_add']; ?></td>
     <td>
-        <a href="javascript:void(0);" onclick="edit('<?php echo $info['id'];?>')"><img src="<?php echo base_url('images/icon_modify.gif');?>" title="编辑"></a>
-        <a href="javascript:void(0);" onclick="del('<?php echo $info['id'];?>')"><img src="<?php echo base_url('images/icon_delete.png');?>" title="删除"></a>
+        <button type="button" class="btn btn-primary btn-xs" title="查看" onclick="show('<?php echo $info['id'];?>')" >
+            <i class="fa fa-search"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-xs" title="编辑" onclick="edit('<?php echo $info['id'];?>')" >
+            <i class="fa fa-edit"></i>
+        </button>
+        <button type="button" class="btn btn-danger btn-xs" title="删除" onclick="del('<?php echo $info['id'];?>')" >
+            <i class="fa fa-trash-o"></i>
+        </button>
     </td>
 </tr>
 <?php } ?>

@@ -7,9 +7,13 @@
     <td><?php echo $info['remark']; ?></td>
     <td>
         <?php if( $info['id'] != '1' ){ ?>
-        <a href="javascript:void(0);" onclick="edit('<?php echo $info['id'];?>')"><img src="<?php echo base_url('images/icon_modify.gif');?>" title="编辑"></a>
+        <button type="button" class="btn btn-primary btn-xs" title="编辑" onclick="edit('<?php echo $info['id'];?>')" >
+            <i class="fa fa-edit "></i>
+        </button>
+        <button type="button" class="btn btn-danger btn-xs" title="删除" onclick="del('<?php echo $info['id'];?>')" >
+            <i class="fa fa-trash-o "></i>
+        </button>
         <a href="javascript:void(0);" onclick="access('<?php echo $info['id'];?>')"><img src="<?php echo base_url('images/icon_setup.gif');?>" title="权限设置"></a>
-        <a href="javascript:void(0);" onclick="del('<?php echo $info['id'];?>')"><img src="<?php echo base_url('images/icon_delete.png');?>" title="删除"></a>
         <?php } ?>
     </td>
 </tr>

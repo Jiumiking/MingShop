@@ -14,7 +14,7 @@ pagelist.pageCallback = function(data){
 function edit( id ){
     $.ajax({
         type : "GET",
-        async : false,
+        async : true,
         url : "<?php echo site_url($this_controller.'/my_edit');?>",
         data : { id:id },
         success : function(msg){
@@ -56,13 +56,13 @@ function del( id ){
     if( confirm('确认删除?') ){
         $.ajax({
             type : "GET",
-            async : false,
+            async : true,
             url : "<?php echo site_url($this_controller.'/my_del');?>",
             data : { id:id },
             success : function(msg){
                 if(msg){
                     var msgobj = eval("("+ msg +")");
-                    //alert(msgobj.msg);
+                    alert(msgobj.msg);
                     pagelist.loadPage();
                     back();
                 }

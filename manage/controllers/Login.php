@@ -19,7 +19,7 @@ class Login extends Controller_base {
      * @return  void
      */	
     public function index(){
-        if ($this->session->userdata('id')){
+        if ($this->session->userdata('this_user')){
             redirect( site_url('home/index'));
         }else{
             $this->_views['msg'] = $this->session->flashdata('msg');
@@ -58,7 +58,7 @@ class Login extends Controller_base {
                             $this->db->set('password_times','0',FALSE);
                             $this->db->update('user');
                         }
-                        redirect( site_url('home/index?t='.time()));
+                        redirect( site_url('home'));
                     }else{
                         $setting_times = empty($this->this_setting['user_error_times'])?5:$this->this_setting['user_error_times'];
                         $this->db->where(array('id'=>$this_user['id']));
@@ -92,13 +92,13 @@ class Login extends Controller_base {
      * @return  void
      */
     public function get_captcha(){
-        $this->captcha->useImgBg = TRUE;  // 是否使用背景图片
-        $this->captcha->useNoise = FALSE; // 是否添加杂点 
-        $this->captcha->useCurve = FALSE; // 是否绘制干扰线 
-        $this->captcha->useZh    = FALSE; // 是否使用中文验证码 
-        $this->captcha->fontSize = 16;    // 验证码字体大小(像素) 
-        $this->captcha->length   = 4;     // 验证码字符数
-        $this->captcha->entry();           // 输出图片
+        Captcha::$useImgBg = TRUE;  // 是否使用背景图片
+        Captcha::$useNoise = FALSE; // 是否添加杂点 
+        Captcha::$useCurve = FALSE; // 是否绘制干扰线 
+        Captcha::$useZh    = FALSE; // 是否使用中文验证码 
+        Captcha::$fontSize = 16;    // 验证码字体大小(像素) 
+        Captcha::$length   = 4;     // 验证码字符数
+        Captcha::entry();           // 输出图片
     }
     /**
      * ajax 验证验证码
@@ -109,7 +109,7 @@ class Login extends Controller_base {
     public function check_captcha(){
         $mark = 0;
         if( !empty($_GET['code']) ){
-            if( $this->captcha->check($_GET['code']) ){
+            if( Captcha::check($_GET['code']) ){
                 $mark = 1;
             }
         }

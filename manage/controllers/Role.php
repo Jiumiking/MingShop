@@ -28,9 +28,7 @@ class Role extends MY_Controller{
         $id = empty($_GET['id'])?'':$_GET['id'];
         if( !empty($id) ){
             $this->_views['access_list'] = $this->mdl_role->access_get($id);
-
             $this->_views['role_id'] = $id;
-            $this->_views['menu_list'] = $this->mdl_menu->get_menus_list();
             $this->ajax_views['sta'] = '1';
             $this->ajax_views['msg'] = '获取成功';
             $this->ajax_views['dat'] = $this->load->view('role/role_access',$this->_views,true);
@@ -44,10 +42,11 @@ class Role extends MY_Controller{
      * @return  void
      */
     public function access_do(){
+        //var_dump($_POST);exit;
         $data=$_POST;
-        $nodes = empty($data['nid'])?'':$data['nid'];
+        $keys = empty($data['key'])?'':$data['key'];//echo '<pre>';print_r($keys);exit;
         if( !empty($data['role_id']) ){
-            $back = $this->mdl_role->access_insert( $data['role_id'],$nodes );
+            $back = $this->mdl_role->access_insert( $data['role_id'],$keys );
         }
         if($back){
             $this->ajax_views['sta'] = '1';
