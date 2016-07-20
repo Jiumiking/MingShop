@@ -10,7 +10,7 @@ $config['menu'] = array(
     ),
     array('name'=>'用户管理', 'icon'=>'fa fa-users', 'key'=>'user','link'=>'',
         'sons' => array(
-            array('name'=>'用户管理', 'icon'=>'fa fa-user', 'key'=>'user/my_list', 'link'=>'user/my_list',
+            array('name'=>'用户管理', 'icon'=>'fa fa-male', 'key'=>'user/my_list', 'link'=>'user/my_list',
                 'auth' => array(
                     array('name'=>'用户编辑', 'key'=>'user/my_edit'),
                     array('name'=>'用户删除', 'key'=>'user/my_del'),
@@ -18,16 +18,22 @@ $config['menu'] = array(
                     array('name'=>'用户锁定', 'key'=>'user/lock'),
                 ),
             ),
-            array('name'=>'角色管理', 'icon'=>'fa fa-sitemap', 'key'=>'role/my_list', 'link'=>'role/my_list'),
+            array('name'=>'角色管理', 'icon'=>'fa fa-female', 'key'=>'role/my_list', 'link'=>'role/my_list'),
         ),
     ),
-    array('name'=>'会员管理', 'icon'=>'fa fa-male', 'key'=>'member/my_list', 'link'=>'member/my_list',),
-    array('name'=>'商品管理', 'icon'=>'fa fa-gift', 'key'=>'goods','link'=>'',
+    array('name'=>'会员管理', 'icon'=>'fa fa-user', 'key'=>'member/my_list', 'link'=>'member/my_list',),
+    array('name'=>'商品管理', 'icon'=>'fa fa-briefcase', 'key'=>'goods','link'=>'',
         'sons' => array(
-            array('name'=>'商品管理', 'icon'=>'fa fa-gift', 'key'=>'goods/my_list', 'link'=>'goods/my_list',
+            array('name'=>'商品管理', 'icon'=>'fa fa-briefcase', 'key'=>'goods/my_list', 'link'=>'goods/my_list',
                 'auth' => array(
                     array('name'=>'商品编辑', 'key'=>'goods/my_edit'),
                     array('name'=>'商品删除', 'key'=>'goods/my_del'),
+                ),
+            ),
+            array('name'=>'分类管理', 'icon'=>'fa fa-sitemap', 'key'=>'category/my_list', 'link'=>'category/my_list',
+                'auth' => array(
+                    array('name'=>'分类编辑', 'key'=>'category/my_edit'),
+                    array('name'=>'分类删除', 'key'=>'category/my_del'),
                 ),
             ),
             array('name'=>'类型管理', 'icon'=>'fa fa-ellipsis-h', 'key'=>'goods_type/my_list', 'link'=>'goods_type/my_list',

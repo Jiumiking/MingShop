@@ -135,7 +135,7 @@ class MY_Model extends CI_Model{
         }
         $return = '';
         foreach($where as $key=>$value){
-            if( !empty($value) ){
+            if( isset($value) ){
                 $value = str_replace('.','\.',$value);
                 $value = str_replace('%','\%',$value);
                 $return .= ' AND '.$key." = '$value'";

@@ -92,4 +92,95 @@ function back(){
     $('#div_show').hide();
     $('#div_content').show();
 }
+
+//图片管理
+function mingImg(){
+    $.ajax({
+        type : "GET",
+        async : true,
+        url : "<?php echo site_url('image/mi_list');?>",
+        data : {},
+        success : function(msg){
+            var msgobj = eval("("+ msg +")");
+            if(msgobj.sta == '1'){
+                $('#myModal .modal-body').html(msgobj.dat);
+            }
+        }
+    });
+    $('#myModal').modal({
+        backdrop:false
+    });
+    $('#myModalTitle').html('图片管理');
+    $('#myModal').modal('show');
+}
+//图片选择操作
+function mingImgCheck(obj){
+    var has = $(obj).hasClass('selected');
+    if(has){
+        $(obj).removeClass('selected');
+    }else{
+        $(obj).addClass('selected');
+    }
+}
+//图片选择后的显示
+function mingImgShow(src){
+    return '<div class="col-md-2 col-sm-3 col-xs-4 img-item" ><img class="img-thumbnail" src="'+src+'" alt="Sample Image"></div>';
+}
+//选择图片按钮
+function mingImgAdd(){
+    $("#img_upload").children("[name='file']").first().click();
+}
+//新增上传
+function mingImgFile(obj){
+    var filelist = document.getElementById("mingImgFile").files;
+    for(var i=0;i<filelist.length;i++){
+        if (filelist[i]) {
+            var reader = new FileReader();
+            reader.readAsDataURL(filelist[i]);
+            reader.onload = function (e) {
+                var urlData = this.result;
+                $("#img_upload_show").append('<div class="col-md-2 col-sm-3 col-xs-4 img-item"><img class="img-thumbnail" src="'+urlData+'" alt=""><span class="fa icon"></span></div>');
+            };
+        }
+    }
+    
+}
+//上传
+function mingImgUp(){
+    $("#img_upload_show").find("img").each(function(){
+        var img = $(this).attr('src');
+        var _this = this;
+        if( !$(_this).parent().hasClass('selected') ){
+            $.ajax({
+                type : "POST",
+                async : true,
+                url : "<?php echo site_url('image/mi_up');?>",
+                data : {img:img},
+                success : function(msg){
+                    var msgobj = eval("("+ msg +")");
+                    if(msgobj.sta == '1'){
+                        $(_this).attr('data',msgobj.dat.url);
+                        $(_this).parent().addClass('selected');
+                    }
+                }
+            });
+        }
+    });
+    
+}
+//modal提交按钮
+function myModalBtn(){
+    if($("#img_upload").hasClass('active')){
+        var id='img_upload';
+    }else{
+        var id='img_manage';
+    }
+    var html = '';
+    $("#"+id).find(".img-item.selected").each(function(){
+        html += mingImgShow($(this).children("img").first().attr('data'));
+    });
+    $("#img_show").append(html);
+    //$("#img_show").html(html);
+    $('#myModal').modal('hide');
+}
 </script>

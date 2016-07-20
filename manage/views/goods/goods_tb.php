@@ -4,6 +4,15 @@
     <td><?php echo $info['goods_no']; ?></td>
     <td><?php echo $info['name']; ?></td>
     <td>
+    <?php if(!empty($data_category)){
+    foreach( $data_category as $v ){
+        if( $v['id'] == $info['category_id'] ){
+            echo $v['name'];
+        }
+    }
+    } ?>
+    </td>
+    <td>
     <?php if(!empty($data_goods_type)){
     foreach( $data_goods_type as $v ){
         if( $v['id'] == $info['type_id'] ){

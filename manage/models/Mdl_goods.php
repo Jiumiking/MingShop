@@ -13,7 +13,7 @@ class Mdl_goods extends MY_Model{
      */
     public function __construct(){
         parent::__construct();
-        $this->my_select_field .= ',goods_no,name,title,money_in,money_out,type_id,date_add,date_edit,date_status,status';
+        $this->my_select_field .= ',goods_no,name,title,image,money_in,money_out,category_id,type_id,date_add,date_edit,date_status,status';
         $this->my_table = 'goods';
     }
     /**

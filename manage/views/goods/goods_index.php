@@ -34,6 +34,7 @@
                     <tr>
                         <th>商品编号</th>
                         <th>商品名称</th>
+                        <th>商品分类</th>
                         <th>商品类型</th>
                         <th>创建时间</th>
                         <th>上下架时间</th>
@@ -124,7 +125,7 @@ function type_change(){
     $.ajax({
         type : "GET",
         async : true,
-        url : "<?php echo site_url($this_controller.'/na_format');?>",
+        url : "<?php echo site_url($this_controller.'/mi_format');?>",
         data : { id:val,gid:gid },
         success : function(msg){
             if(msg){
@@ -212,5 +213,37 @@ $(document).ready(function(){
         pagelist.loadPage();
     });
 });
+
+//图片选择操作
+function mingImgCheck(obj){
+    $("#img_manage").find(".img-item.selected").each(function(){
+        $(this).removeClass('selected');
+    });
+
+    var has = $(obj).hasClass('selected');
+    if(has){
+        $(obj).removeClass('selected');
+    }else{
+        $(obj).addClass('selected');
+    }
+}
+//图片选择后的显示
+function mingImgShow(src){
+    return '<div class="col-md-2 col-sm-3 col-xs-4 img-item" ><input type="hidden" name="image" value="'+src+'"><img class="img-thumbnail" src="'+src+'" alt="Sample Image"></div>';
+}
+//modal提交按钮
+function myModalBtn(){
+    if($("#img_upload").hasClass('active')){
+        var id='img_upload';
+    }else{
+        var id='img_manage';
+    }
+    var html = '';
+    $("#"+id).find(".img-item.selected").each(function(){
+        html = mingImgShow($(this).children("img").first().attr('data'));
+    });
+    $("#img_show").html(html);
+    $('#myModal').modal('hide');
+}
 </script>
 <?php $this->load->view('base/footer'); ?>

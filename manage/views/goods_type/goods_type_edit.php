@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 col-md-2 control-label" for="text-input">类型名称</label>
                     <div class="col-lg-10 col-md-10">
-                        <input type="text" class="form-control" name="name" id="name" value="<?php echo empty($data['name'])?'':$data['name']; ?>" placeholder="输入用户名">
+                        <input type="text" class="form-control" name="name" id="name" value="<?php echo empty($data['name'])?'':$data['name']; ?>" placeholder="输入类型名称">
                         <span class="error-block" id="m_name"></span>
                     </div>
                 </div>

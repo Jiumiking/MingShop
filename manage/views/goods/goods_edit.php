@@ -22,6 +22,20 @@
                 </div>
                 <?php } ?>
                 <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label" for="text-input">商品分类</label>
+                    <div class="col-lg-10 col-md-10">
+                        <select class="form-control" name="category_id" id="category_id">
+                            <option value="">请选择</option>
+                            <?php if(!empty($data_category)){ ?>
+                            <?php foreach($data_category as $k=>$v){ ?>
+                            <option value="<?php echo $k;?>" <?php if(!empty($data['category_id']) && $data['category_id']==$k ){ ?> selected="selected" <?php } ?>><?php echo $v;?></option>
+                            <?php } ?>
+                            <?php } ?>
+                        </select>
+                        <span class="error-block" id="m_category_id"></span>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-lg-2 col-md-2 control-label" for="text-input">商品类型</label>
                     <div class="col-lg-10 col-md-10">
                         <select class="form-control" name="type_id" id="type_id" onchange="type_change()">
@@ -69,6 +83,20 @@
                         <div id="format_div"></div>
                         <div id="format_value_div"></div>
                         <span class="error-block" id="m_format"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-md-2 control-label" for="text-input">封面图片</label>
+                    <div class="col-lg-10 col-md-10">
+                        <button type="button" class="btn btn-primary btn-sm" onclick="mingImg();">
+                           图片管理
+                        </button>
+                        <div id="img_show">
+                            <?php if(!empty($data['image'])){ ?>
+                            <div class="col-md-2 col-sm-3 col-xs-4 img-item" ><input type="hidden" name="image" value="<?php echo $data['image'];?>"><img class="img-thumbnail" src="<?php echo $data['image'];?>" alt="Sample Image"></div>
+                            <?php } ?>
+                        </div>
+                        <span class="error-block" id="m_money_out"></span>
                     </div>
                 </div>
                 <div class="form-group">

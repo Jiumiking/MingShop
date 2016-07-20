@@ -105,10 +105,10 @@
                     }
                 }
             }
-            /**如果后缀是_do，前缀是is_/na_的请求，直接通过**/
+            /**如果后缀是_do，前缀是is_/mi_的请求，直接通过**/
             $url_check_front = substr($this->uri->rsegment(2),0,3);
             $url_check_back = substr($this->uri->rsegment(2),-3);
-            if( $url_check_front == 'is_' || $url_check_back == '_do' ){
+            if( $url_check_front == 'is_' || $url_check_front == 'mi_' || $url_check_back == '_do' ){
                 $access = true;
             }
             /**_do end**/

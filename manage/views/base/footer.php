@@ -11,19 +11,19 @@
             </div-->
         </div><!--/container-->
 
-        <div class="modal fade" id="myModal">
+        <div class="modal fade" aria-labelledby="myModalTitle" aria-hidden="true" id="myModal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Warning Title</h4>
+                        <h4 class="modal-title" id="myModalTitle">Base Title</h4>
                     </div>
-                    <div class="modal-body">
-                        <p>Here settings can be configured...</p>
+                    <div class="modal-body" id="myModalbody">
+                        
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" id="myModalBtn" onclick="myModalBtn()">确定</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->

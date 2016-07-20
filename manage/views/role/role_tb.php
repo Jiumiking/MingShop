@@ -13,7 +13,9 @@
         <button type="button" class="btn btn-danger btn-xs" title="删除" onclick="del('<?php echo $info['id'];?>')" >
             <i class="fa fa-trash-o "></i>
         </button>
-        <a href="javascript:void(0);" onclick="access('<?php echo $info['id'];?>')"><img src="<?php echo base_url('images/icon_setup.gif');?>" title="权限设置"></a>
+        <button type="button" class="btn btn-danger btn-xs" title="权限设置" onclick="access('<?php echo $info['id'];?>')" >
+            <i class="fa fa-gear"></i>
+        </button>
         <?php } ?>
     </td>
 </tr>

@@ -17,7 +17,9 @@ class Goods extends MY_Controller{
         $this->_views['_js'][] = 'datepicker/WdatePicker';
         $this->load->model('mdl_goods');
         $this->load->model('mdl_goods_type');
+        $this->load->model('mdl_category');
         $this->load->library('upload');
+        $this->_views['data_category'] = $this->mdl_category->my_selects();
         $this->_views['data_goods_type'] = $this->mdl_goods_type->my_selects();
     }
     /**
@@ -27,6 +29,8 @@ class Goods extends MY_Controller{
      * @return  mixed
      */
     public function my_edit(){
+        $this->_views['data_category'] = $this->mdl_category->options( NULL );
+
         $data_format = array();
         if( !empty($_GET['id']) ){
             $this->_views['data'] = $this->{$this->this_model}->my_select( $_GET['id'] );
@@ -50,9 +54,11 @@ class Goods extends MY_Controller{
         $id = empty($_POST['id'])?0:$_POST['id'];
 
         $data_goods['status'] = empty($_POST['status'])?1:$_POST['status'];
+        $data_goods['category_id'] = empty($_POST['category_id'])?0:$_POST['category_id'];
         $data_goods['type_id'] = empty($_POST['type_id'])?0:$_POST['type_id'];
         $data_goods['name'] = empty($_POST['name'])?'':$_POST['name'];
         $data_goods['title'] = empty($_POST['title'])?'':$_POST['title'];
+        $data_goods['image'] = empty($_POST['image'])?'':$_POST['image'];
         $data_goods['money_in'] = empty($_POST['money_in'])?0:$_POST['money_in'];
         $data_goods['money_out'] = empty($_POST['money_out'])?0:$_POST['money_out'];
         if( empty($data_goods['type_id']) || empty($data_goods['name']) || empty($data_goods['money_in']) || empty($data_goods['money_out']) ){
@@ -105,7 +111,7 @@ class Goods extends MY_Controller{
      * @param   mixed
      * @return  mixed
      */
-    public function na_format(){
+    public function mi_format(){
         if( !empty($_GET['id']) ){
             $data_format_all = array();
             if( !empty($_GET['gid']) ){

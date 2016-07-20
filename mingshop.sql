@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-07-15 17:26:46
+Date: 2016-07-20 16:15:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,6 +34,36 @@ CREATE TABLE `qi_brand` (
 -- ----------------------------
 INSERT INTO `qi_brand` VALUES ('1', '苹果', '乔布斯的苹果', '2016-05-16 11:01:13', '0000-00-00 00:00:00', '1');
 INSERT INTO `qi_brand` VALUES ('2', '小米', '雷军的小米', '2016-05-16 11:01:59', '0000-00-00 00:00:00', '1');
+
+-- ----------------------------
+-- Table structure for qi_category
+-- ----------------------------
+DROP TABLE IF EXISTS `qi_category`;
+CREATE TABLE `qi_category` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `parent_id` int(20) NOT NULL DEFAULT '0' COMMENT '父id',
+  `sort` int(10) NOT NULL DEFAULT '0',
+  `date_add` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_edit` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of qi_category
+-- ----------------------------
+INSERT INTO `qi_category` VALUES ('1', '家用电器', '0', '0', '2016-07-19 15:48:27', '2016-07-20 14:19:05', '0');
+INSERT INTO `qi_category` VALUES ('22', '手机、数码、通信', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_category` VALUES ('3', '电脑、办公', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_category` VALUES ('4', '家具、家居', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_category` VALUES ('5', '大家电', '1', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_category` VALUES ('6', '小家电', '1', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_category` VALUES ('7', '电视', '5', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_category` VALUES ('8', '微波炉', '6', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_category` VALUES ('11', '大微波炉', '8', '0', '2016-07-20 10:56:06', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_category` VALUES ('10', '大微波炉', '8', '0', '2016-07-20 10:56:17', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_category` VALUES ('23', '手机', '22', '0', '2016-07-20 14:19:36', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for qi_format
@@ -154,6 +184,8 @@ CREATE TABLE `qi_goods` (
   `name` varchar(100) NOT NULL DEFAULT '',
   `goods_no` varchar(50) NOT NULL DEFAULT '0',
   `title` varchar(200) NOT NULL COMMENT '副标题',
+  `image` varchar(200) NOT NULL COMMENT '图片',
+  `category_id` int(20) NOT NULL DEFAULT '0' COMMENT '分类id',
   `type_id` int(20) NOT NULL DEFAULT '0',
   `money_in` decimal(10,2) NOT NULL DEFAULT '0.00',
   `money_out` decimal(10,2) NOT NULL DEFAULT '0.00',
@@ -167,7 +199,7 @@ CREATE TABLE `qi_goods` (
 -- ----------------------------
 -- Records of qi_goods
 -- ----------------------------
-INSERT INTO `qi_goods` VALUES ('1', '丝袜10', 'g1231231231', '牛逼的丝袜', '2', '11.00', '15.00', '2016-06-21 16:39:05', '2016-07-15 17:12:03', '2016-07-15 15:35:26', '1');
+INSERT INTO `qi_goods` VALUES ('1', '丝袜10', 'g1231231231', '牛逼的丝袜', '/uploads/ueditor/image/20160715/1468561425103302.jpg', '7', '2', '11.00', '15.00', '2016-06-21 16:39:05', '2016-07-20 15:50:44', '2016-07-15 15:35:26', '1');
 
 -- ----------------------------
 -- Table structure for qi_goods_amount
@@ -197,12 +229,12 @@ CREATE TABLE `qi_goods_amount` (
 -- ----------------------------
 -- Records of qi_goods_amount
 -- ----------------------------
-INSERT INTO `qi_goods_amount` VALUES ('1', '1', '8', '57', '0', '0', '0', null, null, null, null, null, '101', '20.00', '2016-06-21 16:39:05', '2016-07-15 17:12:03', '1');
-INSERT INTO `qi_goods_amount` VALUES ('2', '1', '8', '58', '0', '0', '0', null, null, null, null, null, '150', '20.00', '2016-06-21 16:39:05', '2016-07-15 17:12:03', '1');
-INSERT INTO `qi_goods_amount` VALUES ('3', '1', '56', '57', '0', '0', '0', null, null, null, null, null, '200', '21.00', '2016-06-21 16:39:05', '2016-07-15 17:12:03', '1');
-INSERT INTO `qi_goods_amount` VALUES ('4', '1', '56', '58', '0', '0', '0', null, null, null, null, null, '210', '21.00', '2016-06-21 16:39:05', '2016-07-15 17:12:03', '1');
-INSERT INTO `qi_goods_amount` VALUES ('9', '1', '8', '59', '0', '0', '0', null, null, null, null, null, '11', '10.00', '2016-06-22 17:28:01', '2016-07-15 17:12:03', '1');
-INSERT INTO `qi_goods_amount` VALUES ('10', '1', '56', '59', '0', '0', '0', null, null, null, null, null, '123', '10.00', '2016-06-22 17:28:01', '2016-07-15 17:12:03', '1');
+INSERT INTO `qi_goods_amount` VALUES ('1', '1', '8', '57', '0', '0', '0', null, null, null, null, null, '101', '20.00', '2016-06-21 16:39:05', '2016-07-20 15:50:44', '1');
+INSERT INTO `qi_goods_amount` VALUES ('2', '1', '8', '58', '0', '0', '0', null, null, null, null, null, '150', '20.00', '2016-06-21 16:39:05', '2016-07-20 15:50:44', '1');
+INSERT INTO `qi_goods_amount` VALUES ('3', '1', '56', '57', '0', '0', '0', null, null, null, null, null, '200', '21.00', '2016-06-21 16:39:05', '2016-07-20 15:50:44', '1');
+INSERT INTO `qi_goods_amount` VALUES ('4', '1', '56', '58', '0', '0', '0', null, null, null, null, null, '210', '21.00', '2016-06-21 16:39:05', '2016-07-20 15:50:44', '1');
+INSERT INTO `qi_goods_amount` VALUES ('9', '1', '8', '59', '0', '0', '0', null, null, null, null, null, '11', '10.00', '2016-06-22 17:28:01', '2016-07-20 15:50:44', '1');
+INSERT INTO `qi_goods_amount` VALUES ('10', '1', '56', '59', '0', '0', '0', null, null, null, null, null, '123', '10.00', '2016-06-22 17:28:01', '2016-07-20 15:50:44', '1');
 
 -- ----------------------------
 -- Table structure for qi_goods_detail
@@ -221,7 +253,7 @@ CREATE TABLE `qi_goods_detail` (
 -- ----------------------------
 -- Records of qi_goods_detail
 -- ----------------------------
-INSERT INTO `qi_goods_detail` VALUES ('1', '1', '<p>撒旦法发达傻店范德萨发大法师地方</p><p>撒旦法放大师傅12</p><p>222</p><p><img src=\"/uploads/ueditor/image/20160715/1468561425990720.jpg\" style=\"\" title=\"1468561425990720.jpg\"/></p><p><img src=\"/uploads/ueditor/image/20160715/1468561425103302.jpg\" style=\"\" title=\"1468561425103302.jpg\"/></p><p><br/></p>', '2016-06-21 16:39:05', '2016-07-15 17:12:03', '1');
+INSERT INTO `qi_goods_detail` VALUES ('1', '1', '<p>撒旦法发达傻店范德萨发大法师地方</p><p>撒旦法放大师傅12</p><p>222</p><p><img src=\"/uploads/ueditor/image/20160715/1468561425990720.jpg\" title=\"1468561425990720.jpg\"/></p><p><img src=\"/uploads/ueditor/image/20160715/1468561425103302.jpg\" title=\"1468561425103302.jpg\"/></p><p><br/></p>', '2016-06-21 16:39:05', '2016-07-20 15:50:44', '1');
 
 -- ----------------------------
 -- Table structure for qi_goods_type
@@ -260,7 +292,7 @@ CREATE TABLE `qi_log` (
   `ip_address` varchar(32) DEFAULT NULL,
   `date_add` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_log
@@ -389,6 +421,11 @@ INSERT INTO `qi_log` VALUES ('121', '102', '登录成功', '127.0.0.1', '2016-07
 INSERT INTO `qi_log` VALUES ('122', '100', '登录成功', '127.0.0.1', '2016-07-15 09:49:03');
 INSERT INTO `qi_log` VALUES ('123', '100', '登录成功', '127.0.0.1', '2016-07-15 13:09:16');
 INSERT INTO `qi_log` VALUES ('124', '100', '登录成功', '127.0.0.1', '2016-07-15 16:47:20');
+INSERT INTO `qi_log` VALUES ('125', '100', '登录成功', '127.0.0.1', '2016-07-18 09:06:04');
+INSERT INTO `qi_log` VALUES ('126', '100', '登录成功', '127.0.0.1', '2016-07-18 13:39:49');
+INSERT INTO `qi_log` VALUES ('127', '100', '登录成功', '127.0.0.1', '2016-07-19 08:59:17');
+INSERT INTO `qi_log` VALUES ('128', '100', '登录成功', '127.0.0.1', '2016-07-20 09:21:03');
+INSERT INTO `qi_log` VALUES ('129', '100', '登录成功', '127.0.0.1', '2016-07-20 16:14:34');
 
 -- ----------------------------
 -- Table structure for qi_member
@@ -574,11 +611,7 @@ CREATE TABLE `qi_setting` (
 -- ----------------------------
 -- Records of qi_setting
 -- ----------------------------
-INSERT INTO `qi_setting` VALUES ('card_addnum', '1');
-INSERT INTO `qi_setting` VALUES ('card_error_times', '3');
-INSERT INTO `qi_setting` VALUES ('card_number', '59');
-INSERT INTO `qi_setting` VALUES ('card_prefix', '239651008000');
-INSERT INTO `qi_setting` VALUES ('logo_name', '74408fa4e7ac9e009f93ed8f7ead91de.jpg');
+INSERT INTO `qi_setting` VALUES ('logo_name', '1b25356b6bce6403abc5a43f0c6a7ba7.png');
 INSERT INTO `qi_setting` VALUES ('page_number', '10');
 INSERT INTO `qi_setting` VALUES ('station_name', '7蓝');
 INSERT INTO `qi_setting` VALUES ('user_error_times', '5');
@@ -620,7 +653,7 @@ CREATE TABLE `qi_user` (
   `password_times` tinyint(2) NOT NULL DEFAULT '0' COMMENT '密码错误尝试次数',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1有效，2锁定，3注销',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_user
