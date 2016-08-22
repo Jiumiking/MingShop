@@ -39,7 +39,6 @@ class Sign extends P_Controller{
      * @return  void
      */
     public function signin(){
-        $this->this_view_data['msg'] = $this->session->flashdata('msg');
         $this->load->view('signin',$this->this_view_data);
     }
     /**
@@ -79,7 +78,6 @@ class Sign extends P_Controller{
      * @return  void
      */
     public function signup(){
-        $this->this_view_data['msg'] = $this->session->flashdata('msg');
         $this->load->view('signup',$this->this_view_data);
     }
     /**

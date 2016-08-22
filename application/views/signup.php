@@ -1,47 +1,37 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php $this->load->view('base/header'); ?>
+<?php $this->load->view('base/header_nav'); ?>
 <?php $this->load->view('base/header_menu'); ?>
-<div id="gb-content">
-    <div class="sign-box" >
-        <form id="sign_form" class="sign-form" action="<?php echo site_url('sign/signup_do')?>" method="post">
-            <div>
-                <span class="f20">欢迎注册</span>
-
-                <p id="msg" class="error-block"><?php echo empty($msg)?'':$msg;?></p>
+<div class="container" id="site_main">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+        <form id="sign_form" method="post" action="<?php echo site_url('sign/signup_do')?>">
+            <div class="form-group">
+                <input class="form-control" id="phone" name="phone" type="text" value="" placeholder="手机号" maxlength="20">
+                <span id="m_phone" class="error-block"></span>
             </div>
-            <div id="phone_div">
-                <input id="phone" name="phone" type="text" maxlength="20" placeholder="手机号"/>
-                <p id="m_phone" class="error-block"></p>
+            <div class="form-group">
+                <input class="form-control" id="password" name="password" type="password" value="" placeholder="密码" maxlength="50">
+                <span id="m_password" class="error-block"></span>
             </div>
-            <div id="email_div" class="dn">
-                <input id="email" name="email" type="text" maxlength="50" placeholder="邮箱"/>
-                <p id="m_email" class="error-block"></p>
+            <div class="form-group">
+                <input class="form-control" id="password2" name="password2" type="password" value="" placeholder="再次输入密码" maxlength="50">
+                <span id="m_password2" class="error-block"></span>
             </div>
-            <div>
-                <input id="password" name="password" type="password" autocomplete="off" maxlength="50" placeholder="密码"/>
-                <p id="m_password" class="error-block"></p>
+            <div class="form-group">
+                <input class="form-control haf" id="verification_code" type="text" placeholder="验证码"/>
+                <img class="captcha haf" src="<?php echo site_url('sign/captcha_get');?>" id="cap" onclick="captcha_change();"/>
+                <span id="m_verification_code" class="error-block"></span>
             </div>
-            <div>
-                <input id="password2" name="password2" type="password" autocomplete="off" maxlength="50" placeholder="再次输入密码"/>
-                <p id="m_password2" class="error-block"></p>
+            <div class="form-group">
+                <input class="form-control haf" id="phone_code" name="phone_code" type="text" value="" placeholder="短信验证码" maxlength="10">
+                <input class="form-control btn-info haf" type="button" id="phone_code_btn" value="获取验证码" onclick="phone_code_get();">
+                <span id="m_phone_code" class="error-block"></span>
             </div>
-            <div>
-                <input class="haf" id="verification_code" type="text" maxlength="50" placeholder="验证码"/>
-                <img class="cp" title="这个不认识，换一个" style="vertical-align: middle;" src="<?php echo site_url('sign/captcha_get');?>" id="cap" onclick="captcha_change();"/>
-                <p id="m_verification_code" class="error-block"></p>
+            <div class="form-group">
+                <input class="form-control btn-primary" id="sign_btn" type="button" onclick="sign_submit();" value="立即注册">
             </div>
-            <div id="phone_code_div">
-                <input class="haf" id="phone_code" type="text" maxlength="50" placeholder="短信验证码"/>
-                <input class="ipt-btn haf dab" type="button" id="phone_code_btn" value="获取验证码" onclick="phone_code_get();">
-                <p id="m_phone_code" class="error-block"></p>
-            </div>
-            <div>
-                <input class="ipt-btn" id="submit_btn" type="button" value="立即注册" onclick="sign_submit();" />
-                <p id="message" class="error-block"></p>
-            </div>
-            <div>
-                <a href="javascript:void(0)" onclick="signup_type();" id="signup_type_a">通过邮箱注册?</a>
-                <a href="<?php echo site_url('sign/signin')?>" class="cp fr mt5">登录</a>
+            <div class="form-group">
+                有账号？去<a href="<?php echo site_url('sign/signin')?>" class="cp fr mt5">登录</a>
             </div>
         </form>
     </div>
@@ -52,63 +42,37 @@
         var phone2 = true;
         var email = true;
         var email2 = true;
-        if ( $("#phone_div").css("display") != 'none' ) {
-            phone = $("#phone").authen({reg:'mobile',err_name:'手机号码',min_length:2,max_length:50,empty:false});
-            if( phone ){
-                phone2 = $("#phone").authen({
-                    type:'functions',
-                    functions:function(val){
-                        var mark = false;
-                        $.ajax({
-                            type : "GET",
-                            async : false,
-                            url : "<?php echo site_url('sign/phone_email_unique');?>",
-                            data : { value:val },
-                            success : function(msg){
-                                if(msg == 1){
-                                    mark = true;
-                                }
+
+        phone = $("#phone").authen({reg:'mobile',err_name:'手机号码',min_length:2,max_length:20,empty:false});
+        if( phone ){
+            phone2 = $("#phone").authen({
+                type:'functions',
+                functions:function(val){
+                    var mark = false;
+                    $.ajax({
+                        type : "GET",
+                        async : false,
+                        url : "<?php echo site_url('sign/phone_email_unique');?>",
+                        data : { value:val },
+                        success : function(msg){
+                            if(msg == 1){
+                                mark = true;
                             }
-                        });
-                        if(mark){
-                            return '该手机号码已注册';
                         }
-                        return true;
-                    },
-                    empty:false
-                });
-                if( !phone_code_check() ){//手机验证码验证
-                    return false;
-                }
+                    });
+                    if(mark){
+                        return '该手机号码已注册';
+                    }
+                    return true;
+                },
+                empty:false
+            });
+            if( !phone_code_check() ){//手机验证码验证
+                return false;
             }
         }
-        if ( $("#email_div").css("display") != 'none' ) {
-            email = $("#email").authen({reg:'email',err_name:'邮箱',min_length:2,max_length:100,empty:false});
-            if( email ){
-                email2 = $("#email").authen({
-                    type:'functions',
-                    functions:function(val){
-                        var mark = false;
-                        $.ajax({
-                            type : "GET",
-                            async : false,
-                            url : "<?php echo site_url('sign/phone_email_unique');?>",
-                            data : { value:val },
-                            success : function(msg){
-                                if(msg == 1){
-                                    mark = true;
-                                }
-                            }
-                        });
-                        if(mark){
-                            return '该邮箱已注册';
-                        }
-                        return true;
-                    },
-                    empty:false
-                });
-            }
-        }
+
+        
         var password = $("#password").authen({reg:'password',err_name:'密码',min_length:6,max_length:20,empty:false});
         var password2 = $("#password2").authen({reg:'password2',pwd_id:'password',empty:false});
 
@@ -116,25 +80,10 @@
             return false;
         }
 
-        if( phone && phone2 && email && email2 && password && password2 ){
+        if( phone && phone2 && password && password2 ){
             $("#sign_form").submit();
             $("#submit_btn").attr("disabled","disabled");
         }
-    }
-    function signup_type(){
-        var a_html = $("#signup_type_a").html();
-        if( a_html == "通过邮箱注册?" ){
-            $("#signup_type_a").html("通过手机注册?");
-            $("#phone_div").hide();
-            $("#phone_code_div").hide();
-            $("#email_div").show();
-        }else if( a_html == "通过手机注册?" ){
-            $("#signup_type_a").html("通过邮箱注册?");
-            $("#phone_div").show();
-            $("#phone_code_div").show();
-            $("#email_div").hide();
-        }
-        captcha_change();
     }
     function captcha_change(){
         $("#cap").attr('src',"<?php echo site_url('sign/captcha_get');?>"+"?t="+Math.random());
@@ -164,7 +113,7 @@
         });
         return mark;
     }
-    function phone_code_check(){
+    function phone_code_check(){return true;
         $("#m_phone_code").html('短信验证码错误或已过期');
         return false;
     }
@@ -180,7 +129,7 @@
     function phone_code_timer(ss){
         var btn = $("#phone_code_btn");
         if( ss >= 0 ){
-            btn.val("重新发送("+ss+")");
+            btn.val("重新获取("+ss+")");
             ss--;
             setTimeout("phone_code_timer("+ss+")",1000);
         }else{

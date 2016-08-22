@@ -1,33 +1,38 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php $this->load->view('base/header'); ?>
+<?php $this->load->view('base/header_nav'); ?>
 <?php $this->load->view('base/header_menu'); ?>
-<div id="gb-content">
-    <div class="sign-box" >
-        <form id="sign_form" class="sign-form" action="<?php echo site_url('sign/signin_do')?>" method="post">
-            <div>
-                <span class="f20">欢迎登录</span>
-                <p id="msg" class="error-block"><?php echo empty($msg)?'':$msg;?></p>
+<div class="container" id="site_main">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="main_alert" class="alert" style="display:none;">
+                <button type="button" class="close" data-dismiss="alert" 
+                    aria-hidden="true">
+                    &times;
+                </button>
+                <span id="main_alert_content"></span>
             </div>
-            <div>
-                <input id="username" name="username" type="text" maxlength="100" placeholder="手机号/邮箱"/>
-                <p id="m_username" class="error-block"></p>
+        </div>
+    </div>
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+        <form id="sign_form" method="post" action="<?php echo site_url('sign/signin_do')?>">
+            <div class="form-group">
+                <input class="form-control" id="username" name="username" type="text" class="text" value="" placeholder="手机号/邮箱" maxlength="50">
+                <span id="m_username" class="error-block"></span>
             </div>
-            <div>
-                <input id="password" name="password" type="password" autocomplete="off" maxlength="50" placeholder="密码"/>
-                <p id="m_password" class="error-block"></p>
+            
+            <div class="form-group">
+                <input class="form-control" id="password" name="password" type="password" value="" placeholder="密码" maxlength="50">
+                <span id="m_password" class="error-block"></span>
             </div>
-            <div>
-                <input class="haf" id="verification_code" type="text" maxlength="50" placeholder="验证码"/>
-                <img class="cp" title="这个不认识，换一个" style="vertical-align: middle;" src="<?php echo site_url('sign/captcha_get');?>" id="cap" onclick="captcha_change();"/>
-                <p id="m_verification_code" class="error-block"></p>
+            <div class="form-group">
+                <input class="form-control haf" id="verification_code" type="text" class="hf" placeholder="验证码"/>
+                <img class="captcha haf" src="<?php echo site_url('sign/captcha_get');?>" id="cap" onclick="captcha_change();"/>
+                <span id="m_verification_code" class="error-block"></span>
             </div>
-            <div>
-                <input class="ipt-btn" id="submit_btn" type="button" value="登录" onclick="sign_submit();" />
-                <p id="message" class="error-block"></p>
-            </div>
-            <div>
-                <a class="cp mt20"> 忘记密码</a>
-                <a href="<?php echo site_url('sign/signup')?>" class="cp fr mt5">注册</a>
+
+            <div class="form-group">
+                <input class="form-control btn-primary" id="sign_btn" type="button" onclick="sign_submit();" value="登录">
             </div>
         </form>
     </div>

@@ -17,6 +17,14 @@ class Mdl_goods extends MY_Model{
         $this->my_table = 'goods';
     }
     /**
+     * 获取一个新的商品号
+     * @access  public
+     * @return  string
+     */
+    public function goods_no_new(){
+        return 'g'.time().rand(10,99);
+    }
+    /**
      * 内容获取by goods_id
      * @access  public
      * @param   mixed

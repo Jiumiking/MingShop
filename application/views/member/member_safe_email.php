@@ -1,25 +1,44 @@
-<div class="content-main">
-    <div class="content-main-title">
-        <span class="title">绑定邮箱</span>
-        <span class="error-block" id="base_set_msg"></span>
+<form class="form-horizontal" id="base_form" method="post" action="<?php echo site_url('member/safe_email_do')?>">
+    <div class="form-group">
+        <div class="col-lg-2 col-md-2 control-label" for="text-input">邮箱地址</div>
+        <div class="col-lg-10 col-md-10">
+            <input class="form-control" id="email" name="email" type="email" value="" placeholder="email" maxlength="50" onkeydown="javascript:if(event.keyCode == 13){return false;}">
+            <span id="m_email" class="error-block"></span>
+        </div>
     </div>
 
-    <form id="sign_form" class="sign-form" action="<?php echo site_url('member/safe_password_do')?>" method="post">
-        <div>
-            <input id="password" name="password" type="password" autocomplete="off" maxlength="50" placeholder="密码"/>
-            <p id="m_password" class="error-block"></p>
+    <div class="form-group">
+        <div class="col-lg-2 col-md-2 control-label" for="text-input"></div>
+        <div class="col-lg-10 col-md-10">
+            <input class="btn btn-primary" id="submit_btn" type="button" onclick="form_submit();" value="保存">
+            <a class="btn btn-default" href="<?php echo site_url('member/safe');?>">返回</a>
+            <span id="message" class="error-block"></span>
         </div>
-        <div>
-            <input id="password_new" name="password_new" type="password" autocomplete="off" maxlength="50" placeholder="新密码">
-            <p id="m_password_new" class="error-block"></p>
-        </div>
-        <div>
-            <input id="password_new2" name="password_new2" type="password" autocomplete="off" maxlength="50" placeholder="再次输入新密码"/>
-            <p id="m_password_new2" class="error-block"></p>
-        </div>
-        <div>
-            <input class="ipt-btn" id="submit_btn" type="button" value="提交" onclick="sign_submit();" />
-            <p id="message" class="error-block"></p>
-        </div>
-    </form>
-</div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    function form_submit(){
+        $('#base_form').ajaxSubmit({
+            beforeSubmit: function(){
+                var email = $("#email").authen({err_name:'邮箱',reg:'email',empty:false});
+                if(email){
+                    $("#submit_btn").attr("disabled","disabled");
+                }
+                return email;
+            },
+            success: function (msg) {
+                if(msg){
+                    var msgobj = eval("("+ msg +")");
+                    $("#submit_btn").removeAttr("disabled");
+                    if( msgobj.sta == 1 ){
+                        ming_alert(msgobj.msg,2);
+                        location.href = "<?php echo site_url('member/safe');?>";
+                    }else{
+                        ming_alert(msgobj.msg,1);
+                    }
+                }
+            }
+        });
+    }
+</script>

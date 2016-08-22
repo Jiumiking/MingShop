@@ -30,6 +30,21 @@ $(document).ready(function(){
                     case 'user_error_times':
                         val_authen = $("#user_error_times").authen({reg:'intege1',err_name:'登录密码错误锁定次数',min:1,max_length:10,empty:false});
                         break;
+                    case 'shipping_free':
+                        val_authen = $("#shipping_free").authen({reg:'num1',err_name:'免邮金额',max_length:5,empty:false});
+                        break;
+                    case 'shipping_jzh':
+                        val_authen = $("#shipping_jzh").authen({reg:'num1',err_name:'江浙沪邮费',max_length:5,empty:false});
+                        break;
+                    case 'shipping_other':
+                        val_authen = $("#shipping_other").authen({reg:'num1',err_name:'非江浙沪邮费',max_length:5,empty:false});
+                        break;
+                    case 'wx_app_id':
+                        val_authen = $("#wx_app_id").authen({err_name:'微信AppId',min_length:18,max_length:18,empty:true});
+                        break;
+                    case 'wx_app_secret':
+                        val_authen = $("#wx_app_secret").authen({err_name:'微信AppSecret',min_length:32,max_length:32,empty:true});
+                        break;
                 }
                 if( val_authen ){
                     setting_update(name,val);
@@ -63,7 +78,7 @@ function setting_update(s_key,s_value){
     var mark = false;
     $.ajax({
         type : "GET",
-        async : false,
+        async : true,
         url : "<?php echo site_url('setting/setting_update');?>",
         data : { s_key:s_key,s_value:s_value },
         success : function(msg){
@@ -99,10 +114,10 @@ function ajaxFileUpload(pic){
             dataType: 'json',
             data:{},
             success: function (data, status){
-                if(typeof(data.status) != 'undefined'){;
-                    if(data.status == '1'){
+                if(typeof(data.sta) != 'undefined'){;
+                    if(data.sta == '1'){
                         if(typeof(data.img) != 'undefined' && data.img != ''){
-                            $("#logo_show").attr('src',"<?php echo base_url('uploads/logo').'/"+data.img+"';?>");
+                            $("#logo_show").attr('src',"<?php echo $this->config->item('front_url').'/uploads/logo/'; ?>"+data.img);
                         }
                     }else{
                         alert(data.msg);

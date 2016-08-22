@@ -1,21 +1,25 @@
-<div id="gb-header-nav">
-    <div class="top-nav-info">
-        <ul class="top-nav-ul fl">
-            <li class="pl0"><a href="" class="nav-login" rel="nofollow">收藏本站</a></li>
-        </ul>
-        <ul class="top-nav-ul fr">
-            <?php if( empty($this_user) ){ ?>
-            <li>欢迎来到七鹿，请</li>
-            <li><a href="<?php echo site_url('sign/signin');?>" class="nav-login" rel="nofollow">登录</a></li>
-            <li>|</li>
-            <li><a href="<?php echo site_url('sign/signup');?>" class="nav-register" rel="nofollow">注册</a></li>
-            <?php } else {?>
-            <li><a href="<?php echo site_url('member/center');?>" class="nav-login" rel="nofollow"><?php if(!empty($this_user['nick_name'])){ echo $this_user['nick_name']; }else if(!empty($this_user['phone'])){ echo $this_user['phone']; }else if(!empty($this_user['email'])){ echo $this_user['email']; } ?></a></li>
-            <li>|</li>
-            <li><a href="<?php echo site_url('sign/signout');?>" class="nav-register" rel="nofollow">退出</a></li>
+<nav class="navbar hidden-xs" id="site-navbar">
+    <div class="container">
+        <ul class="nav navbar-nav navbar-right">
+            <?php if(empty($this_user)){ ?>
+            <li><a href="<?php echo site_url('sign/signin');?>">登录</a></li>
+            <li><a href="<?php echo site_url('sign/signup');?>">注册</a></li>
+            <?php }else{ ?>
+            <li class="dropdown">
+                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo empty($this_user['name_nick'])?$this_user['phone']:$this_user['name_nick'];?><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php echo site_url('member/center');?>">个人中心</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="<?php echo site_url('sign/signout');?>">退出登录</a></li>
+                </ul>
+            </li>
             <?php } ?>
-            <li>|</li>
-            <li><a href="<?php echo site_url('member/center');?>" class="nav-register" rel="nofollow">个人中心</a></li>
+            <li class="dropdown" >
+                <a id="cart_nav_a" href="javascript:void(0);" onclick="cart_refresh()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">购物车(<span id="cart_nav_number">0</span>)</a>
+                <ul class="dropdown-menu cart_nav_ul" id="cart_nav_content">
+                    <p class="mt20">购物车中还没有商品，赶紧去选购吧</p>
+                </ul>
+            </li>
         </ul>
-    </div>
-</div>
+    </div><!-- /.container-fluid -->
+</nav>

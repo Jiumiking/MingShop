@@ -15,7 +15,7 @@ class Home extends P_Controller{
      */
     public function __construct(){
         parent::__construct();
-        $this->this_view_data['_js'][] = 'slider';
+        $this->this_view_data['menu'] = 'home';
     }
     /**
      * 后台默认首页

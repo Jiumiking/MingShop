@@ -13,7 +13,7 @@ class Mdl_order extends MY_Model{
      */
     public function __construct(){
         parent::__construct();
-        $this->my_select_field .= ',order_no,member_id,money_goods,money_preferential,money_shipping,money_end,payment_id,shipping_id,accept_name,accept_province,accept_city,accept_district,accept_detail,accept_phone,remark,date_pay,date_send,date_end';
+        $this->my_select_field = 'id,order_no,member_id,money_goods,money_preferential,money_shipping,money_end,payment_id,accept_name,accept_province,accept_city,accept_area,accept_detail,accept_phone,remark,date_add,date_edit,date_pay,date_send,date_end,status';
         $this->my_table = 'order';
     }
     /**
@@ -33,15 +33,13 @@ class Mdl_order extends MY_Model{
         }
         $sql = "
             SELECT
-                o.id,o.order_no,o.member_id,o.money_goods,o.money_preferential,o.money_shipping,o.money_end,o.payment_id,o.shipping_id,o.accept_name,o.accept_province,o.accept_city,o.accept_district,o.accept_detail,o.accept_phone,o.remark,o.date_pay,o.date_send,o.date_end,o.date_add,o.date_edit,o.status
+                o.id,o.order_no,o.member_id,o.money_goods,o.money_preferential,o.money_shipping,o.money_end,o.payment_id,o.accept_name,o.accept_province,o.accept_city,o.accept_area,o.accept_detail,o.accept_phone,o.remark,o.date_add,o.date_edit,o.date_pay,o.date_send,o.date_end,o.status
                 ,m.name_real,m.name_nick
                 ,p.name AS payment_name
-                ,s.name AS shipping_name
             FROM
                 {$this->db->dbprefix($this->my_table)} AS o
                 LEFT JOIN {$this->db->dbprefix('member')} AS m ON m.id = o.member_id
                 LEFT JOIN {$this->db->dbprefix('payment')} AS p ON p.id = o.payment_id
-                LEFT JOIN {$this->db->dbprefix('shipping')} AS s ON s.id = o.shipping_id
             WHERE
                 1
                 $_where
@@ -71,7 +69,6 @@ class Mdl_order extends MY_Model{
                 {$this->db->dbprefix($this->my_table)} AS o
                 LEFT JOIN {$this->db->dbprefix('member')} AS m ON m.id = o.member_id
                 LEFT JOIN {$this->db->dbprefix('payment')} AS p ON p.id = o.payment_id
-                LEFT JOIN {$this->db->dbprefix('shipping')} AS s ON s.id = o.shipping_id
             WHERE
                 1
                 $_where
@@ -95,9 +92,8 @@ class Mdl_order extends MY_Model{
         }
         $return = '';
         foreach($where as $key=>$value){
-            if( !empty($value) ){
-                $value = str_replace('.','\.',$value);
-                $value = str_replace('%','\%',$value);
+            if( !empty($value) || $value == 0 ){
+                $this->sql_value($value);
                 if( $key=='order_no' || $key=='accept_name' || $key=='accept_phone' ){
                     $return .= ' AND o.'.$key." LIKE '%$value%'";
                 }else if($key=='name_real' || $key=='name_nick' || $key=='phone' || $key=='email'){
@@ -108,5 +104,39 @@ class Mdl_order extends MY_Model{
             }
         }
         return $return;
+    }
+    /**
+     * 给订单加上商品信息
+     * @access  public
+     * @param   mixed
+     * @return  mixed
+     */
+    public function order_goods( &$order_info ){
+        if( !empty($order_info['id']) ){
+            $this->load->model('mdl_order_goods');
+            $this->load->model('mdl_goods');
+            $order_info['goods'] = $this->mdl_order_goods->my_selects(0,0,array('order_id'=>$order_info['id']));
+            if( !empty($order_info['goods']) ){
+                foreach( $order_info['goods'] as $k=>$v ){
+                    $data_goods = $this->mdl_goods->my_select( $v['goods_id'] );
+                    if( !empty($data_goods) ){
+                        $order_info['goods'][$k]['image'] = $data_goods['image'];
+                    }
+                }
+            }
+        }
+    }
+    /**
+     * 给订单列表加上商品信息
+     * @access  public
+     * @param   mixed
+     * @return  mixed
+     */
+    public function order_goodses( &$order_list ){
+        if( !empty( $order_list ) ){
+            foreach( $order_list as $k=>$v ){
+                $this->order_goods($order_list[$k]);
+            }
+        }
     }
 }

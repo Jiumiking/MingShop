@@ -45,6 +45,6 @@
 <?php } ?>
 <?php }else{ ?>
 <tr>
-    <td colspan="7">未找到有效数据</td>
+    <td colspan="8">未找到有效数据</td>
 </tr>
 <?php } ?>

@@ -1,62 +1,55 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php $this->load->view('base/header'); ?>
-
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h2><i class="fa fa-indent red"></i><strong></strong></h2>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="table-search">
+            <select name="filter">
+                <option value="goods_no">商品编号</option>
+                <option value="name">商品名称</option>
+            </select>
+            <input type="text" name="value" value="">&nbsp;&nbsp;
+            <select name="type_id">
+                <option value="">类型</option>
+                <?php if(!empty($data_goods_type)){ ?>
+                <?php foreach($data_goods_type as $key=>$value){ ?>
+                <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
+                <?php } ?>
+                <?php } ?>
+            </select>
+            <select name="status">
+                <option value="">状态</option>
+                <option value="1">上架</option>
+                <option value="2">下架</option>
+            </select>
+            <button type="button" class="btn btn-success btn-sm" onclick="edit('')">新增</button>
+            <button type="button" class="btn btn-primary btn-sm" name="search">搜索</button>
         </div>
-        <div class="panel-body">
-            <div class="table-search">
-                <select name="filter">
-                    <option value="number">商品编号</option>
-                    <option value="name">商品名称</option>
-                </select>
-                <input type="text" name="value" value="">&nbsp;&nbsp;
-                <select name="type">
-                    <option value="">类型</option>
-                    <?php if(!empty($data_goods_type)){ ?>
-                    <?php foreach($data_goods_type as $key=>$value){ ?>
-                    <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
-                    <?php } ?>
-                    <?php } ?>
-                </select>
-                <select name="status">
-                    <option value="">状态</option>
-                    <option value="1">上架</option>
-                    <option value="2">下架</option>
-                </select>
-                <button type="button" class="btn btn-success btn-sm" onclick="edit('')">新增</button>
-                <button type="button" class="btn btn-primary btn-sm" name="search">搜索</button>
-            </div>
-            <table class="table table-bordered table-striped table-condensed table-hover">
-                <thead>
-                    <tr>
-                        <th>商品编号</th>
-                        <th>商品名称</th>
-                        <th>商品分类</th>
-                        <th>商品类型</th>
-                        <th>创建时间</th>
-                        <th>上下架时间</th>
-                        <th>状态</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody id="list_content">
-                    <?php $this->load->view($this_controller.'/'.$this_controller.'_tb'); ?>
-                </tbody>
-            </table>
-            <div>
-                当前<input type="text" onkeypress="pagelist.changePage(event,this)" id="pg_page" maxlength="10" size="1" value="1"/>页,
-                共<span id="pg_page_count"><?php echo $pages['page_count']?></span>页，
-                <span id="pg_count"><?php echo $pages['count']?></span>条记录
-                <a href="javascript:pagelist.lastPage();">上一页</a>
-                <a href="javascript:pagelist.nextPage();">下一页</a>
-            </div>
+        <table class="table table-bordered table-striped table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th>商品编号</th>
+                    <th>商品名称</th>
+                    <th>商品分类</th>
+                    <th>商品类型</th>
+                    <th>创建时间</th>
+                    <th>上下架时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="list_content">
+                <?php $this->load->view($this_controller.'/'.$this_controller.'_tb'); ?>
+            </tbody>
+        </table>
+        <div>
+            当前<input type="text" onkeypress="pagelist.changePage(event,this)" id="pg_page" maxlength="10" size="1" value="1"/>页,
+            共<span id="pg_page_count"><?php echo $pages['page_count']?></span>页，
+            <span id="pg_count"><?php echo $pages['count']?></span>条记录
+            <a href="javascript:pagelist.lastPage();">上一页</a>
+            <a href="javascript:pagelist.nextPage();">下一页</a>
         </div>
     </div>
 </div>
-
 <?php $this->load->view('base/list_js'); ?>
 <script type="text/javascript" src="<?php echo base_url('third_party/ueditor/ueditor.config.js');?>"></script>
 <script type="text/javascript" src="<?php echo base_url('third_party/ueditor/ueditor.all.min.js');?>"> </script>
@@ -206,9 +199,9 @@ $(document).ready(function(){
         var value = $("[name='value']").val();
 
         pagelist.filter['name'] = undefined;
-        pagelist.filter['number'] = undefined;
+        pagelist.filter['goods_no'] = undefined;
         pagelist.filter[filter] = value;
-        pagelist.filter['type'] = $("[name='type']").val();
+        pagelist.filter['type_id'] = $("[name='type_id']").val();
         pagelist.filter['status'] = $("[name='status']").val();
         pagelist.loadPage();
     });
@@ -229,7 +222,7 @@ function mingImgCheck(obj){
 }
 //图片选择后的显示
 function mingImgShow(src){
-    return '<div class="col-md-2 col-sm-3 col-xs-4 img-item" ><input type="hidden" name="image" value="'+src+'"><img class="img-thumbnail" src="'+src+'" alt="Sample Image"></div>';
+    return '<input type="hidden" name="image" value="'+src+'"><div class="img-item-default"><img src="'+src+'" alt="Sample Image"></div>';
 }
 //modal提交按钮
 function myModalBtn(){

@@ -1,31 +1,39 @@
-<div class="content-main">
-    <div class="content-main-title">
-        <span class="title">修改登录密码</span>
-        <span class="error-block" id="base_set_msg"></span>
+<form class="form-horizontal" id="base_form" method="post" action="<?php echo site_url('member/safe_password_do')?>">
+    <div class="form-group">
+        <div class="col-lg-2 col-md-2 control-label" for="text-input">密码</div>
+        <div class="col-lg-10 col-md-10">
+            <input class="form-control" id="password" name="password" type="password" value="" placeholder="密码" maxlength="50">
+            <span id="m_password" class="error-block"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-2 col-md-2 control-label" for="text-input">新密码</div>
+        <div class="col-lg-10 col-md-10">
+            <input class="form-control" id="password_new" name="password_new" type="password" value="" placeholder="新密码" maxlength="50">
+            <span id="m_password_new" class="error-block"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-2 col-md-2 control-label" for="text-input">确认新密码</div>
+        <div class="col-lg-10 col-md-10">
+            <input class="form-control" id="password_new2" name="password_new2" type="password" value="" placeholder="再次输入新密码" maxlength="50">
+            <span id="m_password_new2" class="error-block"></span>
+        </div>
     </div>
 
-    <form id="sign_form" class="sign-form" action="<?php echo site_url('member/safe_password_do')?>" method="post">
-        <div>
-            <input id="password" name="password" type="password" autocomplete="off" maxlength="50" placeholder="密码"/>
-            <p id="m_password" class="error-block"></p>
+    <div class="form-group">
+        <div class="col-lg-2 col-md-2 control-label" for="text-input"></div>
+        <div class="col-lg-10 col-md-10">
+            <input class="btn btn-primary" id="submit_btn" type="button" onclick="form_submit();" value="保存">
+            <a class="btn btn-default" href="<?php echo site_url('member/safe');?>">返回</a>
+            <span id="message" class="error-block"></span>
         </div>
-        <div>
-            <input id="password_new" name="password_new" type="password" autocomplete="off" maxlength="50" placeholder="新密码">
-            <p id="m_password_new" class="error-block"></p>
-        </div>
-        <div>
-            <input id="password_new2" name="password_new2" type="password" autocomplete="off" maxlength="50" placeholder="再次输入新密码"/>
-            <p id="m_password_new2" class="error-block"></p>
-        </div>
-        <div>
-            <input class="ipt-btn" id="submit_btn" type="button" value="提交" onclick="sign_submit();" />
-            <p id="message" class="error-block"></p>
-        </div>
-    </form>
-</div>
+    </div>
+</form>
+
 <script type="text/javascript">
-    function sign_submit(){
-        $('#sign_form').ajaxSubmit({
+    function form_submit(){
+        $('#base_form').ajaxSubmit({
             beforeSubmit: function(){
                 var password = $("#password").authen({err_name:'旧密码',min_length:2,max_length:50,empty:false});
                 var password2 = true;
@@ -65,30 +73,15 @@
             success: function (msg) {
                 if(msg){
                     var msgobj = eval("("+ msg +")");
-                    //alert(msgobj.msg);
-                    $("#message").html(msgobj.msg);
-                    $("#message").show();
-                    $("#message").fadeOut(3000,function(){
-                        location.href = "<?php echo site_url('member/safe');?>";
-                    });
                     $("#submit_btn").removeAttr("disabled");
+                    if( msgobj.sta == 1 ){
+                        ming_alert(msgobj.msg,2);
+                        location.href = "<?php echo site_url('member/safe');?>";
+                    }else{
+                        ming_alert(msgobj.msg,1);
+                    }
                 }
             }
         });
     }
-    $("#password").keyup(function(event){
-        if( event.keyCode == 13 ){
-            sign_submit();
-        }
-    });
-    $("#password_new").keyup(function(event){
-        if( event.keyCode == 13 ){
-            sign_submit();
-        }
-    });
-    $("#password_new2").keyup(function(event){
-        if( event.keyCode == 13 ){
-            sign_submit();
-        }
-    });
 </script>

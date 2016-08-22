@@ -17,6 +17,11 @@ class MY_Model extends CI_Model{
      **/
     protected $my_select_field = 'id,date_add,date_edit,status';
     /**
+     * 默认排序
+     * @access  protected
+     **/
+    protected $my_order_by = 'id DESC';
+    /**
      * 构造函数
      *
      * @access  public
@@ -71,7 +76,7 @@ class MY_Model extends CI_Model{
      * @param   mixed
      * @return  mixed
      */
-    public function my_selects( $num=0, $limit=0, $where=array(), $order_by='id DESC' ){
+    public function my_selects( $num=0, $limit=0, $where=array(), $order_by='' ){
         $_where = '';
         if( !empty($where) ){
             $_where = $this->my_where($where);
@@ -89,7 +94,7 @@ class MY_Model extends CI_Model{
                 1
                 $_where
             ORDER BY
-                $order_by
+                ".(empty($order_by)?$this->my_order_by:$order_by)."
             $_limit
         ";
         $query = $this->db->query($sql);
@@ -135,7 +140,7 @@ class MY_Model extends CI_Model{
         }
         $return = '';
         foreach($where as $key=>$value){
-            if( !empty($value) ){
+            if( !empty($value) || $value == 0 ){
                 $value = str_replace('.','\.',$value);
                 $value = str_replace('%','\%',$value);
                 $return .= ' AND '.$key." = '$value'";

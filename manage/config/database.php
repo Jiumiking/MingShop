@@ -101,7 +101,7 @@ $db['default'] = array(
 	'username' => 'root',
 	'password' => 'root',
 	'database' => 'mingshop',
-	'dbdriver' => 'mysql',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => 'qi_',
 	'pconnect' => TRUE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

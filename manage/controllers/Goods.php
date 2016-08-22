@@ -72,7 +72,7 @@ class Goods extends MY_Controller{
         if( !empty($id) ){
             $back = $this->{$this->this_model}->my_update( $id,$data_goods ); //更新
         }else{
-            $data_goods['goods_no'] = 'g'.time();
+            $data_goods['goods_no'] = $this->{$this->this_model}->goods_no_new();
             $data_goods['date_status'] = date('Y-m-d H:i:s');
             $back = $this->{$this->this_model}->my_insert( $data_goods ); //新插入
             $id = $this->db->insert_id();
@@ -98,7 +98,7 @@ class Goods extends MY_Controller{
         $data['status'] = $_GET['status'];
         $data['date_status'] = date('Y-m-d H:i:s');
         if( $this->mdl_goods->my_update( $_GET['id'], $data) ){
-            $this->ajax_views['status'] = '1';
+            $this->ajax_views['sta'] = '1';
             $this->ajax_views['msg'] = '操作成功';
         }else{
             $this->ajax_views['msg'] = '操作失败';

@@ -93,8 +93,8 @@
     private function check_auth(){
         $this->config->load('menu');
         $menu = $this->config->item('menu');
+        $this->this_uri_string = $this->uri->uri_string;//当前访问key
         if($this->this_user['role'] != 1){ //非超级管理员
-            $this->this_uri_string = $this->uri->uri_string;//当前访问key
             $this->this_access = $this->mdl_role->access_get($this->this_user['role']);
             $access = false;
             if( !empty($this->this_access) ){
@@ -149,6 +149,34 @@
             }
         }
         $this->_views['menu'] = $menu;
+        $this->get_bred();
+    }
+    /**
+     * 面包屑
+     * @access  protected
+     * @return  void
+     */
+    private function get_bred(){
+        $bred = array();
+        if( !empty($this->this_uri_string) && !empty($this->_views['menu']) ){
+            foreach( $this->_views['menu'] as $k=>$v ){
+                $bred[0]['name'] = $v['name'];
+                $bred[0]['icon'] = $v['icon'];
+                if(!empty($v['link']) && $v['link']==$this->this_uri_string){
+                    break;
+                }elseif( !empty($v['sons']) ){
+                    foreach( $v['sons'] as $kk=>$vv ){
+                        if(!empty($vv['link']) && $vv['link']==$this->this_uri_string){
+                            $bred[1]['name'] = $vv['name'];
+                            $bred[1]['icon'] = $vv['icon'];
+                            break 2;
+                        }
+                    }
+                }
+            }
+        }
+        //echo '<pre>';print_r($bred);exit;
+        $this->_views['bred'] = $bred;
     }
     /**
      * 接口结束返回
@@ -184,7 +212,6 @@
      */
     public function my_page(){
         $page = empty($_POST['page'])?1:$_POST['page'];
-
         $filter = $_POST;
         unset($filter['page']);
         unset($filter['page_size']);

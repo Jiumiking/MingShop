@@ -1,16 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php $this->load->view('base/header'); ?>
 <div class="row">
-    <div class="col-lg-12">
-        <h3 class="page-header"><i class="fa fa-laptop"></i> Dashboard</h3>
-        <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-            <li><i class="fa fa-laptop"></i>Dashboard</li>						  	
-        </ol>
-    </div>
-</div>
-
-<div class="row">
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
         <div class="info-box red-bg">
             <i class="fa fa-thumbs-o-up"></i>

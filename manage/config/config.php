@@ -365,6 +365,7 @@ $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'b_session';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = 'E:/workspace/qw/session';
+//$config['sess_save_path'] = '/home/k723528197qk87421365t2j8o1a9y7/wwwroot/session';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 0;
 $config['sess_regenerate_destroy'] = FALSE;
@@ -510,11 +511,12 @@ $config['proxy_ips'] = '';
 *站点URL
 */
 $config['front_url'] = 'http://www.mingshop.com';
+//$config['front_url'] = 'http://www.7blue.cn';
 /*
 *上传路径
 */
-//$config['upload_path'] = '/home/k723528197qk87421365t2j8o1a9y7/wwwroot/uploads';
 $config['upload_path'] = 'E:/workspace/MingShop/uploads/';
+//$config['upload_path'] = '/home/k723528197qk87421365t2j8o1a9y7/wwwroot/uploads';
 /*
 *上传图片配置
 */

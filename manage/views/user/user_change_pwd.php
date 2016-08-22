@@ -1,7 +1,7 @@
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h2><i class="fa fa-indent red"></i><strong>修改密码</strong></h2>
+            <h2>修改密码</h2>
         </div>
         <div class="panel-body">
             <form action="" method="post" enctype="multipart/form-data" class="form-horizontal ">

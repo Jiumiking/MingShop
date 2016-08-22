@@ -26,8 +26,11 @@ class Member extends MY_Controller{
     public function my_show(){
         if( !empty($_GET['id']) ){
             $this->_views['data'] = $this->{$this->this_model}->my_select( $_GET['id'] );
-            $this->_views['data_address'] = $this->mdl_member_address->my_selects( 0,0,array('member_id'=>$_GET['id']) );
+            $this->load->model('mdl_address');
+            $this->_views['data_address'] = $this->mdl_address->my_selects();
+            $this->_views['data_member_address'] = $this->mdl_member_address->my_selects( 0,0,array('member_id'=>$_GET['id']) );
         }
+        //echo '<pre>';print_r($this->_views['data_member_address']);exit;
         $this->ajax_views['dat'] = $this->load->view( $this->this_controller.'/'.$this->this_controller.'_show', $this->_views, true );
         $this->ajax_views['sta'] = '1';
         $this->ajax_views['msg'] = '获取成功';

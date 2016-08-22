@@ -37,5 +37,8 @@
         <div class="row">
             <?php $this->load->view('base/menu.php'); ?>
             <!-- start: Content -->
-            <div class="main" id="div_show" style="display:none;"></div>
-            <div class="main" id="div_content">
+            <div class="main">
+                <?php $this->load->view('base/header_bred.php'); ?>
+                <div id="div_show" style="display:none;">
+                </div>
+                <div id="div_content">

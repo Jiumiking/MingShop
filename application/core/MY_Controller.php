@@ -16,8 +16,16 @@ class M_Controller extends P_Controller{
      */
     public function __construct(){
         parent::__construct();
-        if ( !$this->session->this_user ){
-            redirect( site_url('sign/signin') );
+        if( !$this->session->this_user ){
+            if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"])=="xmlhttprequest"){ 
+                // ajax 请求的处理方式
+                $this->ajax_data['msg'] = '请先登录';
+                $this->ajax_end();
+            }else{ 
+                // 正常请求的处理方式
+                $this->session->set_flashdata('msg', '请先登录');
+                redirect( site_url('sign/signin') );
+            };
         }
     }
 }
@@ -94,11 +102,6 @@ class P_Controller extends CI_Controller{
         }
         $this->this_page_size = empty($this->this_setting['page_number'])?10:$this->this_setting['page_number'];
         $this->this_view_data['this_controller'] = $this->this_controller;
-        $this->this_view_data['_js'][] = 'jquery';
-        $this->this_view_data['_js'][] = 'authen';
-        $this->this_view_data['_css'][] = 'reset';
-        $this->this_view_data['_css'][] = 'style';
-
         $this->this_user_set();
     }
     /**
