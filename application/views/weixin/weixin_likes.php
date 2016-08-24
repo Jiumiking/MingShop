@@ -5,9 +5,8 @@
     <div class="container" id="site_main">
         <div class="row">
             <div class="col-md-12" id="main_menu">
-                <input type="button" class="btn btn-default" value="选择图片" onclick="choose_image()">
+                <a href="<?php echo site_url('weixin/likes_add');?>" class="btn btn-default" >参加活动</a>
             </div>
         </div>
     </div>
-<?php $this->load->view('base/wx_js'); ?>
 <?php $this->load->view('base/footer'); ?>

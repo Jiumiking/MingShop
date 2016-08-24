@@ -6,6 +6,9 @@
         <div class="row">
             <div class="col-md-12" id="main_menu">
                 <input type="button" class="btn btn-default" value="选择图片" onclick="choose_image()">
+                <div id="wx_image_show">
+
+                </div>
             </div>
         </div>
     </div>

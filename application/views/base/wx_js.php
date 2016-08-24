@@ -11,16 +11,39 @@
     });
     wx.ready(function () {
         // 在这里调用 API
-        alert('初始化成功');
     });
-    function choose_image(){alert(1);
+
+    var local_id = '';
+    var server_id = '';
+    function choose_image(){
         wx.chooseImage({
             count: 1, // 默认9
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
             sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
             success: function (res) {
                 var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-                alert(localIds);
+                $("#wx_image_show").html('<img src="'+localIds[0]+'"/>');
+                wx.uploadImage({
+                    localId: localIds[0].toString(), // 需要上传的图片的本地ID，由chooseImage接口获得
+                    isShowProgressTips: 1, // 默认为1，显示进度提示
+                    success: function (res) {
+                        var serverId = res.serverId; // 返回图片的服务器端ID
+                        $.ajax({
+                            type : "GET",
+                            async : true,
+                            url : "<?php echo site_url('weixin/likes_add_image');?>",
+                            data : {id:serverId},
+                            success : function(msg){alert(msg);
+                                if(msg){
+                                    var msgobj = eval("("+ msg +")");alert(msgobj.msg);
+                                    if( msgobj.sta == 1 ){
+                                        alert(msgobj.msg);
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
             }
         });
     }

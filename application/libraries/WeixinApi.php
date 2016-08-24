@@ -3,6 +3,7 @@ class WeixinApi {
     private $appId;
     private $appSecret;
     private $basePath;
+    private $wxPath;
 
     public function __construct( $wx_cfg ) {
         if( !empty($wx_cfg['appId']) ){
@@ -13,6 +14,7 @@ class WeixinApi {
         }
         if( !empty($wx_cfg['basePath']) ){
             $this->basePath = $wx_cfg['basePath'];
+            $this->wxPath = $wx_cfg['basePath'].'/weixin';
         }
     }
 
@@ -41,6 +43,35 @@ class WeixinApi {
         );
         return $signPackage;
     }
+    //下载微信服务器上的文件
+    public function getFile( $media_id ){
+        if( empty($media_id) ){
+            return false;
+        }
+        $accessToken = $this->getAccessToken();
+        $url = "http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=$accessToken&media_id=$media_id";
+        $file_name = time().rand(10,99).'.jpg';
+        $res = $this->httpGet($url);
+        if($this->saveFile( $file_name, $res )){
+            return $file_name;
+        }else{
+            return false;
+        }
+    }
+    private function saveFile( $file_name, $content ){
+        if( !file_exists($this->wxPath) ){
+            return false;
+        }
+        $local_file = fopen( $this->wxPath.'/'.$file_name );
+        $mark = false;
+        if( false !== $local_file ){
+            if( false !== fwrite($local_file, $content) ){
+                $mark = true;
+            }
+        }
+        fclose();
+        return $mark;
+    }
 
     private function getJsApiTicket() {
         // jsapi_ticket 应该全局存储与更新，以下代码以写入到文件中做示例
@@ -50,7 +81,7 @@ class WeixinApi {
             // 如果是企业号用以下 URL 获取 ticket
             // $url = "https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token=$accessToken";
             $url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$accessToken";
-            $res = json_decode($this->httpGet($url));
+            $res = json_decode($this->httpGet2($url));
             $ticket = $res->ticket;
             if ($ticket) {
                 $data->expire_time = time() + 7000;
@@ -100,6 +131,19 @@ class WeixinApi {
         $res = curl_exec($curl);
         curl_close($curl);
 
+        return $res;
+    }
+    private function httpGet2($url) {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_NOBODY, 0);
+        // 为保证第三方服务器与微信服务器之间数据传输的安全性，所有微信接口采用https方式调用，必须使用下面2行代码打开ssl安全校验。
+        // 如果在部署过程中代码在此处验证失败，请到 http://curl.haxx.se/ca/cacert.pem 下载新的证书判别文件。
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $res = curl_exec($curl);
+        curl_close($curl);
         return $res;
     }
 

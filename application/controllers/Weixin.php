@@ -34,12 +34,29 @@ class Weixin extends P_Controller{
         $this->load->view( $this->this_controller.'/'.$this->this_controller.'_likes',$this->this_view_data );
     }
     /**
+     * 图片点赞活动 参与
+     * @access  public
+     * @param   mixed
+     * @return  mixed
+     */
+    public function likes_add(){
+        $this->load->view( $this->this_controller.'/'.$this->this_controller.'_likes_add',$this->this_view_data );
+    }
+    /**
      * 图片点赞活动 上传图片
      * @access  public
      * @param   mixed
      * @return  mixed
      */
-    public function likes_upload(){
-        $this->load->view( $this->this_controller.'/'.$this->this_controller.'_likes_upload',$this->this_view_data );
+    public function likes_add_image(){
+        if( empty($_GET['id']) ){
+            $this->ajax_data['msg'] = '上传失败';
+            $this->ajax_end();
+        }
+        if( $file_name = $this->weixinapi->getFile($_GET['id']) ){
+            $this->ajax_data['msg'] = '上传成功';
+            $this->ajax_data['dat'] = $file_name;
+        }
+        $this->ajax_end();
     }
 }
