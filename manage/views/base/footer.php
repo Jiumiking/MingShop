@@ -29,6 +29,7 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+        <div class="ming-alert" id="ming_alert"></div>
         <div class="clearfix"></div>
 
         <script src="<?php echo base_url('js/bootstrap.min.js');?>"></script>	

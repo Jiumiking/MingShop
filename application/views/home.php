@@ -7,7 +7,7 @@
 
         <ul class="nav navbar-nav ">
             <li><a href="<?php echo site_url('goods/my_list');?>">全部产品</a></li>
-            <li><a href="<?php echo site_url('weixin/likes');?>">图片上传</a></li>
+            <li><a href="<?php echo site_url('weixin_likes/my_list');?>">图片上传</a></li>
         </ul>
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">

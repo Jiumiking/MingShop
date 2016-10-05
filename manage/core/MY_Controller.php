@@ -288,6 +288,28 @@
         }
         $this->ajax_end();
     }
+     /*
+      * 导入
+      * @access  public
+      */
+     public function my_import(){
+         $this->ajax_views['dat'] = $this->load->view( $this->this_controller.'/'.$this->this_controller.'_import', $this->_views, true );
+         $this->ajax_views['sta'] = '1';
+         $this->ajax_views['msg'] = '获取成功';
+         $this->ajax_end();
+     }
+     /*
+     * 导入模板
+      * @access  public
+     */
+     public function my_import_template(){
+     }
+     /**
+      * 导入
+      * @access  public
+      */
+     public function my_import_do(){
+     }
 }
 /**
  * 基类

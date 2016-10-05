@@ -59,7 +59,7 @@
         </div>
     </div>
 </form>
-<?php $this->load->view('base/address_js.php'); ?>
+<?php $this->load->view('js/address_js.php'); ?>
 <script type="text/javascript">
 function form_submit(){
     $('#base_form').ajaxSubmit({

@@ -9,22 +9,11 @@
             <?php $this->load->view('goods/goods_category'); ?>
         </div>
         <div class="col-md-9 " id="main_content">
-            <div class="row">
-            <?php $this->load->view('goods/goods_tb'); ?>
+            <div class="row" id="list_content">
+                <?php $this->load->view('goods/goods_tb'); ?>
             </div>
         </div>
     </div>
 </div>
-<script type="text/javascript">
-$(document).ready(function(){
-    $(".thumbnail").find("div.thumbnail-img-div").each(function(){
-        $(this).height($(this).width());
-    });
-    $(window).resize(function(){
-        $(".thumbnail").find("div.thumbnail-img-div").each(function(){
-            $(this).height($(this).width());
-        });
-    });
-});
-</script>
+<?php $this->load->view('js/list2_js'); ?>
 <?php $this->load->view('base/footer'); ?>

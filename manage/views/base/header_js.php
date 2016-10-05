@@ -25,9 +25,8 @@ function change_user_pwd(id){
                     $('#div_show').html(msgobj.dat);
                     $('#div_show').show();
                     $('#div_content').hide();
-                }else{
-                    alert(msgobj.msg);
                 }
+                ming_alert(msgobj.msg,msgobj.sta);
             }
         }
     });
@@ -77,12 +76,7 @@ function change_user_pwd_do(){
             data : { id:id,pwd:pwd_n },
             success : function(msg){
                 var msgobj = eval("("+ msg +")");
-                if(msgobj.sta == '1'){
-                    alert('修改成功');
-                    back();
-                }else{
-                    alert('修改失败');
-                }
+                ming_alert(msgobj.msg,msgobj.sta);
             }
         });
     }
@@ -182,5 +176,30 @@ function myModalBtn(){
     $("#img_show").append(html);
     //$("#img_show").html(html);
     $('#myModal').modal('hide');
+}
+/**ming提示框
+ * @param msg 提示信息
+ * @param type 提示类型 1：正确提示，0：错误提示
+ * @returns {boolean}
+ */
+var ming_alert_cnt = 1;
+function ming_alert( msg, type ){
+    if( typeof(msg) == 'undefined' ){
+        return false;
+    }
+    if( typeof(type) == 'undefined' ){
+        type = 0;
+    }
+    if( type == 1 ){
+        var msg = '<div id="ming_alert_box'+ming_alert_cnt+'" class="alert alert-dismissable alert-success "><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><li class="fa fa-check-circle"></li><span>'+msg+'</span></div>';
+    }else{
+        var msg = '<div id="ming_alert_box'+ming_alert_cnt+'" class="alert alert-dismissable alert-danger "><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><li class="fa fa-exclamation-circle"></li><span>'+msg+'</span></div>';
+    }
+    $("#ming_alert").append(msg);
+    setTimeout('ming_alert_hide('+ming_alert_cnt+');',3000);
+    ming_alert_cnt++;
+}
+function ming_alert_hide(cnt){
+    $("#ming_alert_box"+cnt).fadeOut(3000);
 }
 </script>

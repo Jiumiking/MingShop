@@ -62,15 +62,62 @@ class WeixinApi {
         if( !file_exists($this->wxPath) ){
             return false;
         }
-        $local_file = fopen( $this->wxPath.'/'.$file_name );
+        $local_file = fopen( $this->wxPath.'/'.$file_name,"w" );
         $mark = false;
         if( false !== $local_file ){
             if( false !== fwrite($local_file, $content) ){
                 $mark = true;
             }
         }
-        fclose();
+        fclose($local_file);
         return $mark;
+    }
+    //上传多媒体文件
+    function uploadMedia($url){
+        $file = realpath('1.mp3'); //要上传的文件
+        $fields['media'] = '@'.$file;
+        $ch = curl_init($url) ;
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,$fields);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch) ;
+        if (curl_errno($ch)) {
+         return curl_error($ch);
+        }
+        curl_close($ch);
+        return $result;
+    }
+    //下载多媒体文件
+    function saveMedia( $media_id ){
+        if( empty($media_id) ){
+            return false;
+        }
+        $accessToken = $this->getAccessToken();
+        $url = "http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=$accessToken&media_id=$media_id";
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);    
+        curl_setopt($ch, CURLOPT_NOBODY, 0);    //对body进行输出。
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $package = curl_exec($ch);
+        $httpinfo = curl_getinfo($ch);
+       
+        curl_close($ch);
+        $media = array_merge(array('mediaBody' => $package), $httpinfo);
+        
+        //求出文件格式
+        preg_match('/\w\/(\w+)/i', $media["content_type"], $extmatches);
+        $fileExt = $extmatches[1];
+        echo '<pre>';
+        print_r($extmatches);
+        print_r($media);exit;
+        $filename = time().rand(100,999).".{$fileExt}";
+        if(!file_exists( $this->wxPath.'/' )){
+            mkdir($this->wxPath.'/',0777,true);
+        }
+        file_put_contents($this->wxPath.'/'.$filename,$media['mediaBody']);
+        return $filename;
     }
 
     private function getJsApiTicket() {
@@ -81,7 +128,7 @@ class WeixinApi {
             // 如果是企业号用以下 URL 获取 ticket
             // $url = "https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token=$accessToken";
             $url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$accessToken";
-            $res = json_decode($this->httpGet2($url));
+            $res = json_decode($this->httpGet($url));
             $ticket = $res->ticket;
             if ($ticket) {
                 $data->expire_time = time() + 7000;

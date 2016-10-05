@@ -8,7 +8,7 @@
         
         <ul class="nav navbar-nav ">
             <li><a href="<?php echo site_url('goods/my_list');?>">全部产品</a></li>
-            <li><a href="<?php echo site_url('weixin/likes');?>">图片上传</a></li>
+            <li><a href="<?php echo site_url('weixin_likes/my_list');?>">图片上传</a></li>
         </ul>
         <form class="navbar-form navbar-right" role="search">
             <div class="input-group">

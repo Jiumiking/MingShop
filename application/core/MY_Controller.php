@@ -149,6 +149,51 @@ class P_Controller extends CI_Controller{
         $this->this_view_data['this_setting'] = $this->this_setting;
     }
     /**
+     * 列表
+     * @access  public
+     * @param   mixed
+     * @return  mixed
+     */
+    public function my_list(){
+        $this->this_view_data['data'] = $this->{$this->this_model}->my_selects($this->this_page_size);
+        $count = $this->{$this->this_model}->my_count();
+        $this->this_view_data['pages'] = array(
+            'page_count' => ceil($count/$this->this_page_size)==0?1:ceil($count/$this->this_page_size) ,
+            'count' => $count
+        );
+        $this->load->view( $this->this_controller.'/'.$this->this_controller.'_list',$this->this_view_data);
+    }
+    /**
+     * 列表分页ajax
+     * @access  protected
+     * @param   mixed
+     * @return  mixed
+     */
+    public function my_page(){
+        $page = empty($_POST['page'])?1:$_POST['page'];
+        $filter = $_POST;
+        unset($filter['page']);
+        unset($filter['page_size']);
+        $this->this_view_data['data'] = $this->{$this->this_model}->my_selects( $this->this_page_size, ($page-1)*$this->this_page_size, $filter );
+        $this->ajax_data['list_content'] = $this->load->view( $this->this_controller.'/'.$this->this_controller.'_tb', $this->this_view_data, true );
+        $this->ajax_data['page'] = $page;
+        $this->ajax_data['count'] = $this->{$this->this_model}->my_count($filter);
+        $this->ajax_data['page_count'] = ceil($this->ajax_data['count']/$this->this_page_size)==0?1:ceil($this->ajax_data['count']/$this->this_page_size);
+        $this->ajax_end();
+    }
+    /**
+     * 查看ajax
+     * @access  protected
+     * @param   mixed
+     * @return  mixed
+     */
+    public function my_show(){
+        if( !empty($_GET['id']) ){
+            $this->this_view_data['data'] = $this->{$this->this_model}->my_select( $_GET['id'] );
+        }
+        $this->load->view( $this->this_controller.'/'.$this->this_controller.'_show', $this->this_view_data );
+    }
+    /**
      * 跳转方法
      * @access  protected
      * @return  void

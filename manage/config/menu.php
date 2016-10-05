@@ -71,6 +71,12 @@ $config['menu'] = array(
             ),
         ),
     ),
+    array('name'=>'段子管理', 'icon'=>'fa fa-smile-o', 'key'=>'joke/my_list', 'link'=>'joke/my_list',
+        'auth' => array(
+            array('name'=>'编辑', 'key'=>'joke/my_edit'),
+            array('name'=>'删除', 'key'=>'joke/my_del'),
+        ),
+    ),
     array('name'=>'会员管理', 'icon'=>'fa fa-user', 'key'=>'member/my_list', 'link'=>'member/my_list',
         'auth' => array(
             array('name'=>'编辑', 'key'=>'member/my_edit'),
@@ -87,6 +93,16 @@ $config['menu'] = array(
         'auth' => array(
             array('name'=>'审核', 'key'=>'comment/status_edit'),
             array('name'=>'删除', 'key'=>'comment/my_del'),
+        ),
+    ),
+    array('name'=>'微信活动', 'icon'=>'fa fa-wechat', 'key'=>'weixin','link'=>'',
+        'sons' => array(
+            array('name'=>'照片点赞', 'icon'=>'fa fa-photo', 'key'=>'weixin_likes/my_list', 'link'=>'weixin_likes/my_list',
+                'auth' => array(
+                    array('name'=>'编辑', 'key'=>'article/my_edit'),
+                    array('name'=>'删除', 'key'=>'article/my_del'),
+                ),
+            ),
         ),
     ),
 );

@@ -1,5 +1,5 @@
 <?php if(!empty($data)){ foreach($data as $info){ ?>
-<div class="col-sm-6 col-md-3">
+<div class="col-sm-6 col-md-3 masonry-list">
     <div class="thumbnail">
         <div class="thumbnail-img-div">
             <a href="<?php echo site_url('goods/my_show?id='.$info['id']);?>">

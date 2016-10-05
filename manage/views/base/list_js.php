@@ -28,7 +28,7 @@ function show( id,controller ){
                     $('#div_show').show();
                     $('#div_content').hide();
                 }else{
-                    alert(msgobj.msg);
+                    ming_alert(msgobj.msg);
                 }
             }
         }
@@ -49,7 +49,7 @@ function edit( id ){
                     $('#div_show').show();
                     $('#div_content').hide();
                 }else{
-                    alert(msgobj.msg);
+                    ming_alert(msgobj.msg);
                 }
             }
         }
@@ -68,7 +68,7 @@ function edit_do(){
         success: function (msg) {
             if(msg){
                 var msgobj = eval("("+ msg +")");
-                //alert(msgobj.msg);
+                ming_alert(msgobj.msg, msgobj.sta);
                 pagelist.loadPage();
                 back();
             }
@@ -86,7 +86,7 @@ function del( id ){
             success : function(msg){
                 if(msg){
                     var msgobj = eval("("+ msg +")");
-                    alert(msgobj.msg);
+                    ming_alert(msgobj.msg,msgobj.sta);
                     pagelist.loadPage();
                     back();
                 }

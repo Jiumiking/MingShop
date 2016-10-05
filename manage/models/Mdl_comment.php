@@ -13,11 +13,12 @@ class Mdl_comment extends MY_Model{
      */
     public function __construct(){
         parent::__construct();
-        $this->my_select_field = 'id,member_id,object_type,object_id,parent_id,replay_id,content,up,down,date_add,date_edit,status';
+        $this->my_select_field = 'id,member_id,object_type,object_id,parent_id,replay_id,content,date_add,date_edit,status';
         $this->my_table = 'comment';
         $this->my_order_by = 'c.date_add ASC';
         $this->load->model('mdl_article');
         $this->load->model('mdl_goods');
+        $this->load->model('mdl_comment_up');
     }
     /**
      * 列表
@@ -36,7 +37,7 @@ class Mdl_comment extends MY_Model{
         }
         $sql = "
             SELECT
-                c.id,c.member_id,c.object_type,c.object_id,c.parent_id,c.replay_id,c.content,c.up,c.down,c.date_add,c.date_edit,c.status
+                c.id,c.member_id,c.object_type,c.object_id,c.parent_id,c.replay_id,c.content,c.date_add,c.date_edit,c.status
                 ,m.name_nick AS member_name,m.headpic AS member_headpic
                 ,r.name_nick AS replay_name,r.headpic AS replay_headpic
             FROM
@@ -52,6 +53,7 @@ class Mdl_comment extends MY_Model{
         ";//ECHO $sql;exit;
         $query = $this->db->query($sql);
         $data = $query->result_array();
+        $this->data_up_count($data);
         $this->data_process($data);
         return $data;
     }
@@ -206,6 +208,19 @@ class Mdl_comment extends MY_Model{
                     $data_object = $this->mdl_goods->my_select($v['object_id']);
                 }
                 $data[$k]['object_name'] = empty($data_object['name'])?'':$data_object['name'];
+            }
+        }
+    }
+    /**
+     * 赞的数量
+     * @access  public
+     * @param   mixed
+     * @return  mixed
+     */
+    public function data_up_count( &$data ){
+        if( !empty($data) ){
+            foreach($data as $k=>$v){
+                $data[$k]['up'] = $this->mdl_comment_up->my_count( array('comment_id'=>$v['id'],'status'=>1) );
             }
         }
     }

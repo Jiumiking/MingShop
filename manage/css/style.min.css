@@ -3064,3 +3064,24 @@ ul.profile-details li div i {
 .img-item-default img{
   width:100%;
 }
+.width100 img{
+    width:100%;
+}
+/**提示框**/
+.ming-alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  z-index: 2000;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+.ming-alert .alert{
+  margin-bottom: 5px;
+}
+.ming-alert .alert li{
+  margin-right: 10px;
+}

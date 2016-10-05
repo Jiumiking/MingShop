@@ -8,7 +8,6 @@
     <td><?php echo $info['object_name'];?></td>
     <td><?php echo $info['content'];?></td>
     <td><?php echo $info['up']; ?></td>
-    <td><?php echo $info['down']; ?></td>
     <td><?php echo $info['date_add']; ?></td>
     <td><?php echo empty($comment_status[$info['status']])?'':$comment_status[$info['status']]; ?></td>
     <td>

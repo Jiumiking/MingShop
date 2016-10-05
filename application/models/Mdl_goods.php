@@ -15,6 +15,33 @@ class Mdl_goods extends MY_Model{
         parent::__construct();
         $this->my_select_field .= ',goods_no,name,title,image,money_in,money_out,category_id,type_id,date_add,date_edit,date_status,status';
         $this->my_table = 'goods';
+        $this->load->model('mdl_category');
+    }
+    /**
+     * 列表条件处理
+     * @access  public
+     * @param   mixed
+     * @return  mixed
+     */
+    protected function my_where( $where=array() ){
+        if(empty($where)){
+            return '';
+        }
+        $return = '';
+        foreach($where as $key=>$value){
+            if( !empty($value) || $value == 0 ){
+                $this->sql_value($value);
+                if( $key == 'category' ){
+                    if( !empty($value) ){
+                        $cate_array = array_merge( array($value), $this->mdl_category->children_get($value) );
+                        $return .= " AND category_id IN (".implode(',',$cate_array).")";
+                    }
+                }else{
+                    $return .= ' AND '.$key." = '$value'";
+                }
+            }
+        }
+        return $return;
     }
     /**
      * 内容获取by goods_id

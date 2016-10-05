@@ -22,6 +22,11 @@ class MY_Model extends CI_Model{
      **/
     protected $my_order_by = 'id DESC';
     /**
+     * 默认查询条件
+     * @access  protected
+     **/
+    protected $my_filter = array();
+    /**
      * 构造函数
      *
      * @access  public
@@ -29,6 +34,7 @@ class MY_Model extends CI_Model{
      */
     public function __construct(){
         parent::__construct();
+        $this->load->helper('security');
     }
     /**
      * 设置表名
@@ -78,6 +84,7 @@ class MY_Model extends CI_Model{
      */
     public function my_selects( $num=0, $limit=0, $where=array(), $order_by='' ){
         $_where = '';
+        $where = array_merge( $this->my_filter, $where );
         if( !empty($where) ){
             $_where = $this->my_where($where);
         }
@@ -109,6 +116,7 @@ class MY_Model extends CI_Model{
      */
     public function my_count( $where=array() ){
         $_where = '';
+        $where = array_merge( $this->my_filter, $where );
         if(!empty($where)){
             $_where = $this->my_where($where);
         }
@@ -141,8 +149,7 @@ class MY_Model extends CI_Model{
         $return = '';
         foreach($where as $key=>$value){
             if( !empty($value) || $value == 0 ){
-                $value = str_replace('.','\.',$value);
-                $value = str_replace('%','\%',$value);
+                $this->sql_value($value);
                 $return .= ' AND '.$key." = '$value'";
             }
         }
@@ -200,5 +207,23 @@ class MY_Model extends CI_Model{
             return false;
         }
         return $this->db->delete( $this->my_table, array('id' => $id) );
+    }
+    /**
+     * 数据库字段处理
+     * @access  public
+     * @param   mixed
+     * @return  mixed
+     */
+    public function sql_value(&$value){
+        if( !empty($value) ){
+            $value = trim($value);
+            if (!get_magic_quotes_gpc()){
+                $value = addslashes($value);
+            }
+            $value = xss_clean($value);
+            $value = str_replace('.','\.',$value);
+            $value = str_replace('%','\%',$value);
+            $value = str_replace('-','\-',$value);
+        }
     }
 }

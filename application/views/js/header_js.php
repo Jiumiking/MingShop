@@ -59,13 +59,16 @@ function cart_go(){
  */
 var ming_alert_cnt = 1;
 function ming_alert( msg, type ){
-    if( typeof(msg) == 'undefined' || typeof(type) == 'undefined' ){
+    if( typeof(msg) == 'undefined' ){
         return false;
     }
+    if( typeof(type) == 'undefined' ){
+        type = 0;
+    }
     if( type == 1 ){
-        var msg = '<div id="ming_alert_box'+ming_alert_cnt+'" class="alert alert-dismissable alert-danger "><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><li class="fa fa-exclamation-circle"></li><span>'+msg+'</span></div>';
-    }else{
         var msg = '<div id="ming_alert_box'+ming_alert_cnt+'" class="alert alert-dismissable alert-success "><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><li class="fa fa-check-circle"></li><span>'+msg+'</span></div>';
+    }else{
+        var msg = '<div id="ming_alert_box'+ming_alert_cnt+'" class="alert alert-dismissable alert-danger "><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><li class="fa fa-exclamation-circle"></li><span>'+msg+'</span></div>';
     }
     $("#ming_alert").append(msg);
     setTimeout('ming_alert_hide('+ming_alert_cnt+');',3000);

@@ -20,6 +20,11 @@ class Goods extends P_Controller{
         $this->load->model('mdl_category');
         $this->load->model('mdl_format');
         $this->this_view_data['data_goods_type'] = $this->mdl_goods_type->my_selects();
+
+        $data_category = $this->mdl_category->my_selects(0,0,array(),'id ASC');
+        $this->load->library('tree');
+        $this->tree->setTree($data_category, 'id', 'parent_id', 'name');
+        $this->this_view_data['data_category'] = $this->tree->getLists();
     }
     /**
      * 详情
@@ -65,27 +70,5 @@ class Goods extends P_Controller{
         //echo '<pre>';print_r($this->this_view_data['goods_format']);exit;
         //echo '<pre>';print_r($this->this_view_data['data_comment']);exit;
         $this->load->view( $this->this_controller.'/'.$this->this_controller.'_show',$this->this_view_data );
-    }
-    /**
-     * 列表
-     * @access  public
-     * @param   mixed
-     * @return  mixed
-     */
-    public function my_list(){
-        $this->this_view_data['_js'][] = 'page';
-        $this->this_view_data['data'] = $this->{$this->this_model}->my_selects($this->this_page_size);
-        $count = $this->{$this->this_model}->my_count();
-        $this->this_view_data['pages'] = array(
-            'page_count' => ceil($count/$this->this_page_size)==0?1:ceil($count/$this->this_page_size) ,
-            'count' => $count
-        );
-
-        $data_category = $this->mdl_category->my_selects(0,0,array(),'id ASC');
-        $this->load->library('tree');
-        $this->tree->setTree($data_category, 'id', 'parent_id', 'name');
-        $this->this_view_data['data_category'] = $this->tree->getLists();
-        //echo '<pre>';print_r($this->this_view_data['data']);exit;
-        $this->load->view( $this->this_controller.'/'.$this->this_controller.'_index',$this->this_view_data);
     }
 }

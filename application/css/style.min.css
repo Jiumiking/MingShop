@@ -192,6 +192,9 @@ div.list-group-item:hover, div.list-group-item:focus {
 .thumbnail .caption {
     height: 100px;
 }
+.thumbnail .caption-sm {
+    height: 20px;
+}
 .thumbnail{
     border:none;
     box-shadow:0 15px 30px rgba(0,0,0,0.1);

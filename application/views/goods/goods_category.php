@@ -59,19 +59,29 @@ function category(id){
             $(this).addClass('active');
         }
     });
-    $.ajax({
-        type : "GET",
-        async : true,
-        url : "<?php echo site_url('goods/category');?>",
-        data : { id:id },
-        success : function(msg){
-            if(msg){
-                var msgobj = eval("("+ msg +")");
-                alert(msgobj.msg);
-                pagelist.loadPage();
-                back();
-            }
+    pagelist.pageCallback = function(data){
+        data = eval("("+ data +")");
+        if( data.list_content == '' ){
+            var $boxes = $( '<div>无</div>' );
+        }else{
+            var $boxes = $( data.list_content );
         }
-    });
+
+        $("#list_content").html( $boxes );
+        $(".thumbnail").find("div.thumbnail-img-div").each(function(){
+            $(this).height($(this).width());
+        });
+        pagelist.pageCallback = function(data){
+            data = eval("("+ data +")");
+            var $boxes = $( data.list_content );
+            $("#list_content").append( $boxes );
+            $(".thumbnail").find("div.thumbnail-img-div").each(function(){
+                $(this).height($(this).width());
+            });
+        }
+    }
+    pagelist.filter['category'] = id;
+    pagelist.filter['page'] = 1;
+    pagelist.loadPage();
 }
 </script>
