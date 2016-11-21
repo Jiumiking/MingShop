@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : phpstudy
+Source Server         : localhost
 Source Server Version : 50540
 Source Host           : localhost:3306
 Source Database       : mingshop
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-08-22 17:50:06
+Date: 2016-11-21 21:59:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3660,13 +3660,14 @@ CREATE TABLE `qi_cart` (
   `date_edit` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_cart
 -- ----------------------------
 INSERT INTO `qi_cart` VALUES ('21', '2', '4', '20', '摄像机-能看能听能说，手机远程观看asdf', '/uploads/ueditor/image/20160728/1469686384504117.png', '149.00', '3', '2016-08-05 14:04:35', '2016-08-09 11:11:33', '1');
 INSERT INTO `qi_cart` VALUES ('23', '2', '5', '21', 'U盘', '/uploads/ueditor/image/20160728/1469686384118728.png', '80.00', '2', '2016-08-08 14:20:06', '2016-08-09 11:11:32', '1');
+INSERT INTO `qi_cart` VALUES ('24', '1', '6', '22', 'T恤 白色 S', '/uploads/ueditor/image/20160728/1469686384136436.png', '100.00', '1', '2016-09-03 13:43:51', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for qi_category
@@ -3723,7 +3724,7 @@ CREATE TABLE `qi_comment` (
 -- Records of qi_comment
 -- ----------------------------
 INSERT INTO `qi_comment` VALUES ('1', '2', '2', '6', '0', '0', '这件T恤真好看，为什么这么便宜呢', '2016-08-10 16:55:25', '2016-08-19 09:04:40', '1');
-INSERT INTO `qi_comment` VALUES ('2', '1', '2', '6', '1', '2', '因为便宜啊', '2016-08-10 16:58:40', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_comment` VALUES ('2', '1', '2', '6', '1', '2', '因为便宜啊', '2016-08-10 16:58:40', '2016-08-24 21:58:08', '1');
 INSERT INTO `qi_comment` VALUES ('3', '1', '2', '6', '0', '0', '我也要买一件，太好看了', '2016-08-10 17:47:21', '2016-08-17 16:31:56', '1');
 INSERT INTO `qi_comment` VALUES ('4', '2', '2', '6', '0', '0', '我也也要买一件', '2016-08-10 17:47:49', '2016-08-18 15:39:51', '1');
 INSERT INTO `qi_comment` VALUES ('5', '2', '2', '6', '0', '0', '评论测试', '2016-08-18 17:18:03', '2016-08-18 17:18:30', '1');
@@ -4019,6 +4020,27 @@ INSERT INTO `qi_goods_type` VALUES ('4', '其他', '0', '0', '0', '0', '0', '201
 INSERT INTO `qi_goods_type` VALUES ('5', '衣服', '1', '2', '0', '0', '0', '2016-07-28 14:18:50', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
+-- Table structure for qi_joke
+-- ----------------------------
+DROP TABLE IF EXISTS `qi_joke`;
+CREATE TABLE `qi_joke` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar(1000) NOT NULL,
+  `date_add` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_edit` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of qi_joke
+-- ----------------------------
+INSERT INTO `qi_joke` VALUES ('1', '语文课上，\n老师：小明请你把“如果每一滴水都能代表一个祝福，那我送你一片海洋”做一个仿句练习！\n小明：如果每一朵花都代表一个祝福，那我会送你一个花圈！\n瞬间全班轰动！！！\n老师：滚滚滚，马上滚！！！', '2016-08-28 21:41:46', '2016-08-31 22:28:12', '1');
+INSERT INTO `qi_joke` VALUES ('2', '123', '2016-08-31 22:28:20', '2016-08-31 23:03:11', '1');
+INSERT INTO `qi_joke` VALUES ('3', '语文课上，老师：小明请你把“如果每一滴水都能代表一个祝福，那我送你一片海洋”做一个仿句练习！\n小明：如果每一朵花都代表一个祝福，那我会送你一个花圈！\n瞬间全班轰动！！！\n老师：滚滚滚，马上滚！！！', '2016-08-31 23:26:31', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_joke` VALUES ('4', '老师把小明叫到了教室外。\n老师：“你的作业做的越来越差了，这是怎么回事？”\n小明：“老师，等我找找原因，下午告诉你好吗？”\n老师：“好吧！”\n下午，老师又把小明叫到了教室外。老师：“找到原因了吗？”\n小明：“找到了，我爷爷说作业越来越难，他也没办法。”\n老师：“滚出去！”', '2016-08-31 23:26:31', '0000-00-00 00:00:00', '1');
+
+-- ----------------------------
 -- Table structure for qi_log
 -- ----------------------------
 DROP TABLE IF EXISTS `qi_log`;
@@ -4029,7 +4051,7 @@ CREATE TABLE `qi_log` (
   `ip_address` varchar(32) DEFAULT NULL,
   `date_add` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_log
@@ -4192,6 +4214,15 @@ INSERT INTO `qi_log` VALUES ('155', '100', '登录成功', '127.0.0.1', '2016-08
 INSERT INTO `qi_log` VALUES ('156', '100', '登录成功', '127.0.0.1', '2016-08-19 10:58:59');
 INSERT INTO `qi_log` VALUES ('157', '100', '登录成功', '127.0.0.1', '2016-08-19 16:20:29');
 INSERT INTO `qi_log` VALUES ('158', '100', '登录成功', '127.0.0.1', '2016-08-22 13:44:45');
+INSERT INTO `qi_log` VALUES ('159', '100', '登录成功', '127.0.0.1', '2016-08-23 22:32:14');
+INSERT INTO `qi_log` VALUES ('160', '100', '登录成功', '127.0.0.1', '2016-08-24 21:34:50');
+INSERT INTO `qi_log` VALUES ('161', '100', '登录成功', '127.0.0.1', '2016-08-25 21:36:37');
+INSERT INTO `qi_log` VALUES ('162', '100', '登录成功', '127.0.0.1', '2016-08-27 09:58:51');
+INSERT INTO `qi_log` VALUES ('163', '100', '登录成功', '127.0.0.1', '2016-08-28 21:04:32');
+INSERT INTO `qi_log` VALUES ('164', '100', '登录成功', '127.0.0.1', '2016-08-30 20:59:17');
+INSERT INTO `qi_log` VALUES ('165', '100', '登录成功', '127.0.0.1', '2016-08-31 21:30:14');
+INSERT INTO `qi_log` VALUES ('166', '100', '登录成功', '127.0.0.1', '2016-09-03 12:45:27');
+INSERT INTO `qi_log` VALUES ('167', '100', '登录成功', '127.0.0.1', '2016-10-05 11:05:39');
 
 -- ----------------------------
 -- Table structure for qi_member
@@ -4430,17 +4461,38 @@ DROP TABLE IF EXISTS `qi_weixin_likes`;
 CREATE TABLE `qi_weixin_likes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `member_id` int(11) NOT NULL DEFAULT '0',
-  `title` varchar(100) NOT NULL DEFAULT '',
+  `content` varchar(1000) NOT NULL DEFAULT '',
   `image` varchar(100) NOT NULL,
   `date_add` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `date_edit` datetime NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_weixin_likes
 -- ----------------------------
+INSERT INTO `qi_weixin_likes` VALUES ('1', '1', '语文课上，老师：小明请你把“如果每一滴水都能代表一个祝福，那我送你一片海洋”做一个仿句练习！\r\n小明：如果每一朵花都代表一个祝福，那我会送你一个花圈！\r\n瞬间全班轰动！！！\r\n老师：滚滚滚，马上滚！！！', '0b1919e2c0d433ea94e158c5e318dcfe.jpg', '0000-00-00 00:00:00', '2016-08-28 21:20:42', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('2', '1', '老师把小明叫到了教室外。\r\n老师：“你的作业做的越来越差了，这是怎么回事？”\r\n小明：“老师，等我找找原因，下午告诉你好吗？”\r\n老师：“好吧！”\r\n下午，老师又把小明叫到了教室外。老师：“找到原因了吗？”\r\n小明：“找到了，我爷爷说作业越来越难，他也没办法。”\r\n老师：“滚出去！”', '1e38b38b36987ed109faadcf08f15cfc.jpeg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('3', '1', '考试后，老师训话：“都是学生，怎么有的考得好，有的考得差。”\r\n小明：“还不是因为监考老师不同。”\r\n老师：“滚出去！”', '3f8feaa559b127d3c5383ca83db49074.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('4', '1', '政治老师花一整堂课讲述钱与人生的关系，下课前布置作业，思考题：“如果你们有钱能改变什么吗？”\r\n小明在角落冷哼一声：“如果有钱，我就不用在这听你废话了。”\r\n老师：“滚出去！”', '5eaa72e367063b02cf32769ac59a78bc.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('5', '1', '老师：“请用一句话，证明你找不到某个人的时候的愤怒情绪。”\r\n小明：“王八蛋，你特么在哪？”\r\n老师：“注意素质。”\r\n小明：“鳖，汝在何方？”\r\n老师：“滚……”', '9b01a030129e39edfce178cb1bbcb828.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('6', '1', '老师：“请大家解释一下环境因素和遗传因素！”\r\n小明：“长的像爸爸就是遗传因素，长的像邻居就是环境因素！”\r\n老师：“老规矩……”\r\n小明默默地站起来……', '9b38cee9e952d77db9af2c0d1611d868.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('7', '1', '老师问站在教室外的小明、霜霜、李华三人：“你们仨到底在课堂上做什么，给我老实交代。”\r\n小明：“指点江山，激扬文字，粪土粪土当年万户侯。”\r\n老师：“说人话。”\r\n小明：“斗地主。”\r\n老师：“外面站一天。”', '9d663d93804a5aafed1adb770770099b.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('8', '1', '小明：“老师我喜欢你。”\r\n老师：“我不喜欢小孩。”\r\n小明：“我也不喜欢小孩，我们可以不要小孩。”\r\n老师：“滚！滚到外边去！”', '35cc4c00d2583f6dcca5c7e4d5ed0932.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('9', '1', '数学课上，老师出题：“我们班上有十一位同学，现在老师带了十个苹果，要怎么才能平均分给同学们？”\r\n小红：“小明滚出去！”', '38dfbb31d82ff14cfacdbf04698a746c.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('10', '1', '老师：“同学们好！”\r\n同学们：“老师，教师节快乐！”\r\n老师：“谢谢同学们，小明呢？”\r\n小强：“小明说，今天你过节，他就不气你了，自己先滚出去了。”\r\n老师：“小明其实也是个懂事的孩子，快去叫他进来吧。”\r\n小强：“这点估计他都到家了。”', '60a9175464b147ad8846d855ac12db8f.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('11', '1', '教室里，小明把头靠在椅子上，不听课。\r\n老师关心的问：“你又生病了？”\r\n小明头也不抬的说：“是的，头疼。”\r\n老师说：“你有医生证明吗？拿出来你就可以回家休息了！”小明说：“就是因为医生不开证明，所以头疼。”\r\n老师：“滚出去…”', '99b813b9fe68e280dc8bb3df09fe157d.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('12', '1', '体育课要做蛙跳动作，老师问：“谁以前受过伤？可以不用做。”\r\n小红说：“我脚断过。”\r\n小强说：“我手腕断过。”\r\n小明：“我脐带断过。”\r\n小明没滚，只是罚跳了一节课。', '421b21ffd3e3322fa362a6dd6f14b7dd.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('13', '1', '老师：“小明，如果你长大了失恋了之后怎么办？”\r\n小明：“我失恋了就老老实实回媳妇身边。”\r\n老师：“滚出去……”', '764f512a7fd7a6d1add8d5da5bd6cacc.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('14', '1', '老师：“请大家说说你们的愿望。”\r\n小明：“去山东蓝翔学挖掘机。”\r\n老师：“给我个理由。”\r\n小明：“刨你家祖坟。”\r\n老师：“滚出去…………”', '865745bcc080595e63127f526e7e650a.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('15', '1', '课堂上，老师在讲第7章，小明把书随便打开，就低头玩手机，结果被老师发现了。\r\n老师质问他：“讲的7章，怎么把书翻到8章？”\r\n小明淡淡的答到：“我是在前面等着你！”\r\n回答的挺合逻辑啊，怎么老师还是让小明滚出去了。。。\r\n老师：“小明，你来回答学校是什么地方！”\r\n小明：“学校就是连续签到五天，领取作业大礼包的地方！”\r\n老师：“你滚出去!”', '9136932b5a8c70d9c132def539fda8f9.jpeg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('16', '1', '小明：“老师，我想去上网。”\r\n老师：“滚！”\r\n小明以迅雷不及掩耳盗铃之势跑出教室。\r\n老师：“我艹，说顺口了，你给我回来！”', '59723259292f2e864c0b1661910de544.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('17', '1', '老师：“蒸一个包子一分钟，蒸三个包子要多久？”\r\n小明：“九分钟？”\r\n老师：“你傻呀！你们家蒸包子一个一个蒸呀？！”\r\n小明表示不服：“那我问你，吃一个馒头一分钟，吃十个馒头呢？”\r\n老师：“十分钟呀！你以为我跟你一样傻呀！”\r\n小明：“十分钟吃十个馒头！撑死你个饭桶！”\r\n老师：“。。。滚出去！”', 'a5ef60ddfaed7d6e54193e345ba038b1.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('18', '1', '小明：“老师，我以后再也不惹你生气了。”\r\n老师：“这样才是乖孩子，坐下听课吧，来大家翻开16页，这节课我们讲羊驼。”\r\n小明：“咦，艹泥马。”\r\n老师：“继续滚出去……”', 'b4ba2153012ff041a1c77b9533240175.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('19', '1', '老师问小明：“如果有劫匪要捅我一刀，你会怎么办？”\r\n小明：“看他是否捅中。”\r\n老师：“没捅中了呢？”\r\n小明：“给他来瓶脉动。”\r\n老师：“为什么？”\r\n小明：“关键时候不在状态，速度回归。”\r\n老师：“捅中了呢？”\r\n小明：“来片炫迈。”\r\n老师：“什么意思？”\r\n小明：“根本停不下来！”\r\n老师：“有多远滚多远！”', 'b8faa48b454c5b9add35e888f0a43326.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('20', '1', '老师：“小明，你知道为什么要上地理课嘛？”\r\n小明：“老师，那为什么体育课那么少，作业那么多呢？”\r\n老师：“......”', 'fafb992a9e4478db6d9af286aaafe301.jpeg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('21', '1', '小王：“为什么一节课45分钟，而下课休息时间只有15分钟呢？”\r\n老师：“请回答正题！”\r\n小明：“因为没有天理。”\r\n老师：“滚去太平洋！！！”', '2bc7ebcb20e68f104a9be8156640fa5f.png', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for qi_weixin_likes_up
@@ -4454,8 +4506,10 @@ CREATE TABLE `qi_weixin_likes_up` (
   `date_edit` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_weixin_likes_up
 -- ----------------------------
+INSERT INTO `qi_weixin_likes_up` VALUES ('1', '2', '11', '2016-08-28 16:34:14', '0000-00-00 00:00:00', '1');
+INSERT INTO `qi_weixin_likes_up` VALUES ('2', '1', '2', '2016-09-03 13:42:33', '0000-00-00 00:00:00', '1');
