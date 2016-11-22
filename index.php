@@ -116,6 +116,15 @@ switch (ENVIRONMENT)
     $application_folder = 'application';
 
 /*
+ * add by ming nginx 后台重定向
+ */
+    $uri = explode('/',$_SERVER['REQUEST_URI']);
+    if( !empty($uri[1]) && $uri[1] == 'manage' ){
+        $application_folder = 'manage';
+        unset($uri[1]);
+        $_SERVER['REQUEST_URI'] = implode('/',$uri);
+    }
+/*
  *---------------------------------------------------------------
  * VIEW FOLDER NAME
  *---------------------------------------------------------------

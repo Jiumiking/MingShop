@@ -364,7 +364,7 @@ $config['encryption_key'] = '';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'f_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = 'E:/workspace/qw/session';
+$config['sess_save_path'] = '/home/vagrant/Code/MingShop/session';
 //$config['sess_save_path'] = '/home/k723528197qk87421365t2j8o1a9y7/wwwroot/session';
 
 $config['sess_match_ip'] = FALSE;
@@ -510,5 +510,5 @@ $config['proxy_ips'] = '';
 /*
 *上传路径
 */
-$config['upload_path'] = 'E:/workspace/MingShop/uploads/';
+$config['upload_path'] = '/home/vagrant/Code/MingShop/uploads/';
 //$config['upload_path'] = '/home/k723528197qk87421365t2j8o1a9y7/wwwroot/uploads/';

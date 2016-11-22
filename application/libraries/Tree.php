@@ -19,13 +19,14 @@ class Tree
      */
     function construct($value = 'root')
     {
-        $this->Tree($value);
-    }
-
-    function Tree($value = 'root')
-    {
+//        $this->Tree($value);
         $this->setNode(0, -1, $value);
     }
+
+//    function Tree($value = 'root')
+//    {
+//        $this->setNode(0, -1, $value);
+//    }
 
     /**
      * 构造树
