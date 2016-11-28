@@ -122,7 +122,7 @@ function mingImgShow(src){
 }
 //选择图片按钮
 function mingImgAdd(){
-    $("#img_upload").children("[name='file']").first().click();
+    $("#mingImgFile").click();
 }
 //新增上传
 function mingImgFile(obj){

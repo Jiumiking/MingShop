@@ -34,7 +34,7 @@ class Comment extends P_Controller{
         $this->this_view_data['data_comment'] = $this->{$this->this_model}->my_selects( 0,0,array('object_type'=>$object_type,'object_id'=>$object_id) );
         $this->this_view_data['data_comment_up'] = $this->mdl_comment_up->my_selects( 0,0,array('member_id'=>(empty($this->this_user['id'])?0:$this->this_user['id']),'status'=>1) );
         //echo '<pre>';print_r($this->this_view_data['data_comment_up']);exit;
-        $this->ajax_data['dat'] = $this->load->view( $this->this_controller.'/'.$this->this_controller.'_default',$this->this_view_data, true );
+        $this->ajax_data['dat'] = $this->load->view( $this->this_controller.'/'.$this->this_controller.'_one',$this->this_view_data, true );
         $this->ajax_data['sta'] = '1';
         $this->ajax_data['msg'] = '获取成功';
         $this->ajax_end();
@@ -55,7 +55,11 @@ class Comment extends P_Controller{
         $data['parent_id'] = empty($_POST['pid'])?0:$_POST['pid'];
         $data['replay_id'] = empty($_POST['mid'])?0:$_POST['mid'];
         $data['content'] = empty($_POST['content'])?0:$_POST['content'];
-        if( empty($data['object_type']) || empty($data['object_id']) || empty($data['content']) ){
+        if( empty($data['content']) ){
+            $this->ajax_data['msg'] = '请输入内容';
+            $this->ajax_end();
+        }
+        if( empty($data['object_type']) || empty($data['object_id']) ){
             $this->ajax_data['msg'] = '参数错误';
             $this->ajax_end();
         }

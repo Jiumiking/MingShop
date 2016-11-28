@@ -15,7 +15,7 @@ class Mdl_comment extends MY_Model{
         parent::__construct();
         $this->my_select_field = 'id,member_id,object_type,object_id,parent_id,replay_id,content,date_add,date_edit,status';
         $this->my_table = 'comment';
-        $this->my_order_by = 'c.date_add ASC';
+        $this->my_order_by = 'c.date_add DESC';
         $this->load->model('mdl_article');
         $this->load->model('mdl_goods');
         $this->load->model('mdl_comment_up');
@@ -54,7 +54,7 @@ class Mdl_comment extends MY_Model{
         $query = $this->db->query($sql);
         $data = $query->result_array();
         $this->data_up_count($data);
-        $this->data_sort($data);
+//        $this->data_sort($data);
         return $data;
     }
     /**
@@ -123,6 +123,7 @@ class Mdl_comment extends MY_Model{
                 }
             }
             $data = $data_new;
+            echo '<pre>';print_r($data);exit;
         }
     }
     /**

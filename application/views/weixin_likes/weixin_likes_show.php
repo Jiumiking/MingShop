@@ -37,10 +37,8 @@ function up( id ){
                 var msgobj = eval("("+ msg +")");
                 if(msgobj.sta == '1'){
                     $("#up_num").html(msgobj.dat);
-                    ming_alert(msgobj.msg,2);
-                }else{
-                    ming_alert(msgobj.msg,1);
                 }
+                ming_alert(msgobj.msg,msgobj.sta);
             }
         }
     });

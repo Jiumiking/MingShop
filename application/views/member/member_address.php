@@ -48,11 +48,9 @@ function address_del(id){
                 if(msg){
                     var msgobj = eval("("+ msg +")");
                     if( msgobj.sta == 1 ){
-                        ming_alert(msgobj.msg,2);
                         $("#panel_"+id).hide();
-                    }else{
-                        ming_alert(msgobj.msg,1);
                     }
+                    ming_alert(msgobj.msg,msgobj.sta);
                 }
             }
         });

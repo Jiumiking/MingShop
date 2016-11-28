@@ -28,7 +28,7 @@
                     <th>评论人</th>
                     <th>评论类型</th>
                     <th>评论对象</th>
-                    <th>内容</th>
+                    <th class="w3">内容</th>
                     <th>顶</th>
                     <th>创建时间</th>
                     <th>状态</th>
@@ -60,7 +60,7 @@ function status_edit( id,status ){
         success : function(msg){
             if(msg){
                 var msgobj = eval("("+ msg +")");
-                alert(msgobj.msg);
+                ming_alert(msgobj.msg,msgobj.sta);
                 pagelist.loadPage();
                 //back();
             }
@@ -74,6 +74,7 @@ $(document).ready(function(){
         var filter = $("[name='filter']").val();
         var value = $("[name='value']").val();
 
+        pagelist.filter['page'] = 1;
         pagelist.filter['object_name'] = undefined;
         pagelist.filter['content'] = undefined;
         pagelist.filter[filter] = value;

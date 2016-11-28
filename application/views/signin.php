@@ -27,7 +27,10 @@
             </div>
             <div class="form-group">
                 <input class="form-control haf" id="verification_code" type="text" class="hf" placeholder="验证码"/>
-                <img class="captcha haf" src="<?php echo site_url('sign/captcha_get');?>" id="cap" onclick="captcha_change();"/>
+                <div class="haf fr">
+                    <img class="captcha" src="<?php echo site_url('sign/captcha_get');?>" id="cap" onclick="captcha_change();"/>
+                </div>
+
                 <span id="m_verification_code" class="error-block"></span>
             </div>
 

@@ -93,7 +93,22 @@
         </form>
     </div>
     <div class="tab-pane" id="setting_img">
-    123
+        <div class="row">
+            <div class="col-md-3">
+                <img class="dis-bl" id="setting_img_show" src="<?php echo '/uploads/headpic/'.(empty($this_user['headpic'])?'default.png':$this_user['headpic']); ?>">
+                <input type="button" class="btn btn-primary mt20" value="保存" onclick="head_save()">
+            </div>
+            <div class="col-md-9">
+                <div class="row" id="img_manage">
+                    <?php if(!empty($data_headpic)){ foreach($data_headpic as $k=>$v){?>
+                        <div class="col-md-2 col-sm-3 col-xs-4 img-item" onclick="mingImgCheck(this)">
+                            <img class="img-thumbnail" src="<?php echo $v['url'];?>" data="<?php echo $v['url'];?>">
+                            <span class="glyphicon icon"></span>
+                        </div>
+                    <?php }} ?>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script type="text/javascript">
@@ -139,15 +154,36 @@
             success: function (msg) {
                 if(msg){
                     var msgobj = eval("("+ msg +")");
-                    if(msgobj.sta == 1){
-                        ming_alert(msgobj.msg,2);
-                    }else{
-                        ming_alert(msgobj.msg,1);
-                    }
+                    ming_alert(msgobj.msg,msgobj.sta);
                     $("#submit_btn").removeAttr("disabled");
                 }
             }
         });
     }
+    //图片选择操作
+    function mingImgCheck(obj){
+        $("#img_manage").find(".img-item.selected").each(function(){
+            $(this).removeClass('selected');
+        });
 
+        $(obj).addClass('selected');
+        var data = $(obj).find('img').attr('data');
+        $("#setting_img_show").attr('src',data);
+    }
+    //保存头像
+    function head_save(){
+        var data = $("#setting_img_show").attr('src');
+        $.ajax({
+            type : "GET",
+            async : true,
+            url : "<?php echo site_url('member/headpic_save');?>",
+            data : { data:data },
+            success : function(msg){
+                if(msg){
+                    var msgobj = eval("("+ msg +")");
+                    ming_alert(msgobj.msg,msgobj.sta);
+                }
+            }
+        });
+    }
 </script>

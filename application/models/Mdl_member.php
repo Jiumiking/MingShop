@@ -13,7 +13,7 @@ class Mdl_member extends MY_Model{
      */
     public function __construct(){
         parent::__construct();
-        $this->my_select_field .= ',name_real,name_nick,password,phone,email,email_check,integral,sex,birthday';
+        $this->my_select_field .= ',name_real,name_nick,password,phone,email,email_check,integral,sex,birthday,headpic';
         $this->my_table = 'member';
     }
     /**

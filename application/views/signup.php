@@ -19,19 +19,21 @@
             </div>
             <div class="form-group">
                 <input class="form-control haf" id="verification_code" type="text" placeholder="验证码"/>
-                <img class="captcha haf" src="<?php echo site_url('sign/captcha_get');?>" id="cap" onclick="captcha_change();"/>
+                <div class="haf fr">
+                    <img class="captcha" src="<?php echo site_url('sign/captcha_get');?>" id="cap" onclick="captcha_change();"/>
+                </div>
                 <span id="m_verification_code" class="error-block"></span>
             </div>
             <div class="form-group">
                 <input class="form-control haf" id="phone_code" name="phone_code" type="text" value="" placeholder="短信验证码" maxlength="10">
-                <input class="form-control btn-info haf" type="button" id="phone_code_btn" value="获取验证码" onclick="phone_code_get();">
+                <input class="form-control btn-info haf fr" type="button" id="phone_code_btn" value="获取验证码" onclick="phone_code_get();">
                 <span id="m_phone_code" class="error-block"></span>
             </div>
             <div class="form-group">
                 <input class="form-control btn-primary" id="sign_btn" type="button" onclick="sign_submit();" value="立即注册">
             </div>
             <div class="form-group">
-                有账号？去<a href="<?php echo site_url('sign/signin')?>" class="cp fr mt5">登录</a>
+                有账号？去<a href="<?php echo site_url('sign/signin')?>" class="cp  mt5">登录</a>
             </div>
         </form>
     </div>

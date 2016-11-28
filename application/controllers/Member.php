@@ -7,6 +7,7 @@
  * @author      ming.king
  */
 class Member extends M_Controller{
+    private $allow_files = 'png|jpg|jpeg|gif|bmp';
     /**
      * 构造函数
      * @access  public
@@ -82,6 +83,7 @@ class Member extends M_Controller{
      */
     public function setting(){
         $this->this_view_data['member_menu'] = 'setting';
+        $this->this_view_data['data_headpic'] = $this->get_headpics();
         $this->load->view('member/member_center',$this->this_view_data);
     }
     /**
@@ -90,7 +92,7 @@ class Member extends M_Controller{
      * @return  void
      */
     public function setting_do(){
-        $data['id'] = empty($_POST['member_data']['name_nick'])?'':$_POST['member_data']['id'];
+        $data['id'] = empty($_POST['member_data']['id'])?'':$_POST['member_data']['id'];
         $data['name_nick'] = empty($_POST['member_data']['name_nick'])?'':$_POST['member_data']['name_nick'];
         $data['name_real'] = empty($_POST['member_data']['name_real'])?'':$_POST['member_data']['name_real'];
         $data['sex'] = empty($_POST['member_data']['sex'])?'':$_POST['member_data']['sex'];
@@ -107,6 +109,51 @@ class Member extends M_Controller{
             $this->ajax_end();
         }
         if( $this->mdl_member->my_update( $data['id'],$data ) ){
+            $this->ajax_data['sta'] = 1;
+            $this->ajax_data['msg'] = '保存成功';
+            $this->this_user_reset();
+        }else{
+            $this->ajax_data['msg'] = '保存失败';
+        }
+        $this->ajax_end();
+    }
+    /**
+     * 获取所有的图片
+     * @return mixed
+     */
+    public function get_headpics(){
+        $path = $this->config->item('upload_path').'headpic';
+        if (!is_dir($path)) return null;
+        if(substr($path, strlen($path) - 1) != '/') $path .= '/';
+        $handle = opendir($path);
+        while (false !== ($file = readdir($handle))) {
+            if ($file != '.' && $file != '..') {
+                $path2 = $path . $file;
+                if (!is_dir($path2)) {
+                    if (preg_match("/\.(".$this->allow_files.")$/i", $file)) {
+                        $files[] = array(
+                            'url'=> substr($path2, strlen($_SERVER['DOCUMENT_ROOT'])),
+                            'mtime'=> filemtime($path2)
+                        );
+                    }
+                }
+            }
+        }
+        return $files;
+    }
+    /**
+     * 保存头像
+     * @access  public
+     * @return  void
+     */
+    public function headpic_save(){
+        $data = empty($_GET['data'])?'':$_GET['data'];
+        if( empty($data) ){
+            $this->ajax_data['msg'] = '无效的数据';
+            $this->ajax_end();
+        }
+        $data_array = explode('/',$data);
+        if( $this->mdl_member->my_update( $this->this_user['id'],array('headpic'=>end($data_array)) ) ){
             $this->ajax_data['sta'] = 1;
             $this->ajax_data['msg'] = '保存成功';
             $this->this_user_reset();

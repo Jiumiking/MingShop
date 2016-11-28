@@ -1,4 +1,6 @@
-body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
+body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
+    Font-family: Helvetica, Tahoma, Arial, "Hiragino Sans GB","冬青黑体","STHeiti Light", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif
+}
 body {
   margin: 0;
   padding: 0;
@@ -2991,7 +2993,7 @@ ul.profile-details li div i {
   background: #79c447;
   border: 1px solid #61a434;
 }
-/**custom**/
+/*************************************************custom********************************************/
 .error-block {
     color:red;
 }
@@ -3019,12 +3021,22 @@ ul.profile-details li div i {
 .mb10{margin-bottom:10px;}
 .mr10{margin-right:10px;}
 
+.w1{width:10%;}
+.w2{width:20%;}
+.w3{width:30%;}
+.w4{width:40%;}
+.w5{width:50%;}
 /**图片管理插件**/
 .img-item {
-    padding:2px;
+    padding:10px;
     cursor:pointer;
     height:90px;
     width:90px;
+}
+.img-item .img-thumbnail{
+    padding:0;
+    border:none;
+    border-radius:0;
 }
 .img-item .img-thumbnail:hover{
     border:3px solid #00aced;
@@ -3033,14 +3045,18 @@ ul.profile-details li div i {
 .img-item span.icon {
     cursor: pointer;
     position: absolute;
-    top: 6px;
-    right: 6px;
+    top: 11px;
+    right: 12px;
     z-index: 2;
     background-repeat: no-repeat;
-    color: red;
+    color: #00aced;
+    font-size: 25px;
 }
 .img-item.selected .icon:before {
-    content: "\f00c";
+    content: "\e005";
+}
+.img-item.selected .img-thumbnail{
+    border:3px solid #00aced;
 }
 #img_upload {min-height:200px;}
 

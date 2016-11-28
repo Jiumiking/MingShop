@@ -175,7 +175,7 @@ function order_form_submit(){
         $("#order_form_btn").attr("disabled","disabled");
         $('#order_form').submit();
     }else{
-        ming_alert(msg,1);
+        ming_alert(msg);
         //$('body,html').animate({scrollTop:0},500);
     }
 }

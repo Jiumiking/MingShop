@@ -101,10 +101,8 @@ function cart_del2(id){
             if( msgobj.sta == 1 ){
                 $("#cart_tr_"+id).remove();
                 cart_refresh2();
-                ming_alert(msgobj.msg,2);
-            }else{
-                ming_alert(msgobj.msg,1);
             }
+            ming_alert(msgobj.msg,msgobj.sta);
         }
     });
 }
@@ -125,7 +123,7 @@ function cart_num2(id,num){
                 $("#cart_num_"+id).attr('data-num',num);
                 cart_refresh2();
             }else{
-                ming_alert(msgobj.msg,1);
+                ming_alert(msgobj.msg);
             }
         }
     });
@@ -153,7 +151,7 @@ $(document).ready(function(){
             cart_num2(id,val);
         }else{
             $(this).val(val_old);
-            ming_alert('输入有误',1);
+            ming_alert('输入有误');
         }
     });
 });

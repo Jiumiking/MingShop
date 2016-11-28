@@ -54,7 +54,7 @@ function cart_go(){
 }
 /**ming提示框
  * @param msg 提示信息
- * @param type 提示类型 1：错误提示，2：正确提示
+ * @param type 提示类型 1：正确提示，0：错误提示
  * @returns {boolean}
  */
 var ming_alert_cnt = 1;
@@ -81,7 +81,7 @@ var msg = "<?php echo empty($_SESSION['msg'])?'':$_SESSION['msg'];?>";
 $(document).ready(function(){
     cart_refresh();
     if( msg != '' ){
-        ming_alert(msg,1);
+        ming_alert(msg);
     }
 //    $("#site-navbar").find('.dropdown').hover(
 //        function(){

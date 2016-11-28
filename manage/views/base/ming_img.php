@@ -15,7 +15,7 @@
                 <button type="button" class="btn btn-success btn-sm" onclick="mingImgUp();">
                    上传
                 </button>
-                <input id="mingImgFile" type="file" name="file" class="hide" multiple="multiple" accept="image/*" onchange="mingImgFile(this)">
+                <input id="mingImgFile" type="file" name="file" class="hide" multiple="multiple" onchange="mingImgFile(this)">
                 <div class="row" id="img_upload_show">
                     
                 </div>
@@ -25,7 +25,7 @@
                     <?php if(!empty($list)){ foreach($list as $k=>$v){?>
                     <div class="col-md-2 col-sm-3 col-xs-4 img-item" onclick="mingImgCheck(this)">
                         <img class="img-thumbnail" src="<?php echo $v['url'];?>" data="<?php echo $v['url'];?>">
-                        <span class="fa icon"></span>
+                        <span class="glyphicon icon"></span>
                     </div>
                     <?php }} ?>
                 </div>

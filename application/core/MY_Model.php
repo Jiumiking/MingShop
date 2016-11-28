@@ -178,6 +178,9 @@ class MY_Model extends CI_Model{
         if( empty($data) ){
             return false;
         }
+        if( empty($data['id']) ){
+            $data['id'] = null;
+        }
         $data['date_add'] = date('Y-m-d H:i:s');
         return $this->db->insert( $this->my_table, $data );
     }
@@ -193,6 +196,9 @@ class MY_Model extends CI_Model{
         }
         foreach( $data as $key=>$value ){
             $data[$key]['date_add'] = date('Y-m-d H:i:s');
+            if( empty($value['id']) ){
+                $data[$key]['id'] = null;
+            }
         }
         return $this->db->insert_batch( $this->my_table, $data );
     }

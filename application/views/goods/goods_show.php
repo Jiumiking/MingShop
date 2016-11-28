@@ -96,7 +96,7 @@ function format_val(id){
 function cart_add(){
     var amount_id = $("#goods_info_amount_id").val();
     if( amount_id == '' ){
-        ming_alert('请先选择规格',1);
+        ming_alert('请先选择规格');
     }else{
         $.ajax({
             type : "GET",
@@ -107,7 +107,7 @@ function cart_add(){
                 if(msg){
                     var msgobj = eval("("+ msg +")");
                     if( msgobj.sta == 0 ){
-                        ming_alert(msgobj.msg,1);
+                        ming_alert(msgobj.msg);
                     }else if( msgobj.dat != '' ){
                         window.location.href = "<?php echo site_url('cart/cart_add_success?id="+msgobj.dat+"');?>";
                     }

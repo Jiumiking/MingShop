@@ -82,11 +82,7 @@ function form_submit(){
             if(msg){
                 var msgobj = eval("("+ msg +")");
                 $("#submit_btn").removeAttr("disabled");
-                if( msgobj.sta == 1 ){
-                    ming_alert(msgobj.msg,2);
-                }else{
-                    ming_alert(msgobj.msg,1);
-                }
+                ming_alert(msgobj.msg,msgobj.sta);
             }
         }
     });

@@ -96,7 +96,7 @@ class Mdl_comment extends MY_Model{
         }
         $return = '';
         foreach($where as $key=>$value){
-            if( !empty($value) || $value == 0 ){
+            if( !empty($value) || $value == '0' ){
                 $this->sql_value($value);
                 if( $key == 'object_name' ){
                     $sql = '';

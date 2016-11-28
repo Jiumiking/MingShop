@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50540
-Source Host           : localhost:3306
+Source Server         : homestead
+Source Server Version : 50712
+Source Host           : 192.168.10.10:3306
 Source Database       : mingshop
 
 Target Server Type    : MYSQL
-Target Server Version : 50540
+Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2016-11-21 21:59:43
+Date: 2016-11-28 09:24:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3569,13 +3569,14 @@ CREATE TABLE `qi_article` (
   `date_edit` datetime DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_article
 -- ----------------------------
 INSERT INTO `qi_article` VALUES ('2', '3', '王宝强离婚', '王宝强离婚王宝强离婚', '/uploads/ueditor/image/20160719/1468906315586437.jpeg', '0', '2016-08-15 14:35:30', '2016-08-15 15:21:45', '1');
 INSERT INTO `qi_article` VALUES ('3', '7', '日本地震1', '日本地震日本地震日本地震日本地震', '', '0', '2016-08-15 15:24:47', '2016-08-16 10:55:49', '1');
+INSERT INTO `qi_article` VALUES ('7', '8', '如何编写开源项目的 README 文档', '', '', '0', '2016-11-24 05:54:54', null, '1');
 
 -- ----------------------------
 -- Table structure for qi_article_category
@@ -3590,18 +3591,19 @@ CREATE TABLE `qi_article_category` (
   `date_edit` datetime DEFAULT NULL,
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_article_category
 -- ----------------------------
-INSERT INTO `qi_article_category` VALUES ('1', '国内新闻', '0', '0', '2016-08-15 13:15:37', NULL, '1');
-INSERT INTO `qi_article_category` VALUES ('2', '国际新闻', '0', '0', '2016-08-15 13:21:11', NULL, '1');
-INSERT INTO `qi_article_category` VALUES ('3', '江苏新闻', '1', '0', '2016-08-15 13:28:26', NULL, '1');
-INSERT INTO `qi_article_category` VALUES ('4', '浙江新闻', '1', '0', '2016-08-15 13:28:48', NULL, '1');
-INSERT INTO `qi_article_category` VALUES ('5', '东亚新闻', '2', '0', '2016-08-15 13:29:18', NULL, '1');
-INSERT INTO `qi_article_category` VALUES ('6', '北美新闻', '2', '0', '2016-08-15 13:29:28', NULL, '0');
-INSERT INTO `qi_article_category` VALUES ('7', '日本新闻', '5', '0', '2016-08-15 13:29:40', NULL, '1');
+INSERT INTO `qi_article_category` VALUES ('1', '国内新闻', '0', '0', '2016-08-15 13:15:37', null, '1');
+INSERT INTO `qi_article_category` VALUES ('2', '国际新闻', '0', '0', '2016-08-15 13:21:11', null, '1');
+INSERT INTO `qi_article_category` VALUES ('3', '江苏新闻', '1', '0', '2016-08-15 13:28:26', null, '1');
+INSERT INTO `qi_article_category` VALUES ('4', '浙江新闻', '1', '0', '2016-08-15 13:28:48', null, '1');
+INSERT INTO `qi_article_category` VALUES ('5', '东亚新闻', '2', '0', '2016-08-15 13:29:18', null, '1');
+INSERT INTO `qi_article_category` VALUES ('6', '北美新闻', '2', '0', '2016-08-15 13:29:28', null, '0');
+INSERT INTO `qi_article_category` VALUES ('7', '日本新闻', '5', '0', '2016-08-15 13:29:40', null, '1');
+INSERT INTO `qi_article_category` VALUES ('8', '程序员', '0', '0', '2016-11-24 05:44:47', null, '1');
 
 -- ----------------------------
 -- Table structure for qi_article_detail
@@ -3610,18 +3612,19 @@ DROP TABLE IF EXISTS `qi_article_detail`;
 CREATE TABLE `qi_article_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `article_id` int(11) NOT NULL,
-  `detail` varchar(2000) NOT NULL,
+  `detail` longtext NOT NULL,
   `date_add` datetime DEFAULT NULL,
   `date_edit` datetime DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_article_detail
 -- ----------------------------
 INSERT INTO `qi_article_detail` VALUES ('1', '2', '<p>王宝强离婚王宝强离婚王宝强离婚王宝强离婚</p>', '2016-08-15 14:35:30', '2016-08-15 15:21:45', '1');
 INSERT INTO `qi_article_detail` VALUES ('2', '3', '<p>日本地震日本地震日本地震日本地震日本地震日本地震日本地震日本地震</p><p>日本地震</p><p><img src=\"/uploads/ueditor/image/20160719/1468897148104330.jpeg\"/></p><p><img src=\"/uploads/ueditor/image/20160719/1468897056360132.jpeg\"/></p><p><br/></p>', '2016-08-15 15:24:47', '2016-08-16 10:55:49', '1');
+INSERT INTO `qi_article_detail` VALUES ('3', '7', '<p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><a href=\"https://dn-coding-net-production-pp.qbox.me/8797ba54-ffcb-448e-9da9-66fb83df8e3a.png\" target=\"_blank\" class=\"bubble-markdown-image-link\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\"><img src=\"/uploads/ueditor/image/20161124/1479966688412038.png\" alt=\"图片\" class=\"bubble-markdown-image\"/></a></p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">运营一个开源项目就像在运营着一家 Startup，你期待更多人来使用你的项目，并给你的项目加 Star/提交 PR，但好的项目除了其自身真正契合了开发者的需求外，还需要一个好的 README。</p><blockquote style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border-width: 0px 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: initial; border-left-style: solid; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: rgb(26, 188, 156); border-image: initial; font-family: Avenir, &quot;Helvetica Neue&quot;, &quot;Microsoft Yahei&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Sans Serif&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 14px; margin: 1em 3em 1em 2em; padding: 0px 0px 0px 1em; vertical-align: baseline; position: relative; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-style: inherit; font-weight: inherit; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; line-height: 28px;\">有好的 README 文档的项目不一定是一个好开源项目，但一个好开源项目一定有一个好的 README。</p></blockquote><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">目前 README 文档编写并没有规范，但一个友好的 README 是有其特征的，我们来看看一个好的 README 的必备要素。</p><h3 style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Helvetica Neue&quot;, &quot;Microsoft Yahei&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Sans Serif&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 1.6em; font-weight: 400; margin: 0px 0px 0.4em; padding: 0px 0px 20px; vertical-align: baseline; line-height: 1.5; white-space: normal; background-color: rgb(255, 255, 255);\">国际化问题</h3><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">首先要注意的是国际化问题，如果你希望自己的项目能获得更多人的使用，提供中英两种 README 文档是非常赞的。你可以在项目头部注明它。如 Coding 的&nbsp;<a href=\"https://github.com/Coding/WebIDE#coding-webide\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">WebIDE</a>&nbsp;项目：</p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><a href=\"https://dn-coding-net-production-pp.qbox.me/8d7b5cfb-8cce-4e93-b571-7b3cac2dfb77.png\" target=\"_blank\" class=\"bubble-markdown-image-link\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\"><img src=\"/uploads/ueditor/image/20161124/1479966689669194.png\" alt=\"图片\" class=\"bubble-markdown-image\"/></a></p><h3 style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Helvetica Neue&quot;, &quot;Microsoft Yahei&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Sans Serif&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 1.6em; font-weight: 400; margin: 0px 0px 0.4em; padding: 0px 0px 20px; vertical-align: baseline; line-height: 1.5; white-space: normal; background-color: rgb(255, 255, 255);\">项目名及简介</h3><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">好的项目名及简介是好项目必不可少的。开源项目名不宜过长（除非你有特别的理由这么做），如果你不知道如何给自己的项目起名，可以使用&nbsp;<a href=\"http://mrsharpoblunto.github.io/foswig.js/\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">随机项目名产生器</a>（适用于 Javascript 项目）；项目简介可以是简单的几句话，但项目简介要说明几个你的开源项目用户想迫切了解的问题，这包括：</p><ul style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-bottom: 1em; margin-left: 1.3em; padding: 0px; vertical-align: baseline; list-style-position: initial; list-style-image: initial; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" class=\" list-paddingleft-2\"><li><p>这个开源项目是做什么的？</p></li><li><p>这个项目是什么语言编写的？</p></li><li><p>项目维护、CI、依赖更新状态（如果有）</p></li><li><p>项目可用版本及其他版本</p></li><li><p>Demo 或官网地址（如果有）</p></li></ul><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">如 Coding 的&nbsp;<a href=\"https://github.com/Coding/WebIDE\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">WebIDE</a>&nbsp;项目：</p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><a href=\"https://dn-coding-net-production-pp.qbox.me/572f7336-073b-4b89-b7c1-d04d24e68806.png\" target=\"_blank\" class=\"bubble-markdown-image-link\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\"><img src=\"/uploads/ueditor/image/20161124/1479966689480598.png\" alt=\"图片\" class=\"bubble-markdown-image\"/></a></p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">此外你还可以给项目增加一些图标以提高可读性，推荐使用&nbsp;<a href=\"http://shields.io/\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">Shields.io</a></p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><a href=\"https://dn-coding-net-production-pp.qbox.me/2acf3685-41d5-4c66-bc67-3e75723e2e20.png\" target=\"_blank\" class=\"bubble-markdown-image-link\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\"><img src=\"/uploads/ueditor/image/20161124/1479966690868670.png\" alt=\"图片\" class=\"bubble-markdown-image\"/></a></p><h3 style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Helvetica Neue&quot;, &quot;Microsoft Yahei&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Sans Serif&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 1.6em; font-weight: 400; margin: 0px 0px 0.4em; padding: 0px 0px 20px; vertical-align: baseline; line-height: 1.5; white-space: normal; background-color: rgb(255, 255, 255);\">项目 Logo 和使用截图</h3><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">你还可以将项目 Logo（如果有的话）放置在 REAME 顶部（这里推荐一个在线制作 Logo 的网站&nbsp;<a href=\"https://www.canva.com/\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">Canva</a>&nbsp;），项目截图（Gif 动图更佳）也可以帮助你的用户更快速更直观地了解你的开源项目。</p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><a href=\"https://dn-coding-net-production-pp.qbox.me/bb705df8-4f6a-417c-9515-9dfd0e11da7d.gif\" target=\"_blank\" class=\"bubble-markdown-image-link\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\"><img src=\"/uploads/ueditor/image/20161124/1479966690920504.gif\" alt=\"图片\" class=\"bubble-markdown-image\"/></a></p><h3 style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Helvetica Neue&quot;, &quot;Microsoft Yahei&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Sans Serif&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 1.6em; font-weight: 400; margin: 0px 0px 0.4em; padding: 0px 0px 20px; vertical-align: baseline; line-height: 1.5; white-space: normal; background-color: rgb(255, 255, 255);\">功能</h3><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">你可以注明这个项目的功能特点，亮点特色会大大提高访客使用这个项目的概率。</p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">如 Coding 的&nbsp;<a href=\"https://github.com/Coding/WebIDE#features\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">WebIDE</a>&nbsp;项目。</p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><a href=\"https://dn-coding-net-production-pp.qbox.me/43d511d5-0fe5-47b2-9ca2-fd4086d2bb31.png\" target=\"_blank\" class=\"bubble-markdown-image-link\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\"><img src=\"/uploads/ueditor/image/20161124/1479966691414591.png\" alt=\"图片\" class=\"bubble-markdown-image\"/></a></p><h3 style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Helvetica Neue&quot;, &quot;Microsoft Yahei&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Sans Serif&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 1.6em; font-weight: 400; margin: 0px 0px 0.4em; padding: 0px 0px 20px; vertical-align: baseline; line-height: 1.5; white-space: normal; background-color: rgb(255, 255, 255);\">用法</h3><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">这是 README 中最重要的部分，你需要说明这个项目如何使用，这包括：</p><ul style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-bottom: 1em; margin-left: 1.3em; padding: 0px; vertical-align: baseline; list-style-position: initial; list-style-image: initial; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" class=\" list-paddingleft-2\"><li><p>如何下载这个项目：一般情况下 git clone 该项目地址即可，当然你也可以提供其他包管理下载安装方式；</p></li><li><p>项目依赖：你需要说明编译运行这个项目前需要哪些依赖；</p></li><li><p>安装：你需要说明如何编译安装/运行这个项目；</p></li><li><p>部署：如果这个项目可以部署的话，请最好注明部署要注意的事项；</p></li><li><p>Debug 方法：理想状况下，你的用户会顺利编译并运行这个项目，但你要确保用户遇到了问题不会来打扰你（如提交 Issues），你还需要提供用户可能会遇到的常见问题；</p></li></ul><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><a href=\"https://dn-coding-net-production-pp.qbox.me/869fcff1-fbe5-4ff7-9d61-4f7507169237.png\" target=\"_blank\" class=\"bubble-markdown-image-link\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\"><img src=\"/uploads/ueditor/image/20161124/1479966692637099.png\" alt=\"图片\" class=\"bubble-markdown-image\"/></a></p><h3 style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Helvetica Neue&quot;, &quot;Microsoft Yahei&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Sans Serif&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 1.6em; font-weight: 400; margin: 0px 0px 0.4em; padding: 0px 0px 20px; vertical-align: baseline; line-height: 1.5; white-space: normal; background-color: rgb(255, 255, 255);\">贡献</h3><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">对于一个开源项目来说，令其作者最开心的莫过于有人提交 Pull Request 了。加入一个 CONTRIBUTING 文档将大大提高他人贡献你的项目的概率。</p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">你可以说明你的代码规范，项目架构，如何测试和提交 Pull Request 的正确格式，以及其他有利于开发者进行贡献的信息，这将会使你的项目变得更加的规整如一。你可以在项目根目录新建一个 CONTRIBUTING 进行详细的说明并在 README 中添加其文件锚链接。如 Google 的&nbsp;<a href=\"https://github.com/GoogleCloudPlatform/Template/blob/master/CONTRIBUTING.md\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">Template</a>：</p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><a href=\"https://dn-coding-net-production-pp.qbox.me/8937cd97-43d2-45ce-afd7-f7f6e8f0fb08.png\" target=\"_blank\" class=\"bubble-markdown-image-link\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\"><img src=\"/uploads/ueditor/image/20161124/1479966693767888.png\" alt=\"图片\" class=\"bubble-markdown-image\"/></a></p><h3 style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Helvetica Neue&quot;, &quot;Microsoft Yahei&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Sans Serif&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 1.6em; font-weight: 400; margin: 0px 0px 0.4em; padding: 0px 0px 20px; vertical-align: baseline; line-height: 1.5; white-space: normal; background-color: rgb(255, 255, 255);\">版权</h3><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">版权是非常重要的，如果没有声明版权，很多用户特别是企业级用户将受制于法律问题，无法使用你的项目。关于如何选择开源项目许可证，推荐阅读这篇文章：<a href=\"http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">《如何选择开源许可证？》</a></p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">如 Coding 开源的&nbsp;<a href=\"https://coding.net/u/coding/p/coding-docs/git\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">帮助文档</a>&nbsp;版权：</p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><a href=\"https://dn-coding-net-production-pp.qbox.me/3a8b21f8-3ed4-43ea-884b-2c42f3092973.png\" target=\"_blank\" class=\"bubble-markdown-image-link\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\"><img src=\"/uploads/ueditor/image/20161124/1479966693723834.png\" alt=\"图片\" class=\"bubble-markdown-image\"/></a></p><h3 style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Helvetica Neue&quot;, &quot;Microsoft Yahei&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Sans Serif&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 1.6em; font-weight: 400; margin: 0px 0px 0.4em; padding: 0px 0px 20px; vertical-align: baseline; line-height: 1.5; white-space: normal; background-color: rgb(255, 255, 255);\">鸣谢</h3><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">你还可以感谢直接或间接为这个项目做出贡献的人、项目。</p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">如&nbsp;<a href=\"https://github.com/tsl0922/ttyd\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">ttyd</a>&nbsp;项目：</p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><a href=\"https://dn-coding-net-production-pp.qbox.me/26972118-e8a3-46ce-8f33-909b6fafa0d6.png\" target=\"_blank\" class=\"bubble-markdown-image-link\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\"><img src=\"/uploads/ueditor/image/20161124/1479966694211086.png\" alt=\"图片\" class=\"bubble-markdown-image\"/></a></p><h3 style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Helvetica Neue&quot;, &quot;Microsoft Yahei&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Sans Serif&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 1.6em; font-weight: 400; margin: 0px 0px 0.4em; padding: 0px 0px 20px; vertical-align: baseline; line-height: 1.5; white-space: normal; background-color: rgb(255, 255, 255);\">其他</h3><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">我们推荐使用&nbsp;<a href=\"https://coding.net/help/doc/project/markdown.html\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">Markdown</a>&nbsp;编写你的 README，请最好注意排版问题以增加文档可读性，推荐阅读 Coding 的&nbsp;<a href=\"https://open.coding.net/copywriting.html\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">《文案排版规范》</a>。</p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><a href=\"https://dn-coding-net-production-pp.qbox.me/321b6db8-a5e6-4cde-98e6-199d22603a5c.png\" target=\"_blank\" class=\"bubble-markdown-image-link\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\"><img src=\"/uploads/ueditor/image/20161124/1479966695335165.png\" alt=\"图片\" class=\"bubble-markdown-image\"/></a></p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">这就是一个好的 README 所需元素了，当然你还可以增加其他任何利于开发者的信息如 Roadmap 等等，这因项目而异。现在，去完善你的开源项目信息或开始做一个开源项目吧！</p><blockquote style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border-width: 0px 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: initial; border-left-style: solid; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: rgb(26, 188, 156); border-image: initial; font-family: Avenir, &quot;Helvetica Neue&quot;, &quot;Microsoft Yahei&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Sans Serif&quot;, &quot;WenQuanYi Micro Hei&quot;, sans-serif; font-size: 14px; margin: 1em 3em 1em 2em; padding: 0px 0px 0px 1em; vertical-align: baseline; position: relative; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\"><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-style: inherit; font-weight: inherit; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; line-height: 28px;\">一些建议：选择一个好的代码托管平台/社区可以让你的开源项目获得更多曝光，你可以在 Coding 的&nbsp;<a href=\"https://coding.net/pp\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">冒泡社区</a>（可以理解为程序员的朋友圈）发布你的项目简介，截图和地址，与 30 万中国开发者分享你的开源项目；另外我们推荐同时 push 项目到 Coding 和 GitHub（可参考&nbsp;<a href=\"https://segmentfault.com/q/1010000000172591/a-1020000001531401\" target=\"_blank\" style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-style: inherit; font-weight: inherit; margin: 0px; padding: 0px; vertical-align: baseline; text-decoration: none; color: rgba(41, 46, 53, 0.6);\">该回答</a>&nbsp;），得益于 Coding 遍布全国的 CDN，国内用户 clone 你的项目时的速度将大大提升。</p></blockquote><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">Happy Coding ; )</p><p style=\"text-size-adjust: none; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0px; border: 0px; font-family: &quot;Microsoft Yahei&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; margin-top: 0px; margin-bottom: 1em; padding: 0px; vertical-align: baseline; color: rgb(70, 75, 82); line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">（完）</p>', '2016-11-24 05:54:54', null, '1');
 
 -- ----------------------------
 -- Table structure for qi_brand
@@ -3640,8 +3643,8 @@ CREATE TABLE `qi_brand` (
 -- ----------------------------
 -- Records of qi_brand
 -- ----------------------------
-INSERT INTO `qi_brand` VALUES ('1', '苹果', '乔布斯的苹果', '2016-05-16 11:01:13', NULL, '1');
-INSERT INTO `qi_brand` VALUES ('2', '小米', '雷军的小米', '2016-05-16 11:01:59', NULL, '1');
+INSERT INTO `qi_brand` VALUES ('1', '苹果', '乔布斯的苹果', '2016-05-16 11:01:13', null, '1');
+INSERT INTO `qi_brand` VALUES ('2', '小米', '雷军的小米', '2016-05-16 11:01:59', null, '1');
 
 -- ----------------------------
 -- Table structure for qi_cart
@@ -3667,7 +3670,7 @@ CREATE TABLE `qi_cart` (
 -- ----------------------------
 INSERT INTO `qi_cart` VALUES ('21', '2', '4', '20', '摄像机-能看能听能说，手机远程观看asdf', '/uploads/ueditor/image/20160728/1469686384504117.png', '149.00', '3', '2016-08-05 14:04:35', '2016-08-09 11:11:33', '1');
 INSERT INTO `qi_cart` VALUES ('23', '2', '5', '21', 'U盘', '/uploads/ueditor/image/20160728/1469686384118728.png', '80.00', '2', '2016-08-08 14:20:06', '2016-08-09 11:11:32', '1');
-INSERT INTO `qi_cart` VALUES ('24', '1', '6', '22', 'T恤 白色 S', '/uploads/ueditor/image/20160728/1469686384136436.png', '100.00', '1', '2016-09-03 13:43:51', NULL, '1');
+INSERT INTO `qi_cart` VALUES ('24', '1', '6', '22', 'T恤 白色 S', '/uploads/ueditor/image/20160728/1469686384136436.png', '100.00', '1', '2016-09-03 13:43:51', null, '1');
 
 -- ----------------------------
 -- Table structure for qi_category
@@ -3688,19 +3691,19 @@ CREATE TABLE `qi_category` (
 -- Records of qi_category
 -- ----------------------------
 INSERT INTO `qi_category` VALUES ('1', '家用电器', '0', '0', '2016-07-19 15:48:27', '2016-07-28 11:35:30', '1');
-INSERT INTO `qi_category` VALUES ('22', '手机、数码、通信', '0', '0', NULL, NULL, '1');
-INSERT INTO `qi_category` VALUES ('3', '电脑、办公', '0', '0', NULL, NULL, '1');
-INSERT INTO `qi_category` VALUES ('4', '家具、家居', '0', '0', NULL, NULL, '1');
-INSERT INTO `qi_category` VALUES ('5', '大家电', '1', '0', NULL, NULL, '1');
-INSERT INTO `qi_category` VALUES ('6', '小家电', '1', '0', NULL, NULL, '1');
-INSERT INTO `qi_category` VALUES ('7', '电视', '5', '0', NULL, NULL, '1');
-INSERT INTO `qi_category` VALUES ('8', '微波炉', '6', '0', NULL, NULL, '1');
-INSERT INTO `qi_category` VALUES ('11', '大微波炉', '8', '0', '2016-07-20 10:56:06', NULL, '1');
-INSERT INTO `qi_category` VALUES ('10', '大微波炉', '8', '0', '2016-07-20 10:56:17', NULL, '1');
-INSERT INTO `qi_category` VALUES ('23', '手机', '22', '0', '2016-07-20 14:19:36', NULL, '1');
-INSERT INTO `qi_category` VALUES ('24', '服装', '0', '0', '2016-07-28 14:19:01', NULL, '1');
-INSERT INTO `qi_category` VALUES ('25', '上衣', '24', '0', '2016-07-28 14:19:15', NULL, '1');
-INSERT INTO `qi_category` VALUES ('26', '裤子', '24', '0', '2016-07-28 14:19:23', NULL, '1');
+INSERT INTO `qi_category` VALUES ('22', '手机、数码、通信', '0', '0', null, null, '1');
+INSERT INTO `qi_category` VALUES ('3', '电脑、办公', '0', '0', null, null, '1');
+INSERT INTO `qi_category` VALUES ('4', '家具、家居', '0', '0', null, null, '1');
+INSERT INTO `qi_category` VALUES ('5', '大家电', '1', '0', null, null, '1');
+INSERT INTO `qi_category` VALUES ('6', '小家电', '1', '0', null, null, '1');
+INSERT INTO `qi_category` VALUES ('7', '电视', '5', '0', null, null, '1');
+INSERT INTO `qi_category` VALUES ('8', '微波炉', '6', '0', null, null, '1');
+INSERT INTO `qi_category` VALUES ('11', '大微波炉', '8', '0', '2016-07-20 10:56:06', null, '1');
+INSERT INTO `qi_category` VALUES ('10', '大微波炉', '8', '0', '2016-07-20 10:56:17', null, '1');
+INSERT INTO `qi_category` VALUES ('23', '手机', '22', '0', '2016-07-20 14:19:36', null, '1');
+INSERT INTO `qi_category` VALUES ('24', '服装', '0', '0', '2016-07-28 14:19:01', null, '1');
+INSERT INTO `qi_category` VALUES ('25', '上衣', '24', '0', '2016-07-28 14:19:15', null, '1');
+INSERT INTO `qi_category` VALUES ('26', '裤子', '24', '0', '2016-07-28 14:19:23', null, '1');
 
 -- ----------------------------
 -- Table structure for qi_comment
@@ -3718,14 +3721,14 @@ CREATE TABLE `qi_comment` (
   `date_edit` datetime DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_comment
 -- ----------------------------
-INSERT INTO `qi_comment` VALUES ('1', '2', '2', '6', '0', '0', '这件T恤真好看，为什么这么便宜呢', '2016-08-10 16:55:25', '2016-08-19 09:04:40', '1');
-INSERT INTO `qi_comment` VALUES ('2', '1', '2', '6', '1', '2', '因为便宜啊', '2016-08-10 16:58:40', '2016-08-24 21:58:08', '1');
-INSERT INTO `qi_comment` VALUES ('3', '1', '2', '6', '0', '0', '我也要买一件，太好看了', '2016-08-10 17:47:21', '2016-08-17 16:31:56', '1');
+INSERT INTO `qi_comment` VALUES ('1', '2', '2', '6', '0', '0', '这件T恤真好看，为什么这么便宜呢', '2016-08-10 16:55:25', '2016-11-25 02:30:22', '1');
+INSERT INTO `qi_comment` VALUES ('2', '1', '2', '6', '1', '2', '因为便宜啊', '2016-08-10 16:58:40', '2016-11-25 02:30:30', '1');
+INSERT INTO `qi_comment` VALUES ('3', '1', '2', '6', '0', '0', '我也要买一件，太好看了', '2016-08-10 17:47:21', '2016-11-25 02:28:08', '2');
 INSERT INTO `qi_comment` VALUES ('4', '2', '2', '6', '0', '0', '我也也要买一件', '2016-08-10 17:47:49', '2016-08-18 15:39:51', '1');
 INSERT INTO `qi_comment` VALUES ('5', '2', '2', '6', '0', '0', '评论测试', '2016-08-18 17:18:03', '2016-08-18 17:18:30', '1');
 INSERT INTO `qi_comment` VALUES ('6', '2', '2', '6', '5', '2', '回复测试', '2016-08-18 17:18:49', '2016-08-18 17:19:10', '1');
@@ -3733,6 +3736,8 @@ INSERT INTO `qi_comment` VALUES ('7', '2', '2', '6', '5', '2', '回复测试2', 
 INSERT INTO `qi_comment` VALUES ('8', '2', '2', '6', '5', '2', '回复测试3', '2016-08-18 17:19:26', '2016-08-18 17:19:32', '1');
 INSERT INTO `qi_comment` VALUES ('9', '2', '2', '6', '1', '1', '回复测试', '2016-08-18 17:19:51', '2016-08-18 17:21:33', '1');
 INSERT INTO `qi_comment` VALUES ('10', '2', '2', '6', '3', '1', '回复', '2016-08-18 17:21:25', '2016-08-18 17:21:34', '1');
+INSERT INTO `qi_comment` VALUES ('11', '2', '2', '6', '1', '2', '大风大搜发动机扫扫地发的噶三十多个大三的撒娇of倒计时，都是煎熬发到手机啊东方大厦。激动啊福君多三撒地方，扫地方就撒范德萨范德萨发第三方广告。的撒个发的撒打算第三方', '2016-11-24 06:20:06', '2016-11-25 02:41:26', '1');
+INSERT INTO `qi_comment` VALUES ('12', '2', '1', '7', '0', '0', '好文章', '2016-11-24 09:43:37', '2016-11-25 02:41:30', '1');
 
 -- ----------------------------
 -- Table structure for qi_comment_up
@@ -3746,14 +3751,18 @@ CREATE TABLE `qi_comment_up` (
   `date_edit` datetime DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_comment_up
 -- ----------------------------
 INSERT INTO `qi_comment_up` VALUES ('1', '2', '1', '2016-08-19 09:44:36', '2016-08-19 09:44:56', '0');
-INSERT INTO `qi_comment_up` VALUES ('2', '2', '2', '2016-08-19 09:44:57', '2016-08-19 10:12:32', '1');
-INSERT INTO `qi_comment_up` VALUES ('3', '2', '3', '2016-08-19 10:13:33', '2016-08-19 10:13:34', '0');
+INSERT INTO `qi_comment_up` VALUES ('2', '2', '2', '2016-08-19 09:44:57', '2016-11-24 06:10:04', '0');
+INSERT INTO `qi_comment_up` VALUES ('3', '2', '3', '2016-08-19 10:13:33', '2016-11-24 06:10:11', '0');
+INSERT INTO `qi_comment_up` VALUES ('4', '2', '9', '2016-11-24 06:10:06', '2016-11-24 09:25:53', '0');
+INSERT INTO `qi_comment_up` VALUES ('5', '2', '5', '2016-11-24 06:26:09', '2016-11-24 09:49:17', '1');
+INSERT INTO `qi_comment_up` VALUES ('6', '2', '4', '2016-11-24 06:26:26', null, '1');
+INSERT INTO `qi_comment_up` VALUES ('7', '2', '10', '2016-11-24 09:25:50', '2016-11-24 09:39:51', '0');
 
 -- ----------------------------
 -- Table structure for qi_format
@@ -3795,71 +3804,71 @@ CREATE TABLE `qi_format_value` (
 -- ----------------------------
 -- Records of qi_format_value
 -- ----------------------------
-INSERT INTO `qi_format_value` VALUES ('1', '乳白色', '255,251,240', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('2', '白色', '255,255,255', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('3', '米白色', '238,222,176', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('4', '浅灰色', '228,228,228', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('5', '深灰色', '102,102,102', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('6', '灰色', '128,128,128', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('7', '银色', '192,192,192', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('8', '黑色', '0,0,0', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('9', '桔红色', '255,117,0', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('10', '玫红色', '223,27,118', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('11', '粉红色', '255,182,193', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('12', '红色', '255,0,0', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('13', '藕色', '238,208,216', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('14', '西瓜红', '240,86,84', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('15', '酒红色', '153,0,0', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('16', '卡其色', '195,176,145', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('17', '姜黄色', '255,199,115', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('18', '明黄色', '255,255,1', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('19', '杏色', '247,238,214', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('20', '柠檬黄', '255, 236, 67', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('21', '桔色', '255,165,0', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('22', '浅黄色', '250,255,114', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('23', '荧光黄', '234,255,86', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('24', '金色', '255,215,0', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('25', '香槟色', '255,249,177', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('26', '黄色', '255,255,0', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('27', '军绿色', '93,118,42', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('28', '墨绿色', '66,204,33', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('29', '浅绿色', '152,251,152', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('30', '绿色', '0,128,0', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('31', '翠绿色', '10,163,68', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('32', '荧光绿', '35,250,7', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('33', '青色', '0,224,158', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('34', '天蓝色', '68,206,246', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('35', '孔雀蓝', '0,164,197', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('36', '宝蓝色', '75,92,196', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('37', '浅蓝色', '210,240,244', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('38', '深蓝色', '4,22,144', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('39', '湖蓝色', '48,223,243', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('40', '蓝色', '0,0,254', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('41', '藏青色', '46,78,126', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('42', '浅紫色', '237,224,230', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('43', '深紫色', '67,6,83', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('44', '紫红色', '139,0,98', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('45', '紫罗兰', '183,172,228', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('46', '紫色', '128,0,128', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('47', '咖啡色', '96,57,18', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('48', '巧克力色', '96,57,18', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('49', '栗色', '96,40,30', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('50', '浅棕色', '179,92,68', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('51', '深卡其布色', '189,183,107', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('52', '深棕色', '124,75,0', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('53', '褐色', '133,91,0', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('54', '驼色', '168,132,98', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('55', '花色', '255,255,255', '1', NULL, NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('56', '透明', '255,255,255', '1', NULL, NULL, '1');
+INSERT INTO `qi_format_value` VALUES ('1', '乳白色', '255,251,240', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('2', '白色', '255,255,255', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('3', '米白色', '238,222,176', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('4', '浅灰色', '228,228,228', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('5', '深灰色', '102,102,102', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('6', '灰色', '128,128,128', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('7', '银色', '192,192,192', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('8', '黑色', '0,0,0', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('9', '桔红色', '255,117,0', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('10', '玫红色', '223,27,118', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('11', '粉红色', '255,182,193', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('12', '红色', '255,0,0', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('13', '藕色', '238,208,216', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('14', '西瓜红', '240,86,84', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('15', '酒红色', '153,0,0', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('16', '卡其色', '195,176,145', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('17', '姜黄色', '255,199,115', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('18', '明黄色', '255,255,1', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('19', '杏色', '247,238,214', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('20', '柠檬黄', '255, 236, 67', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('21', '桔色', '255,165,0', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('22', '浅黄色', '250,255,114', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('23', '荧光黄', '234,255,86', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('24', '金色', '255,215,0', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('25', '香槟色', '255,249,177', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('26', '黄色', '255,255,0', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('27', '军绿色', '93,118,42', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('28', '墨绿色', '66,204,33', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('29', '浅绿色', '152,251,152', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('30', '绿色', '0,128,0', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('31', '翠绿色', '10,163,68', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('32', '荧光绿', '35,250,7', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('33', '青色', '0,224,158', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('34', '天蓝色', '68,206,246', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('35', '孔雀蓝', '0,164,197', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('36', '宝蓝色', '75,92,196', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('37', '浅蓝色', '210,240,244', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('38', '深蓝色', '4,22,144', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('39', '湖蓝色', '48,223,243', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('40', '蓝色', '0,0,254', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('41', '藏青色', '46,78,126', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('42', '浅紫色', '237,224,230', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('43', '深紫色', '67,6,83', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('44', '紫红色', '139,0,98', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('45', '紫罗兰', '183,172,228', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('46', '紫色', '128,0,128', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('47', '咖啡色', '96,57,18', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('48', '巧克力色', '96,57,18', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('49', '栗色', '96,40,30', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('50', '浅棕色', '179,92,68', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('51', '深卡其布色', '189,183,107', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('52', '深棕色', '124,75,0', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('53', '褐色', '133,91,0', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('54', '驼色', '168,132,98', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('55', '花色', '255,255,255', '1', null, null, '1');
+INSERT INTO `qi_format_value` VALUES ('56', '透明', '255,255,255', '1', null, null, '1');
 INSERT INTO `qi_format_value` VALUES ('57', 'S', null, '2', '2016-06-17 09:59:39', '2016-06-17 15:33:27', '1');
 INSERT INTO `qi_format_value` VALUES ('58', 'M', null, '2', '2016-06-17 09:59:52', '2016-06-17 15:33:27', '1');
 INSERT INTO `qi_format_value` VALUES ('59', 'L', null, '2', '2016-06-17 09:59:52', '2016-06-17 15:33:27', '1');
 INSERT INTO `qi_format_value` VALUES ('60', 'XL', null, '2', '2016-06-17 09:59:52', '2016-06-17 15:33:27', '1');
-INSERT INTO `qi_format_value` VALUES ('61', '1G', null, '3', '2016-06-17 10:00:12', NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('62', '2G', null, '3', '2016-06-17 10:00:12', NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('63', '4G', null, '3', '2016-06-17 10:00:12', NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('64', '8G', null, '3', '2016-06-17 10:00:12', NULL, '1');
-INSERT INTO `qi_format_value` VALUES ('65', '均码', null, '2', '2016-06-17 15:33:27', NULL, '1');
+INSERT INTO `qi_format_value` VALUES ('61', '1G', null, '3', '2016-06-17 10:00:12', null, '1');
+INSERT INTO `qi_format_value` VALUES ('62', '2G', null, '3', '2016-06-17 10:00:12', null, '1');
+INSERT INTO `qi_format_value` VALUES ('63', '4G', null, '3', '2016-06-17 10:00:12', null, '1');
+INSERT INTO `qi_format_value` VALUES ('64', '8G', null, '3', '2016-06-17 10:00:12', null, '1');
+INSERT INTO `qi_format_value` VALUES ('65', '均码', null, '2', '2016-06-17 15:33:27', null, '1');
 INSERT INTO `qi_format_value` VALUES ('66', '1', null, '4', '2016-07-15 14:36:19', '2016-07-15 14:37:06', '1');
 INSERT INTO `qi_format_value` VALUES ('67', '2', null, '4', '2016-07-15 14:36:19', '2016-07-15 14:37:06', '1');
 INSERT INTO `qi_format_value` VALUES ('70', '3', null, '4', '2016-07-15 14:36:46', '2016-07-15 14:37:06', '1');
@@ -3893,14 +3902,14 @@ INSERT INTO `qi_goods` VALUES ('1', '丝袜10', 'g1231231231', '牛逼的丝袜'
 INSERT INTO `qi_goods` VALUES ('2', 'iphone7', 'g1469065251', 'iphone7新品上市', '/uploads/ueditor/image/20160715/1468561425990720.jpg', '23', '3', '4000.00', '5380.00', '2016-07-21 09:40:51', '2016-08-15 15:23:41', '2016-08-15 15:23:41', '2');
 INSERT INTO `qi_goods` VALUES ('3', '平衡车', 'g1469686442', '年轻人的酷玩具，骑行遥控两种玩法', '/uploads/ueditor/image/20160728/1469686384926302.png', '6', '4', '1000.00', '1999.00', '2016-07-28 14:14:02', '2016-08-01 14:22:39', '2016-07-28 14:14:02', '1');
 INSERT INTO `qi_goods` VALUES ('4', '摄像机-能看能听能说，手机远程观看asdf', 'g1469686539', '能看能听能说，手机远程观看', '/uploads/ueditor/image/20160728/1469686384504117.png', '6', '4', '100.00', '149.00', '2016-07-28 14:15:39', '2016-08-02 13:33:07', '2016-07-28 14:15:39', '1');
-INSERT INTO `qi_goods` VALUES ('5', 'U盘', 'g1469686646', '超级U盘，好看实惠', '/uploads/ueditor/image/20160728/1469686384118728.png', '0', '4', '20.00', '80.00', '2016-07-28 14:17:26', NULL, '2016-07-28 14:17:26', '1');
+INSERT INTO `qi_goods` VALUES ('5', 'U盘', 'g1469686646', '超级U盘，好看实惠', '/uploads/ueditor/image/20160728/1469686384118728.png', '0', '4', '20.00', '80.00', '2016-07-28 14:17:26', null, '2016-07-28 14:17:26', '1');
 INSERT INTO `qi_goods` VALUES ('6', 'T恤', 'g1469686850', '好看的T恤，来看这里', '/uploads/ueditor/image/20160728/1469686384136436.png', '25', '5', '50.00', '100.00', '2016-07-28 14:20:50', '2016-07-29 14:22:22', '2016-07-28 14:20:50', '1');
-INSERT INTO `qi_goods` VALUES ('7', '商品1', 'g147159664470', '商品1商品1商品1', '/uploads/ueditor/image/20160728/1469686384926302.png', '1', '4', '100.00', '110.00', '2016-08-19 16:50:44', NULL, '2016-08-19 16:50:44', '1');
-INSERT INTO `qi_goods` VALUES ('8', '商品2', 'g147159667864', '商品2商品2', '/uploads/ueditor/image/20160728/1469686384926302.png', '6', '4', '100.00', '110.00', '2016-08-19 16:51:18', NULL, '2016-08-19 16:51:18', '1');
-INSERT INTO `qi_goods` VALUES ('9', '商品3', 'g147159671583', '商品3商品3', '/uploads/ueditor/image/20160728/1469686384504117.png', '6', '4', '100.00', '110.00', '2016-08-19 16:51:55', NULL, '2016-08-19 16:51:55', '1');
-INSERT INTO `qi_goods` VALUES ('10', '商品4', 'g147159675734', '商品4商品4', '/uploads/ueditor/image/20160719/1468896552139461.jpeg', '6', '4', '104.00', '144.00', '2016-08-19 16:52:37', NULL, '2016-08-19 16:52:37', '1');
-INSERT INTO `qi_goods` VALUES ('11', '商品5', 'g147159678950', '商品5商品5', '/uploads/ueditor/image/20160718/1468814303383025.jpg', '5', '4', '105.00', '155.00', '2016-08-19 16:53:09', NULL, '2016-08-19 16:53:09', '1');
-INSERT INTO `qi_goods` VALUES ('12', '商品6', 'g147159682956', '商品6商品6', '/uploads/ueditor/image/20160719/1468896552115355.jpeg', '5', '4', '106.00', '166.00', '2016-08-19 16:53:49', NULL, '2016-08-19 16:53:49', '1');
+INSERT INTO `qi_goods` VALUES ('7', '商品1', 'g147159664470', '商品1商品1商品1', '/uploads/ueditor/image/20160728/1469686384926302.png', '1', '4', '100.00', '110.00', '2016-08-19 16:50:44', null, '2016-08-19 16:50:44', '1');
+INSERT INTO `qi_goods` VALUES ('8', '商品2', 'g147159667864', '商品2商品2', '/uploads/ueditor/image/20160728/1469686384926302.png', '6', '4', '100.00', '110.00', '2016-08-19 16:51:18', null, '2016-08-19 16:51:18', '1');
+INSERT INTO `qi_goods` VALUES ('9', '商品3', 'g147159671583', '商品3商品3', '/uploads/ueditor/image/20160728/1469686384504117.png', '6', '4', '100.00', '110.00', '2016-08-19 16:51:55', null, '2016-08-19 16:51:55', '1');
+INSERT INTO `qi_goods` VALUES ('10', '商品4', 'g147159675734', '商品4商品4', '/uploads/ueditor/image/20160719/1468896552139461.jpeg', '6', '4', '104.00', '144.00', '2016-08-19 16:52:37', null, '2016-08-19 16:52:37', '1');
+INSERT INTO `qi_goods` VALUES ('11', '商品5', 'g147159678950', '商品5商品5', '/uploads/ueditor/image/20160718/1468814303383025.jpg', '5', '4', '105.00', '155.00', '2016-08-19 16:53:09', null, '2016-08-19 16:53:09', '1');
+INSERT INTO `qi_goods` VALUES ('12', '商品6', 'g147159682956', '商品6商品6', '/uploads/ueditor/image/20160719/1468896552115355.jpeg', '5', '4', '106.00', '166.00', '2016-11-16 17:41:35', null, '2016-08-19 16:53:49', '1');
 
 -- ----------------------------
 -- Table structure for qi_goods_amount
@@ -3936,17 +3945,17 @@ INSERT INTO `qi_goods_amount` VALUES ('3', '1', '56', '57', '0', '0', '0', null,
 INSERT INTO `qi_goods_amount` VALUES ('4', '1', '56', '58', '0', '0', '0', null, null, null, null, null, '210', '21.00', '2016-06-21 16:39:05', '2016-07-20 15:50:44', '1');
 INSERT INTO `qi_goods_amount` VALUES ('9', '1', '8', '59', '0', '0', '0', null, null, null, null, null, '11', '10.00', '2016-06-22 17:28:01', '2016-07-20 15:50:44', '1');
 INSERT INTO `qi_goods_amount` VALUES ('10', '1', '56', '59', '0', '0', '0', null, null, null, null, null, '123', '10.00', '2016-06-22 17:28:01', '2016-07-20 15:50:44', '1');
-INSERT INTO `qi_goods_amount` VALUES ('11', '2', '2', '65', '63', '0', '0', null, null, null, null, null, '100', '5100.00', '2016-07-21 09:40:51', NULL, '1');
-INSERT INTO `qi_goods_amount` VALUES ('12', '2', '2', '65', '64', '0', '0', null, null, null, null, null, '100', '6100.00', '2016-07-21 09:40:51', NULL, '1');
-INSERT INTO `qi_goods_amount` VALUES ('13', '2', '5', '65', '63', '0', '0', null, null, null, null, null, '100', '5200.00', '2016-07-21 09:40:51', NULL, '1');
-INSERT INTO `qi_goods_amount` VALUES ('14', '2', '5', '65', '64', '0', '0', null, null, null, null, null, '100', '6200.00', '2016-07-21 09:40:51', NULL, '1');
-INSERT INTO `qi_goods_amount` VALUES ('15', '2', '11', '65', '63', '0', '0', null, null, null, null, null, '100', '5200.00', '2016-07-21 09:40:51', NULL, '1');
-INSERT INTO `qi_goods_amount` VALUES ('16', '2', '11', '65', '64', '0', '0', null, null, null, null, null, '100', '6200.00', '2016-07-21 09:40:51', NULL, '1');
-INSERT INTO `qi_goods_amount` VALUES ('17', '2', '24', '65', '63', '0', '0', null, null, null, null, null, '100', '5300.00', '2016-07-21 09:40:51', NULL, '1');
-INSERT INTO `qi_goods_amount` VALUES ('18', '2', '24', '65', '64', '0', '0', null, null, null, null, null, '10', '6300.00', '2016-07-21 09:40:51', NULL, '1');
+INSERT INTO `qi_goods_amount` VALUES ('11', '2', '2', '65', '63', '0', '0', null, null, null, null, null, '100', '5100.00', '2016-07-21 09:40:51', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('12', '2', '2', '65', '64', '0', '0', null, null, null, null, null, '100', '6100.00', '2016-07-21 09:40:51', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('13', '2', '5', '65', '63', '0', '0', null, null, null, null, null, '100', '5200.00', '2016-07-21 09:40:51', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('14', '2', '5', '65', '64', '0', '0', null, null, null, null, null, '100', '6200.00', '2016-07-21 09:40:51', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('15', '2', '11', '65', '63', '0', '0', null, null, null, null, null, '100', '5200.00', '2016-07-21 09:40:51', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('16', '2', '11', '65', '64', '0', '0', null, null, null, null, null, '100', '6200.00', '2016-07-21 09:40:51', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('17', '2', '24', '65', '63', '0', '0', null, null, null, null, null, '100', '5300.00', '2016-07-21 09:40:51', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('18', '2', '24', '65', '64', '0', '0', null, null, null, null, null, '10', '6300.00', '2016-07-21 09:40:51', null, '1');
 INSERT INTO `qi_goods_amount` VALUES ('19', '3', '0', '0', '0', '0', '0', null, null, null, null, null, '0', '1998.00', '2016-07-28 14:14:02', '2016-08-01 14:22:39', '1');
 INSERT INTO `qi_goods_amount` VALUES ('20', '4', '0', '0', '0', '0', '0', null, null, null, null, null, '99', '149.00', '2016-07-28 14:15:39', '2016-08-02 13:33:07', '1');
-INSERT INTO `qi_goods_amount` VALUES ('21', '5', '0', '0', '0', '0', '0', null, null, null, null, null, '7', '80.00', '2016-07-28 14:17:26', NULL, '1');
+INSERT INTO `qi_goods_amount` VALUES ('21', '5', '0', '0', '0', '0', '0', null, null, null, null, null, '7', '80.00', '2016-07-28 14:17:26', null, '1');
 INSERT INTO `qi_goods_amount` VALUES ('22', '6', '2', '57', '0', '0', '0', null, null, null, null, null, '97', '100.00', '2016-07-28 14:20:50', '2016-07-29 14:22:22', '1');
 INSERT INTO `qi_goods_amount` VALUES ('23', '6', '2', '58', '0', '0', '0', null, null, null, null, null, '98', '100.00', '2016-07-28 14:20:50', '2016-07-29 14:22:22', '1');
 INSERT INTO `qi_goods_amount` VALUES ('24', '6', '2', '59', '0', '0', '0', null, null, null, null, null, '111', '100.00', '2016-07-28 14:20:50', '2016-07-29 14:22:22', '1');
@@ -3955,12 +3964,12 @@ INSERT INTO `qi_goods_amount` VALUES ('26', '6', '8', '57', '0', '0', '0', null,
 INSERT INTO `qi_goods_amount` VALUES ('27', '6', '8', '58', '0', '0', '0', null, null, null, null, null, '1010', '100.00', '2016-07-28 14:20:50', '2016-07-29 14:22:22', '1');
 INSERT INTO `qi_goods_amount` VALUES ('28', '6', '8', '59', '0', '0', '0', null, null, null, null, null, '0', '100.00', '2016-07-28 14:20:50', '2016-07-29 14:22:22', '1');
 INSERT INTO `qi_goods_amount` VALUES ('29', '6', '8', '60', '0', '0', '0', null, null, null, null, null, '0', '100.00', '2016-07-28 14:20:50', '2016-07-29 14:22:22', '1');
-INSERT INTO `qi_goods_amount` VALUES ('30', '7', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '110.00', '2016-08-19 16:50:44', NULL, '1');
-INSERT INTO `qi_goods_amount` VALUES ('31', '8', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '110.00', '2016-08-19 16:51:18', NULL, '1');
-INSERT INTO `qi_goods_amount` VALUES ('32', '9', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '110.00', '2016-08-19 16:51:55', NULL, '1');
-INSERT INTO `qi_goods_amount` VALUES ('33', '10', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '144.00', '2016-08-19 16:52:37', NULL, '1');
-INSERT INTO `qi_goods_amount` VALUES ('34', '11', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '155.00', '2016-08-19 16:53:09', NULL, '1');
-INSERT INTO `qi_goods_amount` VALUES ('35', '12', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '166.00', '2016-08-19 16:53:49', NULL, '1');
+INSERT INTO `qi_goods_amount` VALUES ('30', '7', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '110.00', '2016-08-19 16:50:44', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('31', '8', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '110.00', '2016-08-19 16:51:18', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('32', '9', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '110.00', '2016-08-19 16:51:55', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('33', '10', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '144.00', '2016-08-19 16:52:37', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('34', '11', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '155.00', '2016-08-19 16:53:09', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('35', '12', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '166.00', '2016-08-19 16:53:49', null, '1');
 
 -- ----------------------------
 -- Table structure for qi_goods_detail
@@ -3980,17 +3989,17 @@ CREATE TABLE `qi_goods_detail` (
 -- Records of qi_goods_detail
 -- ----------------------------
 INSERT INTO `qi_goods_detail` VALUES ('1', '1', '<p>撒旦法发达傻店范德萨发大法师地方</p><p>撒旦法放大师傅12</p><p>222</p><p><img src=\"/uploads/ueditor/image/20160715/1468561425990720.jpg\" title=\"1468561425990720.jpg\"/></p><p><img src=\"/uploads/ueditor/image/20160715/1468561425103302.jpg\" title=\"1468561425103302.jpg\"/></p><p><br/></p>', '2016-06-21 16:39:05', '2016-07-20 15:50:44', '1');
-INSERT INTO `qi_goods_detail` VALUES ('2', '2', '<p>苹果手机，新品上线</p><p><img src=\"/uploads/ueditor/image/20160719/1468897148686916.jpeg\" alt=\"1468897148686916.jpeg\"/></p>', '2016-07-21 09:40:51', NULL, '1');
+INSERT INTO `qi_goods_detail` VALUES ('2', '2', '<p>苹果手机，新品上线</p><p><img src=\"/uploads/ueditor/image/20160719/1468897148686916.jpeg\" alt=\"1468897148686916.jpeg\"/></p>', '2016-07-21 09:40:51', null, '1');
 INSERT INTO `qi_goods_detail` VALUES ('3', '3', '<p>123123</p>', '2016-07-28 14:14:02', '2016-08-01 14:22:39', '1');
 INSERT INTO `qi_goods_detail` VALUES ('4', '4', '<p>123123</p>', '2016-07-28 14:15:39', '2016-08-02 13:33:07', '1');
-INSERT INTO `qi_goods_detail` VALUES ('5', '5', '<p>11111</p>', '2016-07-28 14:17:26', NULL, '1');
+INSERT INTO `qi_goods_detail` VALUES ('5', '5', '<p>11111</p>', '2016-07-28 14:17:26', null, '1');
 INSERT INTO `qi_goods_detail` VALUES ('6', '6', '<p><img src=\"/uploads/ueditor/image/20160729/1469773312122395.jpg\"/></p><p><img src=\"/uploads/ueditor/image/20160729/1469773330948549.jpg\"/><img src=\"/uploads/ueditor/image/20160729/1469773341413836.jpg\"/></p>', '2016-07-28 14:20:50', '2016-07-29 14:22:22', '1');
-INSERT INTO `qi_goods_detail` VALUES ('7', '7', '<p>11</p>', '2016-08-19 16:50:44', NULL, '1');
-INSERT INTO `qi_goods_detail` VALUES ('8', '8', '<p>222<br/></p>', '2016-08-19 16:51:18', NULL, '1');
-INSERT INTO `qi_goods_detail` VALUES ('9', '9', '<p>商品3</p>', '2016-08-19 16:51:55', NULL, '1');
-INSERT INTO `qi_goods_detail` VALUES ('10', '10', '<p>商品4</p>', '2016-08-19 16:52:37', NULL, '1');
-INSERT INTO `qi_goods_detail` VALUES ('11', '11', '<p>商品5商品5</p>', '2016-08-19 16:53:09', NULL, '1');
-INSERT INTO `qi_goods_detail` VALUES ('12', '12', '<p>商品6商品6</p>', '2016-08-19 16:53:49', NULL, '1');
+INSERT INTO `qi_goods_detail` VALUES ('7', '7', '<p>11</p>', '2016-08-19 16:50:44', null, '1');
+INSERT INTO `qi_goods_detail` VALUES ('8', '8', '<p>222<br/></p>', '2016-08-19 16:51:18', null, '1');
+INSERT INTO `qi_goods_detail` VALUES ('9', '9', '<p>商品3</p>', '2016-08-19 16:51:55', null, '1');
+INSERT INTO `qi_goods_detail` VALUES ('10', '10', '<p>商品4</p>', '2016-08-19 16:52:37', null, '1');
+INSERT INTO `qi_goods_detail` VALUES ('11', '11', '<p>商品5商品5</p>', '2016-08-19 16:53:09', null, '1');
+INSERT INTO `qi_goods_detail` VALUES ('12', '12', '<p>商品6商品6</p>', '2016-08-19 16:53:49', null, '1');
 
 -- ----------------------------
 -- Table structure for qi_goods_type
@@ -4015,9 +4024,9 @@ CREATE TABLE `qi_goods_type` (
 -- ----------------------------
 INSERT INTO `qi_goods_type` VALUES ('1', '打底裤', '1', '2', '0', '0', '0', '2015-12-21 20:46:47', '2016-06-16 10:35:30', '1');
 INSERT INTO `qi_goods_type` VALUES ('2', '丝袜', '1', '2', '0', '0', '0', '2015-12-21 20:47:25', '2016-06-16 14:23:45', '1');
-INSERT INTO `qi_goods_type` VALUES ('3', '手机', '1', '2', '3', '0', '0', '2016-06-16 10:37:04', NULL, '1');
+INSERT INTO `qi_goods_type` VALUES ('3', '手机', '1', '2', '3', '0', '0', '2016-06-16 10:37:04', null, '1');
 INSERT INTO `qi_goods_type` VALUES ('4', '其他', '0', '0', '0', '0', '0', '2016-06-16 14:23:56', '2016-07-28 14:12:24', '1');
-INSERT INTO `qi_goods_type` VALUES ('5', '衣服', '1', '2', '0', '0', '0', '2016-07-28 14:18:50', NULL, '1');
+INSERT INTO `qi_goods_type` VALUES ('5', '衣服', '1', '2', '0', '0', '0', '2016-07-28 14:18:50', null, '1');
 
 -- ----------------------------
 -- Table structure for qi_joke
@@ -4037,8 +4046,8 @@ CREATE TABLE `qi_joke` (
 -- ----------------------------
 INSERT INTO `qi_joke` VALUES ('1', '语文课上，\n老师：小明请你把“如果每一滴水都能代表一个祝福，那我送你一片海洋”做一个仿句练习！\n小明：如果每一朵花都代表一个祝福，那我会送你一个花圈！\n瞬间全班轰动！！！\n老师：滚滚滚，马上滚！！！', '2016-08-28 21:41:46', '2016-08-31 22:28:12', '1');
 INSERT INTO `qi_joke` VALUES ('2', '123', '2016-08-31 22:28:20', '2016-08-31 23:03:11', '1');
-INSERT INTO `qi_joke` VALUES ('3', '语文课上，老师：小明请你把“如果每一滴水都能代表一个祝福，那我送你一片海洋”做一个仿句练习！\n小明：如果每一朵花都代表一个祝福，那我会送你一个花圈！\n瞬间全班轰动！！！\n老师：滚滚滚，马上滚！！！', '2016-08-31 23:26:31', NULL, '1');
-INSERT INTO `qi_joke` VALUES ('4', '老师把小明叫到了教室外。\n老师：“你的作业做的越来越差了，这是怎么回事？”\n小明：“老师，等我找找原因，下午告诉你好吗？”\n老师：“好吧！”\n下午，老师又把小明叫到了教室外。老师：“找到原因了吗？”\n小明：“找到了，我爷爷说作业越来越难，他也没办法。”\n老师：“滚出去！”', '2016-08-31 23:26:31', NULL, '1');
+INSERT INTO `qi_joke` VALUES ('3', '语文课上，老师：小明请你把“如果每一滴水都能代表一个祝福，那我送你一片海洋”做一个仿句练习！\n小明：如果每一朵花都代表一个祝福，那我会送你一个花圈！\n瞬间全班轰动！！！\n老师：滚滚滚，马上滚！！！', '2016-08-31 23:26:31', null, '1');
+INSERT INTO `qi_joke` VALUES ('4', '老师把小明叫到了教室外。\n老师：“你的作业做的越来越差了，这是怎么回事？”\n小明：“老师，等我找找原因，下午告诉你好吗？”\n老师：“好吧！”\n下午，老师又把小明叫到了教室外。老师：“找到原因了吗？”\n小明：“找到了，我爷爷说作业越来越难，他也没办法。”\n老师：“滚出去！”\nthink about it', '2016-08-31 23:26:31', '2016-11-24 01:52:47', '1');
 
 -- ----------------------------
 -- Table structure for qi_log
@@ -4051,8 +4060,18 @@ CREATE TABLE `qi_log` (
   `ip_address` varchar(32) DEFAULT NULL,
   `date_add` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=utf8;
 
+-- ----------------------------
+-- Records of qi_log
+-- ----------------------------
+INSERT INTO `qi_log` VALUES ('168', '100', '登录成功', '192.168.10.1', '2016-11-22 09:26:11');
+INSERT INTO `qi_log` VALUES ('169', '100', '登录成功', '192.168.10.1', '2016-11-23 01:11:33');
+INSERT INTO `qi_log` VALUES ('170', '100', '登录成功', '192.168.10.1', '2016-11-23 05:42:50');
+INSERT INTO `qi_log` VALUES ('171', '100', '登录成功', '192.168.10.1', '2016-11-24 01:41:01');
+INSERT INTO `qi_log` VALUES ('172', '100', '登录成功', '192.168.10.1', '2016-11-24 05:20:56');
+INSERT INTO `qi_log` VALUES ('173', '100', '登录成功', '192.168.10.1', '2016-11-25 01:27:29');
+INSERT INTO `qi_log` VALUES ('174', '100', '登录成功', '192.168.10.1', '2016-11-25 05:57:25');
 
 -- ----------------------------
 -- Table structure for qi_member
@@ -4083,7 +4102,7 @@ CREATE TABLE `qi_member` (
 -- Records of qi_member
 -- ----------------------------
 INSERT INTO `qi_member` VALUES ('1', 'jin1', '李4', 'edbbf7a5afd220a65983229ed6496ed9', '13665119181', '723528197@qq.com', '123', '', '123', '1', '0', '2', '2016-06-28', '', '2015-12-23 14:51:03', '2016-08-18 10:10:02', '1');
-INSERT INTO `qi_member` VALUES ('2', 'jin', '张3', 'edbbf7a5afd220a65983229ed6496ed9', '13665119187', '7235281971@qq.com', '', '', '', '0', '0', '1', '1988-03-15', '', '2016-07-25 18:02:58', '2016-08-18 10:09:54', '1');
+INSERT INTO `qi_member` VALUES ('2', 'jin', '张3', 'edbbf7a5afd220a65983229ed6496ed9', '13665119187', '7235281971@qq.com', '', '', '', '0', '0', '1', '1988-03-19', '28.png', '2016-07-25 18:02:58', '2016-11-25 07:56:29', '1');
 
 -- ----------------------------
 -- Table structure for qi_member_address
@@ -4108,7 +4127,7 @@ CREATE TABLE `qi_member_address` (
 -- ----------------------------
 -- Records of qi_member_address
 -- ----------------------------
-INSERT INTO `qi_member_address` VALUES ('3', '公司', '2', '320000', '320200', '320211', '国家软件园', '13111121112', 'jjm', '2016-07-28 11:04:16', NULL, '1');
+INSERT INTO `qi_member_address` VALUES ('3', '公司', '2', '320000', '320200', '320211', '国家软件园', '13111121112', 'jjm', '2016-07-28 11:04:16', null, '1');
 INSERT INTO `qi_member_address` VALUES ('4', '父母家', '2', '320000', '320200', '320206', '百搭纯粹', '13411112222', 'jjm1', '2016-07-28 11:07:28', '2016-08-19 15:03:27', '2');
 
 -- ----------------------------
@@ -4143,9 +4162,9 @@ CREATE TABLE `qi_order` (
 -- ----------------------------
 -- Records of qi_order
 -- ----------------------------
-INSERT INTO `qi_order` VALUES ('1', 'o147029813375', '2', '489.00', '0.00', '0.00', '489.00', '1', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '', '2016-08-04 16:08:53', NULL, NULL, NULL, NULL, '1');
-INSERT INTO `qi_order` VALUES ('2', 'o147036611021', '2', '200.00', '0.00', '0.00', '200.00', '2', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '', '2016-08-05 11:01:50', NULL, NULL, NULL, NULL, '1');
-INSERT INTO `qi_order` VALUES ('3', 'o147036720292', '2', '500.00', '0.00', '0.00', '500.00', '1', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '', '2016-08-05 11:20:02', NULL, NULL, NULL, NULL, '1');
+INSERT INTO `qi_order` VALUES ('1', 'o147029813375', '2', '489.00', '0.00', '0.00', '489.00', '1', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '', '2016-08-04 16:08:53', null, null, null, null, '1');
+INSERT INTO `qi_order` VALUES ('2', 'o147036611021', '2', '200.00', '0.00', '0.00', '200.00', '2', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '', '2016-08-05 11:01:50', null, null, null, null, '1');
+INSERT INTO `qi_order` VALUES ('3', 'o147036720292', '2', '500.00', '0.00', '0.00', '500.00', '1', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '', '2016-08-05 11:20:02', null, null, null, null, '1');
 
 -- ----------------------------
 -- Table structure for qi_order_goods
@@ -4168,13 +4187,13 @@ CREATE TABLE `qi_order_goods` (
 -- ----------------------------
 -- Records of qi_order_goods
 -- ----------------------------
-INSERT INTO `qi_order_goods` VALUES ('1', '1', '5', '21', 'U盘', '3', '80.00', '2016-08-04 16:08:53', NULL, '1');
-INSERT INTO `qi_order_goods` VALUES ('2', '1', '6', '22', 'T恤 白色 S', '1', '100.00', '2016-08-04 16:08:53', NULL, '1');
-INSERT INTO `qi_order_goods` VALUES ('3', '1', '4', '20', '摄像机-能看能听能说，手机远程观看asdf', '1', '149.00', '2016-08-04 16:08:53', NULL, '1');
-INSERT INTO `qi_order_goods` VALUES ('4', '2', '6', '26', 'T恤 黑色 S', '1', '100.00', '2016-08-05 11:01:50', NULL, '1');
-INSERT INTO `qi_order_goods` VALUES ('5', '2', '6', '27', 'T恤 黑色 M', '1', '100.00', '2016-08-05 11:01:50', NULL, '1');
-INSERT INTO `qi_order_goods` VALUES ('6', '3', '6', '23', 'T恤 白色 M', '3', '100.00', '2016-08-05 11:20:02', NULL, '1');
-INSERT INTO `qi_order_goods` VALUES ('7', '3', '6', '22', 'T恤 白色 S', '2', '100.00', '2016-08-05 11:20:02', NULL, '1');
+INSERT INTO `qi_order_goods` VALUES ('1', '1', '5', '21', 'U盘', '3', '80.00', '2016-08-04 16:08:53', null, '1');
+INSERT INTO `qi_order_goods` VALUES ('2', '1', '6', '22', 'T恤 白色 S', '1', '100.00', '2016-08-04 16:08:53', null, '1');
+INSERT INTO `qi_order_goods` VALUES ('3', '1', '4', '20', '摄像机-能看能听能说，手机远程观看asdf', '1', '149.00', '2016-08-04 16:08:53', null, '1');
+INSERT INTO `qi_order_goods` VALUES ('4', '2', '6', '26', 'T恤 黑色 S', '1', '100.00', '2016-08-05 11:01:50', null, '1');
+INSERT INTO `qi_order_goods` VALUES ('5', '2', '6', '27', 'T恤 黑色 M', '1', '100.00', '2016-08-05 11:01:50', null, '1');
+INSERT INTO `qi_order_goods` VALUES ('6', '3', '6', '23', 'T恤 白色 M', '3', '100.00', '2016-08-05 11:20:02', null, '1');
+INSERT INTO `qi_order_goods` VALUES ('7', '3', '6', '22', 'T恤 白色 S', '2', '100.00', '2016-08-05 11:20:02', null, '1');
 
 -- ----------------------------
 -- Table structure for qi_payment
@@ -4193,8 +4212,8 @@ CREATE TABLE `qi_payment` (
 -- ----------------------------
 -- Records of qi_payment
 -- ----------------------------
-INSERT INTO `qi_payment` VALUES ('1', '支付宝', '', NULL, NULL, '1');
-INSERT INTO `qi_payment` VALUES ('2', '微信支付', '', NULL, NULL, '1');
+INSERT INTO `qi_payment` VALUES ('1', '支付宝', '', null, null, '1');
+INSERT INTO `qi_payment` VALUES ('2', '微信支付', '', null, null, '1');
 
 -- ----------------------------
 -- Table structure for qi_role
@@ -4214,9 +4233,9 @@ CREATE TABLE `qi_role` (
 -- ----------------------------
 -- Records of qi_role
 -- ----------------------------
-INSERT INTO `qi_role` VALUES ('1', '超级管理员', '超级管理员', '0', NULL, NULL, '1');
-INSERT INTO `qi_role` VALUES ('2', '总管理员', '普通管理员', '0', NULL, NULL, '1');
-INSERT INTO `qi_role` VALUES ('3', '普通管理员', '普通管理员12', '2', NULL, '2016-07-14 14:16:19', '1');
+INSERT INTO `qi_role` VALUES ('1', '超级管理员', '超级管理员', '0', null, null, '1');
+INSERT INTO `qi_role` VALUES ('2', '总管理员', '普通管理员', '0', null, null, '1');
+INSERT INTO `qi_role` VALUES ('3', '普通管理员', '普通管理员12', '2', null, '2016-07-14 14:16:19', '1');
 
 -- ----------------------------
 -- Table structure for qi_role_access
@@ -4248,7 +4267,7 @@ CREATE TABLE `qi_setting` (
 -- ----------------------------
 -- Records of qi_setting
 -- ----------------------------
-INSERT INTO `qi_setting` VALUES ('logo_name', '15e443ecc86da031600a553bff40826d.png');
+INSERT INTO `qi_setting` VALUES ('logo_name', '15746184e67a7bff0654a67d9a7ae4ba.jpg');
 INSERT INTO `qi_setting` VALUES ('page_number', '10');
 INSERT INTO `qi_setting` VALUES ('shipping_free', '80');
 INSERT INTO `qi_setting` VALUES ('shipping_jzh', '10');
@@ -4282,7 +4301,7 @@ CREATE TABLE `qi_user` (
 -- Records of qi_user
 -- ----------------------------
 INSERT INTO `qi_user` VALUES ('100', 'admin', 'Ming.King', 'edbbf7a5afd220a65983229ed6496ed9', '13665119187', '723528197@qq.com', '1', '2015-11-05 00:00:00', '2016-07-14 10:05:37', '0', '1');
-INSERT INTO `qi_user` VALUES ('102', 'jojo', 'jojo1', 'edbbf7a5afd220a65983229ed6496ed9', '', '', '2', NULL, '2016-08-18 13:50:25', '0', '1');
+INSERT INTO `qi_user` VALUES ('102', 'jojo', 'jojo1', 'edbbf7a5afd220a65983229ed6496ed9', '', '', '2', null, '2016-08-18 13:50:25', '0', '1');
 
 -- ----------------------------
 -- Table structure for qi_weixin_likes
@@ -4302,27 +4321,27 @@ CREATE TABLE `qi_weixin_likes` (
 -- ----------------------------
 -- Records of qi_weixin_likes
 -- ----------------------------
-INSERT INTO `qi_weixin_likes` VALUES ('1', '1', '语文课上，老师：小明请你把“如果每一滴水都能代表一个祝福，那我送你一片海洋”做一个仿句练习！\r\n小明：如果每一朵花都代表一个祝福，那我会送你一个花圈！\r\n瞬间全班轰动！！！\r\n老师：滚滚滚，马上滚！！！', '0b1919e2c0d433ea94e158c5e318dcfe.jpg', NULL, '2016-08-28 21:20:42', '1');
-INSERT INTO `qi_weixin_likes` VALUES ('2', '1', '老师把小明叫到了教室外。\r\n老师：“你的作业做的越来越差了，这是怎么回事？”\r\n小明：“老师，等我找找原因，下午告诉你好吗？”\r\n老师：“好吧！”\r\n下午，老师又把小明叫到了教室外。老师：“找到原因了吗？”\r\n小明：“找到了，我爷爷说作业越来越难，他也没办法。”\r\n老师：“滚出去！”', '1e38b38b36987ed109faadcf08f15cfc.jpeg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('3', '1', '考试后，老师训话：“都是学生，怎么有的考得好，有的考得差。”\r\n小明：“还不是因为监考老师不同。”\r\n老师：“滚出去！”', '3f8feaa559b127d3c5383ca83db49074.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('4', '1', '政治老师花一整堂课讲述钱与人生的关系，下课前布置作业，思考题：“如果你们有钱能改变什么吗？”\r\n小明在角落冷哼一声：“如果有钱，我就不用在这听你废话了。”\r\n老师：“滚出去！”', '5eaa72e367063b02cf32769ac59a78bc.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('5', '1', '老师：“请用一句话，证明你找不到某个人的时候的愤怒情绪。”\r\n小明：“王八蛋，你特么在哪？”\r\n老师：“注意素质。”\r\n小明：“鳖，汝在何方？”\r\n老师：“滚……”', '9b01a030129e39edfce178cb1bbcb828.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('6', '1', '老师：“请大家解释一下环境因素和遗传因素！”\r\n小明：“长的像爸爸就是遗传因素，长的像邻居就是环境因素！”\r\n老师：“老规矩……”\r\n小明默默地站起来……', '9b38cee9e952d77db9af2c0d1611d868.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('7', '1', '老师问站在教室外的小明、霜霜、李华三人：“你们仨到底在课堂上做什么，给我老实交代。”\r\n小明：“指点江山，激扬文字，粪土粪土当年万户侯。”\r\n老师：“说人话。”\r\n小明：“斗地主。”\r\n老师：“外面站一天。”', '9d663d93804a5aafed1adb770770099b.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('8', '1', '小明：“老师我喜欢你。”\r\n老师：“我不喜欢小孩。”\r\n小明：“我也不喜欢小孩，我们可以不要小孩。”\r\n老师：“滚！滚到外边去！”', '35cc4c00d2583f6dcca5c7e4d5ed0932.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('9', '1', '数学课上，老师出题：“我们班上有十一位同学，现在老师带了十个苹果，要怎么才能平均分给同学们？”\r\n小红：“小明滚出去！”', '38dfbb31d82ff14cfacdbf04698a746c.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('10', '1', '老师：“同学们好！”\r\n同学们：“老师，教师节快乐！”\r\n老师：“谢谢同学们，小明呢？”\r\n小强：“小明说，今天你过节，他就不气你了，自己先滚出去了。”\r\n老师：“小明其实也是个懂事的孩子，快去叫他进来吧。”\r\n小强：“这点估计他都到家了。”', '60a9175464b147ad8846d855ac12db8f.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('11', '1', '教室里，小明把头靠在椅子上，不听课。\r\n老师关心的问：“你又生病了？”\r\n小明头也不抬的说：“是的，头疼。”\r\n老师说：“你有医生证明吗？拿出来你就可以回家休息了！”小明说：“就是因为医生不开证明，所以头疼。”\r\n老师：“滚出去…”', '99b813b9fe68e280dc8bb3df09fe157d.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('12', '1', '体育课要做蛙跳动作，老师问：“谁以前受过伤？可以不用做。”\r\n小红说：“我脚断过。”\r\n小强说：“我手腕断过。”\r\n小明：“我脐带断过。”\r\n小明没滚，只是罚跳了一节课。', '421b21ffd3e3322fa362a6dd6f14b7dd.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('13', '1', '老师：“小明，如果你长大了失恋了之后怎么办？”\r\n小明：“我失恋了就老老实实回媳妇身边。”\r\n老师：“滚出去……”', '764f512a7fd7a6d1add8d5da5bd6cacc.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('14', '1', '老师：“请大家说说你们的愿望。”\r\n小明：“去山东蓝翔学挖掘机。”\r\n老师：“给我个理由。”\r\n小明：“刨你家祖坟。”\r\n老师：“滚出去…………”', '865745bcc080595e63127f526e7e650a.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('15', '1', '课堂上，老师在讲第7章，小明把书随便打开，就低头玩手机，结果被老师发现了。\r\n老师质问他：“讲的7章，怎么把书翻到8章？”\r\n小明淡淡的答到：“我是在前面等着你！”\r\n回答的挺合逻辑啊，怎么老师还是让小明滚出去了。。。\r\n老师：“小明，你来回答学校是什么地方！”\r\n小明：“学校就是连续签到五天，领取作业大礼包的地方！”\r\n老师：“你滚出去!”', '9136932b5a8c70d9c132def539fda8f9.jpeg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('16', '1', '小明：“老师，我想去上网。”\r\n老师：“滚！”\r\n小明以迅雷不及掩耳盗铃之势跑出教室。\r\n老师：“我艹，说顺口了，你给我回来！”', '59723259292f2e864c0b1661910de544.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('17', '1', '老师：“蒸一个包子一分钟，蒸三个包子要多久？”\r\n小明：“九分钟？”\r\n老师：“你傻呀！你们家蒸包子一个一个蒸呀？！”\r\n小明表示不服：“那我问你，吃一个馒头一分钟，吃十个馒头呢？”\r\n老师：“十分钟呀！你以为我跟你一样傻呀！”\r\n小明：“十分钟吃十个馒头！撑死你个饭桶！”\r\n老师：“。。。滚出去！”', 'a5ef60ddfaed7d6e54193e345ba038b1.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('18', '1', '小明：“老师，我以后再也不惹你生气了。”\r\n老师：“这样才是乖孩子，坐下听课吧，来大家翻开16页，这节课我们讲羊驼。”\r\n小明：“咦，艹泥马。”\r\n老师：“继续滚出去……”', 'b4ba2153012ff041a1c77b9533240175.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('19', '1', '老师问小明：“如果有劫匪要捅我一刀，你会怎么办？”\r\n小明：“看他是否捅中。”\r\n老师：“没捅中了呢？”\r\n小明：“给他来瓶脉动。”\r\n老师：“为什么？”\r\n小明：“关键时候不在状态，速度回归。”\r\n老师：“捅中了呢？”\r\n小明：“来片炫迈。”\r\n老师：“什么意思？”\r\n小明：“根本停不下来！”\r\n老师：“有多远滚多远！”', 'b8faa48b454c5b9add35e888f0a43326.jpg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('20', '1', '老师：“小明，你知道为什么要上地理课嘛？”\r\n小明：“老师，那为什么体育课那么少，作业那么多呢？”\r\n老师：“......”', 'fafb992a9e4478db6d9af286aaafe301.jpeg', NULL, NULL, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('21', '1', '小王：“为什么一节课45分钟，而下课休息时间只有15分钟呢？”\r\n老师：“请回答正题！”\r\n小明：“因为没有天理。”\r\n老师：“滚去太平洋！！！”', '2bc7ebcb20e68f104a9be8156640fa5f.png', NULL, NULL, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('1', '1', '语文课上，老师：小明请你把“如果每一滴水都能代表一个祝福，那我送你一片海洋”做一个仿句练习！\r\n小明：如果每一朵花都代表一个祝福，那我会送你一个花圈！\r\n瞬间全班轰动！！！\r\n老师：滚滚滚，马上滚！！！', '0b1919e2c0d433ea94e158c5e318dcfe.jpg', null, '2016-08-28 21:20:42', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('2', '1', '老师把小明叫到了教室外。\r\n老师：“你的作业做的越来越差了，这是怎么回事？”\r\n小明：“老师，等我找找原因，下午告诉你好吗？”\r\n老师：“好吧！”\r\n下午，老师又把小明叫到了教室外。老师：“找到原因了吗？”\r\n小明：“找到了，我爷爷说作业越来越难，他也没办法。”\r\n老师：“滚出去！”', '1e38b38b36987ed109faadcf08f15cfc.jpeg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('3', '1', '考试后，老师训话：“都是学生，怎么有的考得好，有的考得差。”\r\n小明：“还不是因为监考老师不同。”\r\n老师：“滚出去！”', '3f8feaa559b127d3c5383ca83db49074.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('4', '1', '政治老师花一整堂课讲述钱与人生的关系，下课前布置作业，思考题：“如果你们有钱能改变什么吗？”\r\n小明在角落冷哼一声：“如果有钱，我就不用在这听你废话了。”\r\n老师：“滚出去！”', '5eaa72e367063b02cf32769ac59a78bc.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('5', '1', '老师：“请用一句话，证明你找不到某个人的时候的愤怒情绪。”\r\n小明：“王八蛋，你特么在哪？”\r\n老师：“注意素质。”\r\n小明：“鳖，汝在何方？”\r\n老师：“滚……”', '9b01a030129e39edfce178cb1bbcb828.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('6', '1', '老师：“请大家解释一下环境因素和遗传因素！”\r\n小明：“长的像爸爸就是遗传因素，长的像邻居就是环境因素！”\r\n老师：“老规矩……”\r\n小明默默地站起来……', '9b38cee9e952d77db9af2c0d1611d868.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('7', '1', '老师问站在教室外的小明、霜霜、李华三人：“你们仨到底在课堂上做什么，给我老实交代。”\r\n小明：“指点江山，激扬文字，粪土粪土当年万户侯。”\r\n老师：“说人话。”\r\n小明：“斗地主。”\r\n老师：“外面站一天。”', '9d663d93804a5aafed1adb770770099b.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('8', '1', '小明：“老师我喜欢你。”\r\n老师：“我不喜欢小孩。”\r\n小明：“我也不喜欢小孩，我们可以不要小孩。”\r\n老师：“滚！滚到外边去！”', '35cc4c00d2583f6dcca5c7e4d5ed0932.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('9', '1', '数学课上，老师出题：“我们班上有十一位同学，现在老师带了十个苹果，要怎么才能平均分给同学们？”\r\n小红：“小明滚出去！”', '38dfbb31d82ff14cfacdbf04698a746c.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('10', '1', '老师：“同学们好！”\r\n同学们：“老师，教师节快乐！”\r\n老师：“谢谢同学们，小明呢？”\r\n小强：“小明说，今天你过节，他就不气你了，自己先滚出去了。”\r\n老师：“小明其实也是个懂事的孩子，快去叫他进来吧。”\r\n小强：“这点估计他都到家了。”', '60a9175464b147ad8846d855ac12db8f.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('11', '1', '教室里，小明把头靠在椅子上，不听课。\r\n老师关心的问：“你又生病了？”\r\n小明头也不抬的说：“是的，头疼。”\r\n老师说：“你有医生证明吗？拿出来你就可以回家休息了！”小明说：“就是因为医生不开证明，所以头疼。”\r\n老师：“滚出去…”', '99b813b9fe68e280dc8bb3df09fe157d.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('12', '1', '体育课要做蛙跳动作，老师问：“谁以前受过伤？可以不用做。”\r\n小红说：“我脚断过。”\r\n小强说：“我手腕断过。”\r\n小明：“我脐带断过。”\r\n小明没滚，只是罚跳了一节课。', '421b21ffd3e3322fa362a6dd6f14b7dd.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('13', '1', '老师：“小明，如果你长大了失恋了之后怎么办？”\r\n小明：“我失恋了就老老实实回媳妇身边。”\r\n老师：“滚出去……”', '764f512a7fd7a6d1add8d5da5bd6cacc.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('14', '1', '老师：“请大家说说你们的愿望。”\r\n小明：“去山东蓝翔学挖掘机。”\r\n老师：“给我个理由。”\r\n小明：“刨你家祖坟。”\r\n老师：“滚出去…………”', '865745bcc080595e63127f526e7e650a.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('15', '1', '课堂上，老师在讲第7章，小明把书随便打开，就低头玩手机，结果被老师发现了。\r\n老师质问他：“讲的7章，怎么把书翻到8章？”\r\n小明淡淡的答到：“我是在前面等着你！”\r\n回答的挺合逻辑啊，怎么老师还是让小明滚出去了。。。\r\n老师：“小明，你来回答学校是什么地方！”\r\n小明：“学校就是连续签到五天，领取作业大礼包的地方！”\r\n老师：“你滚出去!”', '9136932b5a8c70d9c132def539fda8f9.jpeg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('16', '1', '小明：“老师，我想去上网。”\r\n老师：“滚！”\r\n小明以迅雷不及掩耳盗铃之势跑出教室。\r\n老师：“我艹，说顺口了，你给我回来！”', '59723259292f2e864c0b1661910de544.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('17', '1', '老师：“蒸一个包子一分钟，蒸三个包子要多久？”\r\n小明：“九分钟？”\r\n老师：“你傻呀！你们家蒸包子一个一个蒸呀？！”\r\n小明表示不服：“那我问你，吃一个馒头一分钟，吃十个馒头呢？”\r\n老师：“十分钟呀！你以为我跟你一样傻呀！”\r\n小明：“十分钟吃十个馒头！撑死你个饭桶！”\r\n老师：“。。。滚出去！”', 'a5ef60ddfaed7d6e54193e345ba038b1.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('18', '1', '小明：“老师，我以后再也不惹你生气了。”\r\n老师：“这样才是乖孩子，坐下听课吧，来大家翻开16页，这节课我们讲羊驼。”\r\n小明：“咦，艹泥马。”\r\n老师：“继续滚出去……”', 'b4ba2153012ff041a1c77b9533240175.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('19', '1', '老师问小明：“如果有劫匪要捅我一刀，你会怎么办？”\r\n小明：“看他是否捅中。”\r\n老师：“没捅中了呢？”\r\n小明：“给他来瓶脉动。”\r\n老师：“为什么？”\r\n小明：“关键时候不在状态，速度回归。”\r\n老师：“捅中了呢？”\r\n小明：“来片炫迈。”\r\n老师：“什么意思？”\r\n小明：“根本停不下来！”\r\n老师：“有多远滚多远！”', 'b8faa48b454c5b9add35e888f0a43326.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('20', '1', '老师：“小明，你知道为什么要上地理课嘛？”\r\n小明：“老师，那为什么体育课那么少，作业那么多呢？”\r\n老师：“......”', 'fafb992a9e4478db6d9af286aaafe301.jpeg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('21', '1', '小王：“为什么一节课45分钟，而下课休息时间只有15分钟呢？”\r\n老师：“请回答正题！”\r\n小明：“因为没有天理。”\r\n老师：“滚去太平洋！！！”', '2bc7ebcb20e68f104a9be8156640fa5f.png', null, null, '1');
 
 -- ----------------------------
 -- Table structure for qi_weixin_likes_up
@@ -4341,5 +4360,6 @@ CREATE TABLE `qi_weixin_likes_up` (
 -- ----------------------------
 -- Records of qi_weixin_likes_up
 -- ----------------------------
-INSERT INTO `qi_weixin_likes_up` VALUES ('1', '2', '11', '2016-08-28 16:34:14', NULL, '1');
-INSERT INTO `qi_weixin_likes_up` VALUES ('2', '1', '2', '2016-09-03 13:42:33', NULL, '1');
+INSERT INTO `qi_weixin_likes_up` VALUES ('1', '2', '11', '2016-08-28 16:34:14', null, '1');
+INSERT INTO `qi_weixin_likes_up` VALUES ('2', '1', '2', '2016-09-03 13:42:33', null, '1');
+SET FOREIGN_KEY_CHECKS=1;

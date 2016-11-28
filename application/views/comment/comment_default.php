@@ -97,10 +97,10 @@
                 if(msg){
                     var msgobj = eval("("+ msg +")");
                     if(msgobj.sta == '1'){
-                        ming_alert('评论成功，等待审核',2);
+                        ming_alert('评论成功，等待审核',1);
                         comment_hide( id );
                     }else{
-                        ming_alert(msgobj.msg,1);
+                        ming_alert(msgobj.msg);
                     }
                 }
             }
@@ -128,7 +128,7 @@
                         }
                         $("#comment_up_num_"+id).html(msgobj.dat);
                     }else{
-                        ming_alert(msgobj.msg,1);
+                        ming_alert(msgobj.msg);
                     }
                 }
             }
