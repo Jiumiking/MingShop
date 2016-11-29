@@ -512,3 +512,8 @@ $config['proxy_ips'] = '';
 */
 $config['upload_path'] = '/home/vagrant/Code/MingShop/uploads/';
 //$config['upload_path'] = '/home/k723528197qk87421365t2j8o1a9y7/wwwroot/uploads/';
+
+
+//时区设置
+date_default_timezone_set('Asia/ShangHai');
+$config['time_zone'] = date_default_timezone_get();

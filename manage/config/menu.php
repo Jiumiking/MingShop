@@ -5,6 +5,7 @@ $config['menu'] = array(
     array('name'=>'系统管理', 'icon'=>'glyphicon glyphicon-cog', 'key'=>'setting', 'link'=>'',
         'sons' => array(
             array('name'=>'系统设置', 'icon'=>'glyphicon glyphicon-cog', 'key'=>'setting/setting_base', 'link'=>'setting/setting_base'),
+            array('name'=>'支付方式', 'icon'=>'glyphicon glyphicon-cog', 'key'=>'payment/my_list', 'link'=>'payment/my_list'),
             array('name'=>'登录日志', 'icon'=>'glyphicon glyphicon-log-in', 'key'=>'log/my_list', 'link'=>'log/my_list'),
         ),
     ),

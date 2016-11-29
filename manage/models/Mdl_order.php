@@ -17,6 +17,32 @@ class Mdl_order extends MY_Model{
         $this->my_table = 'order';
     }
     /**
+     * 详情
+     * @access  public
+     * @param   mixed
+     * @return  mixed
+     */
+    public function my_select( $id = '' ){
+        if( empty( $id ) ){
+            return false;
+        }
+        $sql = "
+            SELECT
+                o.id,o.order_no,o.member_id,o.money_goods,o.money_preferential,o.money_shipping,o.money_end,o.payment_id,o.accept_name,o.accept_province,o.accept_city,o.accept_area,o.accept_detail,o.accept_phone,o.remark,o.date_add,o.date_edit,o.date_pay,o.date_send,o.date_end,o.status
+                ,m.name_real,m.name_nick
+                ,p.name AS payment_name
+            FROM
+                {$this->db->dbprefix($this->my_table)} AS o
+                LEFT JOIN {$this->db->dbprefix('member')} AS m ON m.id = o.member_id
+                LEFT JOIN {$this->db->dbprefix('payment')} AS p ON p.id = o.payment_id
+            WHERE
+                o.id = '$id'
+        ";
+        $query = $this->db->query($sql);
+        $data = $query->row_array();
+        return $data;
+    }
+    /**
      * 列表
      * @access  public
      * @param   mixed

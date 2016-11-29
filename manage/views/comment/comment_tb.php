@@ -12,18 +12,18 @@
     <td><?php echo empty($comment_status[$info['status']])?'':$comment_status[$info['status']]; ?></td>
     <td>
         <?php if($info['status'] == 0){ ?>
-            <button type="button" class="btn btn-success btn-xs" title="设为有效" onclick="status_edit('<?php echo $info['id'];?>','1')" >
+            <button type="button" class="btn btn-danger btn-xs" title="设为有效" onclick="status_edit('<?php echo $info['id'];?>','1')" >
                 <i class="fa fa-chevron-up"></i>
             </button>
-            <button type="button" class="btn btn-danger btn-xs" title="设为无效" onclick="status_edit('<?php echo $info['id'];?>','2')" >
+            <button type="button" class="btn btn-success btn-xs" title="设为无效" onclick="status_edit('<?php echo $info['id'];?>','2')" >
                 <i class="fa fa-chevron-down"></i>
             </button>
         <?php }else if($info['status'] == 1){ ?>
-            <button type="button" class="btn btn-danger btn-xs" title="设为无效" onclick="status_edit('<?php echo $info['id'];?>','2')" >
+            <button type="button" class="btn btn-success btn-xs" title="设为无效" onclick="status_edit('<?php echo $info['id'];?>','2')" >
                 <i class="fa fa-chevron-down"></i>
             </button>
         <?php }else if($info['status'] == 2){ ?>
-            <button type="button" class="btn btn-success btn-xs" title="设为有效" onclick="status_edit('<?php echo $info['id'];?>','1')" >
+            <button type="button" class="btn btn-danger btn-xs" title="设为有效" onclick="status_edit('<?php echo $info['id'];?>','1')" >
                 <i class="fa fa-chevron-up"></i>
             </button>
         <?php } ?>

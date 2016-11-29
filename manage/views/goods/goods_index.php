@@ -104,7 +104,7 @@ function status_edit( id,status ){
         success : function(msg){
             if(msg){
                 var msgobj = eval("("+ msg +")");
-                alert(msgobj.msg);
+                ming_alert(msgobj.msg,msgobj.sta);
                 pagelist.loadPage();
                 //back();
             }

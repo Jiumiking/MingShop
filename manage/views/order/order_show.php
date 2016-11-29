@@ -18,6 +18,8 @@
             <dd><?php echo empty($data['money_shipping'])?'':$data['money_shipping']; ?></dd>
             <dt>实际支付：</dt>
             <dd><?php echo empty($data['money_end'])?'':$data['money_end']; ?></dd>
+            <dt>支付方式：</dt>
+            <dd><?php echo empty($data['payment_name'])?'':$data['payment_name']; ?></dd>
             <dt>省：</dt>
             <dd><?php echo empty($data['accept_province'])?'':$data['accept_province']; ?></dd>
             <dt>市：</dt>

@@ -530,3 +530,7 @@ $config['upload_pic_encrypt_name'] = true;
 */
 $config['upload_exl_allowed_types'] = 'xls|xlsx';
 $config['upload_exl_max_size'] = '2048';
+
+//时区设置
+date_default_timezone_set('Asia/ShangHai');
+$config['time_zone'] = date_default_timezone_get();
