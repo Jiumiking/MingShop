@@ -11,26 +11,26 @@
             <dt>用户昵称：</dt>
             <dd><?php echo empty($data['name_nick'])?'':$data['name_nick']; ?></dd>
             <dt>商品总价：</dt>
-            <dd><?php echo empty($data['money_goods'])?'':$data['money_goods']; ?></dd>
-            <dt>优惠价格：</dt>
-            <dd><?php echo empty($data['money_preferential'])?'':$data['money_preferential']; ?></dd>
+            <dd>￥<?php echo empty($data['money_goods'])?'':$data['money_goods']; ?></dd>
+            <dt>优惠额度：</dt>
+            <dd>￥<?php echo empty($data['money_preferential'])?'':$data['money_preferential']; ?></dd>
             <dt>配送费用：</dt>
-            <dd><?php echo empty($data['money_shipping'])?'':$data['money_shipping']; ?></dd>
+            <dd>￥<?php echo empty($data['money_shipping'])?'':$data['money_shipping']; ?></dd>
             <dt>实际支付：</dt>
-            <dd><?php echo empty($data['money_end'])?'':$data['money_end']; ?></dd>
+            <dd>￥<?php echo empty($data['money_end'])?'':$data['money_end']; ?></dd>
             <dt>支付方式：</dt>
             <dd><?php echo empty($data['payment_name'])?'':$data['payment_name']; ?></dd>
-            <dt>省：</dt>
-            <dd><?php echo empty($data['accept_province'])?'':$data['accept_province']; ?></dd>
-            <dt>市：</dt>
-            <dd><?php echo empty($data['accept_city'])?'':$data['accept_city']; ?></dd>
-            <dt>区：</dt>
-            <dd><?php echo empty($data['accept_area'])?'':$data['accept_area']; ?></dd>
-            <dt>地址：</dt>
+            <dt>收货地址：</dt>
+            <dd>
+                <?php echo empty($data['accept_province'])?'':$data['accept_province'];?>&nbsp;
+                <?php echo empty($data['accept_city'])?'':$data['accept_city'];?>&nbsp;
+                <?php echo empty($data['accept_area'])?'':$data['accept_area'];?>&nbsp;
+                <?php echo empty($data['accept_detail'])?'':$data['accept_detail'];?>
+            </dd>
             <dd><?php echo empty($data['accept_address'])?'':$data['accept_address']; ?></dd>
-            <dt>联系人：</dt>
+            <dt>收货人：</dt>
             <dd><?php echo empty($data['accept_name'])?'':$data['accept_name']; ?></dd>
-            <dt>联系号码：</dt>
+            <dt>收货号码：</dt>
             <dd><?php echo empty($data['accept_phone'])?'':$data['accept_phone']; ?></dd>
             <dt>备注：</dt>
             <dd><?php echo empty($data['remark'])?'':$data['remark']; ?></dd>

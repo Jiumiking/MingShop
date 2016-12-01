@@ -39,6 +39,11 @@
                     实付：￥<?php echo $v['money_end'];?>
                 </div>
             </div>
+            <div class="panel-footer">
+                <?php if($v['status'] == 1){ ?>
+                    <input type="button" class="btn btn-primary" value="去付款" onclick="pay(<?php echo $v['id'];?>)">
+                <?php } ?>
+            </div>
         </div>
         <?php }}else{ ?>
         <div>
@@ -78,6 +83,11 @@
                 <div class="fr">
                     实付：￥<?php echo $v['money_end'];?>
                 </div>
+            </div>
+            <div class="panel-footer">
+                <?php if($v['status'] == 1){ ?>
+                <input type="button" class="btn btn-primary" value="去付款" onclick="pay(<?php echo $v['id'];?>)">
+                <?php } ?>
             </div>
         </div>
         <?php }}else{ ?>
@@ -208,4 +218,8 @@
     </div>
 </div>
 <script type="text/javascript">
+    //去付款
+    function pay(id){
+        location.href = "<?php echo site_url('order/order_pay');?>"+"?id="+id;
+    }
 </script>

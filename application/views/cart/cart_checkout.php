@@ -16,44 +16,6 @@
                 <div class="col-md-12">
                     <div class="panel panel-default panel-shadow">
                         <div class="panel-heading">
-                            收货地址
-                            <div class="panel-actions">
-                                <a href="javascript:address_change();" class="btn btn-info btn-xs">选择地址</a>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <input type="hidden" name="order[address]" value="<?php echo empty($data_member_address['id'])?'':$data_member_address['id'];?>">
-                            <dl class="dl-horizontal">
-                                <dt>收货人：</dt>
-                                <dd id="address_person"><?php echo empty($data_member_address['person'])?'':$data_member_address['person'];?></dd>
-                                <dt>手机号码：</dt>
-                                <dd id="address_phone"><?php echo empty($data_member_address['phone'])?'':$data_member_address['phone'];?></dd>
-                                <dt>所在地区：</dt>
-                                <dd id="address_address"><?php foreach($data_address as $vv){ if( (!empty($data_member_address['province']) && $data_member_address['province']==$vv['number']) || (!empty($data_member_address['city']) && $data_member_address['city']==$vv['number']) || (!empty($data_member_address['area']) && $data_member_address['area']==$vv['number']) ){
-                                    echo $vv['name'].'&nbsp;&nbsp;';
-                                    }} ?></dd>
-                                <dt>详细地址：</dt>
-                                <dd id="address_detail"><?php echo empty($data_member_address['detail'])?'':$data_member_address['detail'];?></dd>
-                            </dl>
-                        </div>
-                    </div>
-                    <div class="panel panel-default panel-shadow">
-                        <div class="panel-heading">
-                            支付方式
-                        </div>
-                        <div class="panel-body">
-                            <div class="btn-group" data-toggle="buttons">
-                                <?php if(!empty($data_payment)){ foreach($data_payment as $v){  ?>
-                                <label class="btn btn-info">
-                                    <input type="radio" name="order[payment]" value="<?php echo $v['id'];?>" autocomplete="off"><?php echo $v['name'];?>
-                                </label>
-                                <?php }} ?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default panel-shadow">
-                        <div class="panel-heading">
                             商品清单
                         </div>
                         <div class="panel-body">
@@ -73,6 +35,43 @@
                                 </li>
                                 <?php }} ?>
                             </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel-shadow">
+                        <div class="panel-heading">
+                            收货地址
+                            <div class="panel-actions">
+                                <a href="javascript:address_change();" class="btn btn-info btn-xs">选择地址</a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <input type="hidden" name="order[address]" value="<?php echo empty($data_member_address['id'])?'':$data_member_address['id'];?>">
+                            <dl class="dl-horizontal">
+                                <dt>收货人：</dt>
+                                <dd id="address_person"><?php echo empty($data_member_address['person'])?'':$data_member_address['person'];?></dd>
+                                <dt>手机号码：</dt>
+                                <dd id="address_phone"><?php echo empty($data_member_address['phone'])?'':$data_member_address['phone'];?></dd>
+                                <dt>所在地区：</dt>
+                                <dd id="address_address"><?php foreach($data_address as $vv){ if( (!empty($data_member_address['province']) && $data_member_address['province']==$vv['number']) || (!empty($data_member_address['city']) && $data_member_address['city']==$vv['number']) || (!empty($data_member_address['area']) && $data_member_address['area']==$vv['number']) ){
+                                        echo $vv['name'].'&nbsp;&nbsp;';
+                                    }} ?></dd>
+                                <dt>详细地址：</dt>
+                                <dd id="address_detail"><?php echo empty($data_member_address['detail'])?'':$data_member_address['detail'];?></dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="panel panel-default panel-shadow">
+                        <div class="panel-heading">
+                            支付方式
+                        </div>
+                        <div class="panel-body">
+                            <div class="btn-group" data-toggle="buttons">
+                                <?php if(!empty($data_payment)){ foreach($data_payment as $v){  ?>
+                                    <label class="btn btn-info">
+                                        <input type="radio" name="order[payment]" value="<?php echo $v['id'];?>" autocomplete="off"><?php echo $v['name'];?>
+                                    </label>
+                                <?php }} ?>
+                            </div>
                         </div>
                     </div>
 
@@ -102,7 +101,9 @@
                             ￥<span id="money_show"></span>
                         </div>
                         <div class="text-right">
-                            <a href="javascript:order_form_submit()" id="order_form_btn" class="btn btn-primary">提交订单</a>
+                            <input type="button" class="btn btn-default" onclick="back()" value="返回购物车">
+                            <input type="button" class="btn btn-primary" id="order_form_btn" onclick="order_form_submit()" value="去支付">
+<!--                            <a href="javascript:order_form_submit()" id="order_form_btn" class="btn btn-primary">去支付</a>-->
                         </div>
                     </div>
                 </div>
@@ -178,6 +179,10 @@ function order_form_submit(){
         ming_alert(msg);
         //$('body,html').animate({scrollTop:0},500);
     }
+}
+//返回
+function back(){
+    location.href = "<?php echo site_url('cart');?>";
 }
 $(document).ready(function(){
     init();

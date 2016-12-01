@@ -10,7 +10,7 @@ $string   :需要加密解密的字符串
 $operation:判断是加密还是解密:E:加密   D:解密
 $key      :加密的钥匙(密匙);
 *********************************************************************/
-function encrypt($string,$operation,$key=''){
+function default_encrypt($string,$operation,$key=''){
     $key=md5($key);
     $key_length=strlen($key);
     $string=$operation=='D'?base64_decode($string):substr(md5($string.$key),0,8).$string;

@@ -22,6 +22,7 @@ class Order extends M_Controller{
         $this->load->model('mdl_format');
         $this->load->model('mdl_address');
         $this->load->model('mdl_member_address');
+        $this->this_view_data['order_status'] = $this->config->item('order_status');
     }
     /**
      * 默认首页
@@ -157,6 +158,25 @@ class Order extends M_Controller{
         $this->order_pay( $order_id );
     }
     /**
+     * 编辑订单
+     * @access  public
+     * @return  void
+     */
+    public function order_edit(){
+        if( empty($_POST['id']) ){
+            $this->session->set_flashdata('msg', '参数错误');
+            redirect( $_SERVER['HTTP_REFERER'] );
+        }
+
+        /**支付方式**/
+        if( !empty($_POST['payment']) ){
+            $data_update['payment_id'] = $_POST['payment'];
+            /**插入订单表**/
+            $this->mdl_order->my_update( $_POST['id'], $data_update );
+        }
+        $this->order_pay( $_POST['id'] );
+    }
+    /**
      * 订单支付
      * @access  public
      * @param   $order_id 订单id
@@ -164,6 +184,113 @@ class Order extends M_Controller{
      */
     public function order_pay( $order_id=0 ){
         $order_id = !empty($order_id)?$order_id:(empty($_GET['id'])?0:$_GET['id']);
-        echo $order_id;
+        if( empty($order_id) ){
+            $this->session->set_flashdata('msg', '无效的订单');
+            redirect( $_SERVER['HTTP_REFERER'] );
+        }
+        $data_order = $this->mdl_order->my_select($order_id);
+        if( empty($data_order) ){
+            $this->session->set_flashdata('msg', '无效的订单');
+            redirect( $_SERVER['HTTP_REFERER'] );
+        }
+        if( $data_order['status'] > 1 ){
+            $this->session->set_flashdata('msg', '该订单已付款');
+            redirect( $_SERVER['HTTP_REFERER'] );
+        }
+        $data_payment = $this->mdl_payment->my_select($data_order['payment_id']);
+        if( empty($data_payment) ){
+            $this->session->set_flashdata('msg', '无效的支付方式');
+            redirect( $_SERVER['HTTP_REFERER'] );
+        }
+        $pay_path = $this->config->item('base_path').'common/payment/'.$data_payment['key'];
+        $pay_file = $pay_path.'/'.$data_payment['key'].'.php';
+        if( !file_exists($pay_file) ){
+            $this->session->set_flashdata('msg', '无效的支付方式');
+            redirect( $_SERVER['HTTP_REFERER'] );
+        }
+        require_once("$pay_file");
+        $pay_obj = new $data_payment['key'];
+        $return_query = $pay_obj->query($data_order['order_no']);
+        if( $return_query ){//已付款
+            $this->mdl_order->my_update( $data_order['id'], array('status'=>2,'date_pay'=>date('Y-m-d H:i:s')) );
+            $this->session->set_flashdata('msg', '支付成功');
+            redirect( 'member' );
+        }
+        $return = $pay_obj->pay($data_order);
+    }
+    /**
+     * 支付宝同步通知
+     * @access  public
+     * @return  void
+     */
+    public function return_alipay(){
+        if( empty($_GET['out_trade_no']) ){
+            $this->session->set_flashdata('msg', '参数错误');
+            redirect( 'member' );
+        }
+        //商户订单号
+        $order_no = htmlspecialchars($_GET['out_trade_no']);
+        $data_order = $this->mdl_order->my_select_by_no($order_no);
+        if( empty($data_order) ){
+            $this->session->set_flashdata('msg', '无效的订单');
+            redirect( 'member' );
+        }
+        $pay_path = $this->config->item('base_path').'common/payment/alipay';
+        $pay_file = $pay_path.'/alipay.php';
+        require_once("$pay_file");
+        $pay_obj = new alipay();
+        $return = $pay_obj->result_return();
+
+        if( $return ){
+            $this->mdl_order->my_update( $data_order['id'], array('status'=>2,'date_pay'=>date('Y-m-d H:i:s')) );
+            $this->session->set_flashdata('msg', '支付成功');
+        }else{
+            $this->session->set_flashdata('msg', '支付失败');
+        }
+        redirect( 'member' );
+    }
+    /**
+     * 支付宝异步通知
+     * @access  public
+     * @return  void
+     */
+    public function notify_alipay(){
+        if( empty($_POST['out_trade_no']) ){
+            return false;
+        }
+        //商户订单号
+        $order_no = $_POST['out_trade_no'];
+        $data_order = $this->mdl_order->my_select_by_no($order_no);
+        if( empty($data_order) ){
+            return false;
+        }
+        $pay_path = $this->config->item('base_path').'common/payment/alipay';
+        $pay_file = $pay_path.'/alipay.php';
+        require_once("$pay_file");
+        $pay_obj = new alipay();
+        $return = $pay_obj->result_notify();
+
+        if( $return ){
+            if($_POST['trade_status'] == 'TRADE_FINISHED') {
+                //判断该笔订单是否在商户网站中已经做过处理
+                //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+                //请务必判断请求时的total_amount与通知时获取的total_fee为一致的
+                //如果有做过处理，不执行商户的业务程序
+
+                //注意：
+                //退款日期超过可退款期限后（如三个月可退款），支付宝系统发送该交易状态通知
+            }
+            else if ($_POST['trade_status'] == 'TRADE_SUCCESS') {
+                //判断该笔订单是否在商户网站中已经做过处理
+                //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+                //请务必判断请求时的total_amount与通知时获取的total_fee为一致的
+                //如果有做过处理，不执行商户的业务程序
+                //注意：
+                //付款完成后，支付宝系统发送该交易状态通知
+                if( $data_order['status'] == 1 && !empty($_POST['total_amount']) && $_POST['total_amount'] == $data_order['money_end'] ){//未付款
+                    $this->mdl_order->my_update( $data_order['id'], array('status'=>2,'date_pay'=>date('Y-m-d H:i:s')) );
+                }
+            }
+        }
     }
 }

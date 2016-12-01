@@ -513,6 +513,10 @@ $config['proxy_ips'] = '';
 $config['front_url'] = 'http://mingshop.h';
 //$config['front_url'] = 'http://www.7blue.cn';
 /*
+*根路径
+*/
+$config['base_path'] = '/home/vagrant/Code/MingShop/';
+/*
 *上传路径
 */
 $config['upload_path'] = '/home/vagrant/Code/MingShop/uploads/';

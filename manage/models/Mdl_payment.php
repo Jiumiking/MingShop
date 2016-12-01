@@ -13,7 +13,7 @@ class Mdl_payment extends MY_Model{
      */
     public function __construct(){
         parent::__construct();
-        $this->my_select_field .= ',name,detail';
+        $this->my_select_field .= ',name,`key`';
         $this->my_table = 'payment';
         $this->my_order_by = 'id ASC';
     }

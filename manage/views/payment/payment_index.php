@@ -7,6 +7,7 @@
                     <tr>
                         <th>ID</th>
                         <th>名称</th>
+                        <th>符号</th>
                         <th>创建时间</th>
                         <th>修改时间</th>
                         <th>状态</th>
@@ -41,6 +42,40 @@
                         ming_alert(msgobj.msg,msgobj.sta);
                         pagelist.loadPage();
                         //back();
+                    }
+                }
+            });
+        }
+        //修改配置
+        function config( id ){
+            $.ajax({
+                type : "GET",
+                async : true,
+                url : "<?php echo site_url($this_controller.'/my_config');?>",
+                data : { id:id },
+                success : function(msg){
+                    if(msg){
+                        var msgobj = eval("("+ msg +")");
+                        if(msgobj.sta == '1'){
+                            $('#div_show').html(msgobj.dat);
+                            $('#div_show').show();
+                            $('#div_content').hide();
+                        }else{
+                            ming_alert(msgobj.msg);
+                        }
+                    }
+                }
+            });
+        }
+        //修改配置 执行
+        function config_do(){
+            $('#edit_form').ajaxSubmit({
+                success: function (msg) {
+                    if(msg){
+                        var msgobj = eval("("+ msg +")");
+                        ming_alert(msgobj.msg, msgobj.sta);
+                        pagelist.loadPage();
+                        back();
                     }
                 }
             });

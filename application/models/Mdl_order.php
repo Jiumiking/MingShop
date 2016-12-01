@@ -17,6 +17,28 @@ class Mdl_order extends MY_Model{
         $this->my_table = 'order';
     }
     /**
+     * 详情 根据订单号
+     * @access  public
+     * @param   mixed
+     * @return  mixed
+     */
+    public function my_select_by_no( $order_no = '' ){
+        if( empty( $order_no ) ){
+            return false;
+        }
+        $sql = "
+            SELECT
+                {$this->my_select_field}
+            FROM
+                {$this->db->dbprefix($this->my_table)}
+            WHERE
+                order_no = '$order_no'
+        ";
+        $query = $this->db->query($sql);
+        $data = $query->row_array();
+        return $data;
+    }
+    /**
      * 获取一个新的订单号
      * @access  public
      * @return  string

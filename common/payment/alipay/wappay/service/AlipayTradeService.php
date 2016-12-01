@@ -5,7 +5,6 @@
  * Date: 16/5/19
  * Time: 下午2:09
  */
-
 require_once dirname ( __FILE__ ).DIRECTORY_SEPARATOR.'./../../AopSdk.php';
 require dirname ( __FILE__ ).DIRECTORY_SEPARATOR.'./../../config.php';
 
@@ -127,7 +126,7 @@ class AlipayTradeService {
 		// 首先调用支付api
 		$response = $this->aopclientRequestExecute ($request);
 		$response = $response->alipay_trade_query_response;
-		var_dump($response);
+//		var_dump($response);
 		return $response;
 	}
 	

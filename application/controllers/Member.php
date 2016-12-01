@@ -44,7 +44,6 @@ class Member extends M_Controller{
     public function order(){
         $this->load->model('mdl_order');
         $this->load->model('mdl_order_goods');
-        $this->config->load('status');
         $this->this_view_data['order_status'] = $this->config->item('order_status');
         $filter_a = array('member_id'=>$this->this_user['id']);
         $filter_1 = array('member_id'=>$this->this_user['id'],'status'=>1);//待付款

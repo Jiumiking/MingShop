@@ -508,6 +508,10 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 /*
+*根路径
+*/
+$config['base_path'] = '/home/vagrant/Code/MingShop/';
+/*
 *上传路径
 */
 $config['upload_path'] = '/home/vagrant/Code/MingShop/uploads/';

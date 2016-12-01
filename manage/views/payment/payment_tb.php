@@ -3,6 +3,7 @@
         <tr>
             <td><?php echo $info['id'];?></td>
             <td><?php echo $info['name'];?></td>
+            <td><?php echo $info['key'];?></td>
             <td><?php echo $info['date_add']; ?></td>
             <td><?php echo $info['date_edit']; ?></td>
             <td><?php echo empty($default_status[$info['status']])?'':$default_status[$info['status']]; ?></td>
@@ -19,7 +20,7 @@
                 <button type="button" class="btn btn-primary btn-xs" title="编辑" onclick="edit('<?php echo $info['id'];?>')" >
                     <i class="fa fa-edit "></i>
                 </button>
-                <button type="button" class="btn btn-primary btn-xs" title="配置" onclick="edit('<?php echo $info['id'];?>')" >
+                <button type="button" class="btn btn-primary btn-xs" title="配置" onclick="config('<?php echo $info['id'];?>')" >
                     <i class="glyphicon glyphicon-cog "></i>
                 </button>
             </td>
