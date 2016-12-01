@@ -1,0 +1,14 @@
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('家用电器', 0, 0, '2016-07-19 15:48:27', '2016-07-28 11:35:30', 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('手机、数码、通信', 0, 0, null, null, 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('电脑、办公', 0, 0, null, null, 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('家具、家居', 0, 0, null, null, 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('大家电', 1, 0, null, null, 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('小家电', 1, 0, null, null, 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('电视', 5, 0, null, null, 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('微波炉', 6, 0, null, null, 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('大微波炉', 8, 0, '2016-07-20 10:56:06', null, 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('大微波炉', 8, 0, '2016-07-20 10:56:17', null, 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('手机', 22, 0, '2016-07-20 14:19:36', null, 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('服装', 0, 0, '2016-07-28 14:19:01', null, 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('上衣', 24, 0, '2016-07-28 14:19:15', null, 1);
+INSERT INTO mingshop.qi_category (name, parent_id, sort, date_add, date_edit, status) VALUES ('裤子', 24, 0, '2016-07-28 14:19:23', null, 1);

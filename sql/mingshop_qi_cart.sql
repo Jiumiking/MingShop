@@ -1,0 +1,1 @@
+INSERT INTO mingshop.qi_cart (member_id, goods_id, goods_amount_id, name, image, money, amount, date_add, date_edit, status) VALUES (1, 6, 22, 'T恤 白色 S', '/uploads/ueditor/image/20160728/1469686384136436.png', 100.00, 1, '2016-09-03 13:43:51', null, 1);

@@ -1,0 +1,3 @@
+INSERT INTO mingshop.qi_role (name, remark, parent_id, date_add, date_edit, status) VALUES ('超级管理员', '超级管理员', 0, null, null, 1);
+INSERT INTO mingshop.qi_role (name, remark, parent_id, date_add, date_edit, status) VALUES ('总管理员', '普通管理员', 0, null, null, 1);
+INSERT INTO mingshop.qi_role (name, remark, parent_id, date_add, date_edit, status) VALUES ('普通管理员', '普通管理员12', 2, null, '2016-07-14 14:16:19', 1);

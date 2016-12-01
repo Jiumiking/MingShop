@@ -1,0 +1,10 @@
+INSERT INTO mingshop.qi_setting (s_key, s_value) VALUES ('logo_name', '15746184e67a7bff0654a67d9a7ae4ba.jpg');
+INSERT INTO mingshop.qi_setting (s_key, s_value) VALUES ('page_number', '10');
+INSERT INTO mingshop.qi_setting (s_key, s_value) VALUES ('shipping_free', '80');
+INSERT INTO mingshop.qi_setting (s_key, s_value) VALUES ('shipping_jzh', '10');
+INSERT INTO mingshop.qi_setting (s_key, s_value) VALUES ('shipping_other', '20');
+INSERT INTO mingshop.qi_setting (s_key, s_value) VALUES ('station_name', '7蓝');
+INSERT INTO mingshop.qi_setting (s_key, s_value) VALUES ('user_error_times', '5');
+INSERT INTO mingshop.qi_setting (s_key, s_value) VALUES ('use_captcha', '0');
+INSERT INTO mingshop.qi_setting (s_key, s_value) VALUES ('wx_app_id', 'wx1c495f279a2d6216');
+INSERT INTO mingshop.qi_setting (s_key, s_value) VALUES ('wx_app_secret', '10581dd598abe83687e1cbd5e4c02276');

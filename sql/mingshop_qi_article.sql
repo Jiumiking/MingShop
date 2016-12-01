@@ -1,0 +1,3 @@
+INSERT INTO mingshop.qi_article (category_id, name, title, image, read_times, date_add, date_edit, status) VALUES (3, '王宝强离婚', '王宝强离婚王宝强离婚', '/uploads/ueditor/image/20160719/1468906315586437.jpeg', 0, '2016-08-15 14:35:30', '2016-08-15 15:21:45', 1);
+INSERT INTO mingshop.qi_article (category_id, name, title, image, read_times, date_add, date_edit, status) VALUES (7, '日本地震1', '日本地震日本地震日本地震日本地震', '', 0, '2016-08-15 15:24:47', '2016-08-16 10:55:49', 1);
+INSERT INTO mingshop.qi_article (category_id, name, title, image, read_times, date_add, date_edit, status) VALUES (8, '如何编写开源项目的 README 文档', '', '', 0, '2016-11-24 05:54:54', null, 1);

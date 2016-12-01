@@ -1,0 +1,12 @@
+INSERT INTO mingshop.qi_goods_detail (goods_id, detail, date_add, date_edit, status) VALUES (1, '<p>撒旦法发达傻店范德萨发大法师地方</p><p>撒旦法放大师傅12</p><p>222</p><p><img src="/uploads/ueditor/image/20160715/1468561425990720.jpg" title="1468561425990720.jpg"/></p><p><img src="/uploads/ueditor/image/20160715/1468561425103302.jpg" title="1468561425103302.jpg"/></p><p><br/></p>', '2016-06-21 16:39:05', '2016-07-20 15:50:44', 1);
+INSERT INTO mingshop.qi_goods_detail (goods_id, detail, date_add, date_edit, status) VALUES (2, '<p>苹果手机，新品上线</p><p><img src="/uploads/ueditor/image/20160719/1468897148686916.jpeg" alt="1468897148686916.jpeg"/></p>', '2016-07-21 09:40:51', null, 1);
+INSERT INTO mingshop.qi_goods_detail (goods_id, detail, date_add, date_edit, status) VALUES (3, '<p>123123</p>', '2016-07-28 14:14:02', '2016-08-01 14:22:39', 1);
+INSERT INTO mingshop.qi_goods_detail (goods_id, detail, date_add, date_edit, status) VALUES (4, '<p>123123</p>', '2016-07-28 14:15:39', '2016-08-02 13:33:07', 1);
+INSERT INTO mingshop.qi_goods_detail (goods_id, detail, date_add, date_edit, status) VALUES (5, '<p>11111</p>', '2016-07-28 14:17:26', null, 1);
+INSERT INTO mingshop.qi_goods_detail (goods_id, detail, date_add, date_edit, status) VALUES (6, '<p><img src="/uploads/ueditor/image/20160729/1469773312122395.jpg"/></p><p><img src="/uploads/ueditor/image/20160729/1469773330948549.jpg"/><img src="/uploads/ueditor/image/20160729/1469773341413836.jpg"/></p>', '2016-07-28 14:20:50', '2016-07-29 14:22:22', 1);
+INSERT INTO mingshop.qi_goods_detail (goods_id, detail, date_add, date_edit, status) VALUES (7, '<p>11</p>', '2016-08-19 16:50:44', null, 1);
+INSERT INTO mingshop.qi_goods_detail (goods_id, detail, date_add, date_edit, status) VALUES (8, '<p>222<br/></p>', '2016-08-19 16:51:18', null, 1);
+INSERT INTO mingshop.qi_goods_detail (goods_id, detail, date_add, date_edit, status) VALUES (9, '<p>商品3</p>', '2016-08-19 16:51:55', null, 1);
+INSERT INTO mingshop.qi_goods_detail (goods_id, detail, date_add, date_edit, status) VALUES (10, '<p>商品4</p>', '2016-08-19 16:52:37', null, 1);
+INSERT INTO mingshop.qi_goods_detail (goods_id, detail, date_add, date_edit, status) VALUES (11, '<p>商品5商品5</p>', '2016-08-19 16:53:09', null, 1);
+INSERT INTO mingshop.qi_goods_detail (goods_id, detail, date_add, date_edit, status) VALUES (12, '<p>商品6商品6</p>', '2016-08-19 16:53:49', '2016-12-01 15:53:45', 1);
