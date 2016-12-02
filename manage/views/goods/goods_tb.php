@@ -26,11 +26,11 @@
     <td><?php if($info['status'] == '1'){echo '上架';}else if($info['status'] == '2'){echo '下架';} ?></td>
     <td>
         <?php if( !empty($info['status']) && $info['status'] == '1' ){ ?>
-        <button type="button" class="btn btn-success btn-xs" title="下架" onclick="status_edit('<?php echo $info['id'];?>','2')" >
+        <button type="button" class="btn btn-success btn-xs" title="下架" onclick="status('<?php echo $info['id'];?>','2')" >
             <i class="fa fa-chevron-down "></i>
         </button>
         <?php }else{ ?>
-        <button type="button" class="btn btn-danger btn-xs" title="上架" onclick="status_edit('<?php echo $info['id'];?>','1')" >
+        <button type="button" class="btn btn-danger btn-xs" title="上架" onclick="status('<?php echo $info['id'];?>','1')" >
             <i class="fa fa-chevron-up "></i>
         </button>
         <?php } ?>

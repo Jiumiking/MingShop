@@ -28,7 +28,7 @@ class Mdl_joke extends MY_Model{
         }
         $return = '';
         foreach($where as $key=>$value){
-            if( !empty($value) || $value == 0 ){
+            if( !empty($value) || $value == '0' ){
                 $this->sql_value($value);
                 if( $key == 'content' ){
                     $return .= ' AND '.$key." LIKE '%$value%'";

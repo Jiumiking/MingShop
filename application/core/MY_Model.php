@@ -148,7 +148,7 @@ class MY_Model extends CI_Model{
         }
         $return = '';
         foreach($where as $key=>$value){
-            if( !empty($value) || $value == 0 ){
+            if( !empty($value) || $value == '0' ){
                 $this->sql_value($value);
                 $return .= ' AND '.$key." = '$value'";
             }

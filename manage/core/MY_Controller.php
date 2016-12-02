@@ -6,9 +6,9 @@
  * @subpackage  core
  * @category    core
  * @author      ming.king
- * @link        
- */		
- class MY_Controller extends Controller_base{
+ * @link
+ */
+class MY_Controller extends Controller_base{
     /**
      * 保存当前登录用户的信息
      *
@@ -113,12 +113,12 @@
             }
             /**_do end**/
             if( !$access ){
-                if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"])=="xmlhttprequest"){ 
+                if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"])=="xmlhttprequest"){
                     // ajax 请求的处理方式 
                     $this->ajax_views['sta'] = '0';
                     $this->ajax_views['msg'] = '没有权限';
                     $this->ajax_end();
-                }else{ 
+                }else{
                     // 正常请求的处理方式 
                     echo $this->load->view( 'errors/error500',$this->_views,true);
                     exit;
@@ -175,7 +175,6 @@
                 }
             }
         }
-        //echo '<pre>';print_r($bred);exit;
         $this->_views['bred'] = $bred;
     }
     /**
@@ -234,7 +233,7 @@
         }
         $this->ajax_views['dat'] = $this->load->view( $this->this_controller.'/'.$this->this_controller.'_show', $this->_views, true );
         $this->ajax_views['sta'] = '1';
-        $this->ajax_views['msg'] = '获取成功';
+        $this->ajax_views['msg'] = $this->config->item(1,'default_ajax_status');
         $this->ajax_end();
     }
     /**
@@ -249,7 +248,7 @@
         }
         $this->ajax_views['dat'] = $this->load->view( $this->this_controller.'/'.$this->this_controller.'_edit', $this->_views, true );
         $this->ajax_views['sta'] = '1';
-        $this->ajax_views['msg'] = '获取成功';
+        $this->ajax_views['msg'] = $this->config->item(1,'default_ajax_status');
         $this->ajax_end();
     }
     /**
@@ -267,7 +266,7 @@
         }
         if($back){
             $this->ajax_views['sta'] = '1';
-            $this->ajax_views['msg'] = '操作成功';
+            $this->ajax_views['msg'] = $this->config->item(1,'default_ajax_status');
         }
         $this->ajax_end();
     }
@@ -279,37 +278,56 @@
      */
     public function my_del(){
         if( empty($_GET['id']) ){
-            $this->ajax_views['msg'] = '参数错误';
+            $this->ajax_views['msg'] = $this->config->item(0,'default_ajax_status');
             $this->ajax_end();
         }
         if( $this->{$this->this_model}->my_delete($_GET['id']) ){
             $this->ajax_views['sta'] = '1';
-            $this->ajax_views['msg'] = '删除成功';
+            $this->ajax_views['msg'] = $this->config->item(1,'default_ajax_status');
         }
         $this->ajax_end();
     }
-     /*
-      * 导入
-      * @access  public
-      */
-     public function my_import(){
-         $this->ajax_views['dat'] = $this->load->view( $this->this_controller.'/'.$this->this_controller.'_import', $this->_views, true );
-         $this->ajax_views['sta'] = '1';
-         $this->ajax_views['msg'] = '获取成功';
-         $this->ajax_end();
-     }
-     /*
-     * 导入模板
-      * @access  public
+    /**
+     * 状态ajax
+     * @access  public
+     * @return  void
      */
-     public function my_import_template(){
-     }
-     /**
-      * 导入
-      * @access  public
-      */
-     public function my_import_do(){
-     }
+    public function my_status(){
+        if( empty($_GET['id']) ){
+            $this->ajax_views['msg'] = $this->config->item(0,'default_ajax_status');
+            $this->ajax_end();
+        }
+        $data['status'] = empty($_GET['status'])?0:$_GET['status'];
+        if( $this->{$this->this_model}->my_update( $_GET['id'], $data) ){
+            $this->ajax_views['sta'] = '1';
+            $this->ajax_views['msg'] = $this->config->item(1,'default_ajax_status');
+        }else{
+            $this->ajax_views['msg'] = $this->config->item(2,'default_ajax_status');
+        }
+        $this->ajax_end();
+    }
+    /*
+     * 导入
+     * @access  public
+     */
+    public function my_import(){
+        $this->ajax_views['dat'] = $this->load->view( $this->this_controller.'/'.$this->this_controller.'_import', $this->_views, true );
+        $this->ajax_views['sta'] = '1';
+        $this->ajax_views['msg'] = $this->config->item(1,'default_ajax_status');
+        $this->ajax_end();
+    }
+    /*
+    * 导入模板
+     * @access  public
+    */
+    public function my_import_template(){
+    }
+    /**
+     * 导入
+     * @access  public
+     */
+    public function my_import_do(){
+    }
 }
 /**
  * 基类
@@ -318,22 +336,22 @@
  * @subpackage  core
  * @category    core
  * @author      ming.king
- * @link        
+ * @link
  */
- class Controller_base extends CI_Controller{
-     /**
+class Controller_base extends CI_Controller{
+    /**
      * 输出变量
      * @var object
      * @access  public
      **/
     protected $_views = array();
-     /**
+    /**
      * 保存当前设置信息
      * @var object
      * @access  public
      **/
     protected $this_setting = array();
-     /**
+    /**
      * 构造函数
      * @access  public
      * @return  void
@@ -368,7 +386,7 @@
         echo $retrun;
         exit;
     }
- }
+}
 
 
 /**
@@ -377,9 +395,9 @@
  * @subpackage  core
  * @category    core
  * @author      ming.king
- * @link        
+ * @link
  */
- class Interface_bace extends CI_Controller{
+class Interface_bace extends CI_Controller{
     /**
      * 系统设置信息
      *
@@ -415,10 +433,10 @@
      * @access  protected
      **/
     protected $interface_views = array(
-            'code' => '0',
-            'msg' => '操作失败',
-            'info' => array(),
-        );
+        'code' => '0',
+        'msg' => '操作失败',
+        'info' => array(),
+    );
     /**
      * 构造函数
      *

@@ -29,23 +29,6 @@
     </div>
 <?php $this->load->view('base/list_js'); ?>
     <script type="text/javascript">
-        //上架下架
-        function status_edit( id,status ){
-            $.ajax({
-                type : "GET",
-                async : true,
-                url : "<?php echo site_url('payment/status_edit');?>",
-                data : { id:id,status:status },
-                success : function(msg){
-                    if(msg){
-                        var msgobj = eval("("+ msg +")");
-                        ming_alert(msgobj.msg,msgobj.sta);
-                        pagelist.loadPage();
-                        //back();
-                    }
-                }
-            });
-        }
         //修改配置
         function config( id ){
             $.ajax({

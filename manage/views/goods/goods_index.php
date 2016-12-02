@@ -94,23 +94,6 @@ function edit( id ){
         }
     });
 }
-//上架下架
-function status_edit( id,status ){
-    $.ajax({
-        type : "GET",
-        async : true,
-        url : "<?php echo site_url('goods/status_edit');?>",
-        data : { id:id,status:status },
-        success : function(msg){
-            if(msg){
-                var msgobj = eval("("+ msg +")");
-                ming_alert(msgobj.msg,msgobj.sta);
-                pagelist.loadPage();
-                //back();
-            }
-        }
-    });
-}
 //商品类型切换
 function type_change(){
     var val = $("#type_id").val();

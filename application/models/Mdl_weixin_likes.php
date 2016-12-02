@@ -122,7 +122,7 @@ class Mdl_weixin_likes extends MY_Model{
         }
         $return = '';
         foreach($where as $key=>$value){
-            if( !empty($value) || $value == 0 ){
+            if( !empty($value) || $value == '0' ){
                 $this->sql_value($value);
                 if( $key == 'name_nick' ){
                     $return .= ' AND b.'.$key." LIKE '%$value%'";

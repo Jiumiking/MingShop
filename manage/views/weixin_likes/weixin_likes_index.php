@@ -36,24 +36,6 @@
 </div>
 <?php $this->load->view('base/list_js'); ?>
 <script type="text/javascript">
-//上架下架
-function status_edit( id,status ){
-    $.ajax({
-        type : "GET",
-        async : true,
-        url : "<?php echo site_url('weixin_likes/status_edit');?>",
-        data : { id:id,status:status },
-        success : function(msg){
-            if(msg){
-                var msgobj = eval("("+ msg +")");
-                alert(msgobj.msg);
-                pagelist.loadPage();
-                //back();
-            }
-        }
-    });
-}
-
 $(document).ready(function(){
     //搜索
     $("[name='search']").click(function(){

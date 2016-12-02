@@ -9,6 +9,15 @@
     <td><?php echo $info['integral']; ?></td>
     <td><?php echo $info['date_add']; ?></td>
     <td>
+        <?php if( !empty($info['status']) && $info['status'] == '1' ){ ?>
+            <button type="button" class="btn btn-success btn-xs" title="禁止" onclick="status('<?php echo $info['id'];?>','2')" >
+                <i class="fa fa-chevron-down "></i>
+            </button>
+        <?php }else{ ?>
+            <button type="button" class="btn btn-danger btn-xs" title="使用" onclick="status('<?php echo $info['id'];?>','1')" >
+                <i class="fa fa-chevron-up "></i>
+            </button>
+        <?php } ?>
         <button type="button" class="btn btn-primary btn-xs" title="查看" onclick="show('<?php echo $info['id'];?>')" >
             <i class="fa fa-search"></i>
         </button>

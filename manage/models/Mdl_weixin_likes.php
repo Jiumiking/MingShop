@@ -15,7 +15,7 @@ class Mdl_weixin_likes extends MY_Model{
         parent::__construct();
         $this->my_select_field = 'id,member_id,content,image,date_add,date_edit,status';
         $this->my_table = 'weixin_likes';
-        $this->my_order_by = 'a.date_add DESC';
+        $this->my_order_by = 'a.id DESC';
         $this->load->model('mdl_weixin_likes_up');
     }
     /**
@@ -92,7 +92,7 @@ class Mdl_weixin_likes extends MY_Model{
         }
         $return = '';
         foreach($where as $key=>$value){
-            if( !empty($value) || $value == 0 ){
+            if( !empty($value) || $value == '0' ){
                 $this->sql_value($value);
                 if( $key == 'name_nick' ){
                     $return .= ' AND b.'.$key." LIKE '%$value%'";

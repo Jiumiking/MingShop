@@ -13,12 +13,22 @@
             <td><?php echo empty($order_status[$info['status']])?'':$order_status[$info['status']]; ?></td>
             <td>
                 <button type="button" class="btn btn-primary btn-xs" title="查看" onclick="show('<?php echo $info['id'];?>')" >
-                    <i class="fa fa-search"></i>
+                    <i class="glyphicon glyphicon-search"></i>
                 </button>
 
-                <button type="button" class="btn btn-danger btn-xs" title="删除" onclick="del('<?php echo $info['id'];?>')" >
-                    <i class="fa fa-trash-o "></i>
+                <?php if($info['status'] == 1){ ?>
+                <button type="button" class="btn btn-danger btn-xs" title="取消" onclick="status('<?php echo $info['id'];?>','0')" >
+                    <i class="glyphicon glyphicon-remove "></i>
                 </button>
+                <?php }else if( $info['status'] == 2 ){ ?>
+                    <button type="button" class="btn btn-danger btn-xs" title="发货" onclick="send('<?php echo $info['id'];?>')" >
+                        <i class="glyphicon glyphicon-envelope"></i>
+                    </button>
+                <?php }else if( $info['status'] == 3 ){ ?>
+                    <button type="button" class="btn btn-danger btn-xs" title="完成" onclick="done('<?php echo $info['id'];?>')" >
+                        <i class="glyphicon glyphicon-ok"></i>
+                    </button>
+                <?php } ?>
             </td>
         </tr>
     <?php } ?>

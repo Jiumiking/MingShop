@@ -50,24 +50,44 @@
     </div>
 <?php $this->load->view('base/list_js'); ?>
     <script type="text/javascript">
-        //上架下架
-        function status_edit( id,status ){
+        //发货
+        function send( id ){
             $.ajax({
                 type : "GET",
                 async : true,
-                url : "<?php echo site_url('comment/status_edit');?>",
-                data : { id:id,status:status },
+                url : "<?php echo site_url($this_controller.'/send');?>",
+                data : { id:id },
                 success : function(msg){
                     if(msg){
                         var msgobj = eval("("+ msg +")");
-                        alert(msgobj.msg);
-                        pagelist.loadPage();
-                        //back();
+                        if(msgobj.sta == '1'){
+                            $('#div_show').html(msgobj.dat);
+                            $('#div_show').show();
+                            $('#div_content').hide();
+                        }else{
+                            ming_alert(msgobj.msg);
+                        }
                     }
                 }
             });
         }
-
+        //完成订单
+        function done( id ){
+            $.ajax({
+                type : "GET",
+                async : true,
+                url : "<?php echo site_url($this_controller.'/done');?>",
+                data : { id:id },
+                success : function(msg){
+                    if(msg){
+                        var msgobj = eval("("+ msg +")");
+                        ming_alert(msgobj.msg,msgobj.sta);
+                        pagelist.loadPage();
+                        back();
+                    }
+                }
+            });
+        }
         $(document).ready(function(){
             //搜索
             $("[name='search']").click(function(){

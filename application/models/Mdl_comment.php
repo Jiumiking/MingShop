@@ -96,9 +96,8 @@ class Mdl_comment extends MY_Model{
         }
         $return = '';
         foreach($where as $key=>$value){
-            if( !empty($value) || $value == 0 ){
-                $value = str_replace('.','\.',$value);
-                $value = str_replace('%','\%',$value);
+            if( !empty($value) || $value == '0' ){
+                $this->sql_value($value);
                 $return .= ' AND c.'.$key." = '$value'";
             }
         }

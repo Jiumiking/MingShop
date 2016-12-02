@@ -26,7 +26,7 @@ class Mdl_article extends MY_Model{
         }
         $return = '';
         foreach($where as $key=>$value){
-            if( !empty($value) || $value == 0 ){
+            if( !empty($value) || $value == '0' ){
                 $this->sql_value($value);
                 if( $key == 'name' ){
                     $return .= ' AND '.$key." LIKE '%$value%'";

@@ -1,19 +1,20 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * 后台控制器
- * @category    controller
+ * CI后台model
+ * @category    model
  * @author      ming.king
  * @date        2015/11/26
  */
-class Weixin_likes extends MY_Controller{
+class Mdl_express extends MY_Model{
     /**
      * 构造函数
      *
-     * @access  public
      * @return  void
      */
     public function __construct(){
         parent::__construct();
-        $this->_views['comment_status'] = $this->config->item('comment_status');
+        $this->my_select_field .= ',name,`key`';
+        $this->my_table = 'express';
+        $this->my_order_by = 'id ASC';
     }
 }

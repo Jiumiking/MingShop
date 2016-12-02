@@ -86,26 +86,6 @@ class Goods extends MY_Controller{
         $this->ajax_end();
     }
     /**
-     * 上架/下架ajax
-     * @access  public
-     * @return  void
-     */
-    public function status_edit(){
-        if( empty($_GET['id']) || empty($_GET['status']) ){
-            $this->ajax_views['msg'] = '参数错误';
-            $this->ajax_end();
-        }
-        $data['status'] = $_GET['status'];
-        $data['date_status'] = date('Y-m-d H:i:s');
-        if( $this->mdl_goods->my_update( $_GET['id'], $data) ){
-            $this->ajax_views['sta'] = '1';
-            $this->ajax_views['msg'] = '操作成功';
-        }else{
-            $this->ajax_views['msg'] = '操作失败';
-        }
-        $this->ajax_end();
-    }
-    /**
      * 规格ajax
      * @access  public
      * @param   mixed

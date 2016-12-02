@@ -75,6 +75,22 @@ function edit_do(){
         }
     });
 }
+//状态修改
+function status( id,status ){
+    $.ajax({
+        type : "GET",
+        async : true,
+        url : "<?php echo site_url($this_controller.'/my_status');?>",
+        data : { id:id,status:status },
+        success : function(msg){
+            if(msg){
+                var msgobj = eval("("+ msg +")");
+                ming_alert(msgobj.msg,msgobj.sta);
+                pagelist.loadPage();
+            }
+        }
+    });
+}
 //删除
 function del( id ){
     if( confirm('确认删除?') ){

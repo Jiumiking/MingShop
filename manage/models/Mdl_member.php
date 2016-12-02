@@ -28,7 +28,7 @@ class Mdl_member extends MY_Model{
         }
         $return = '';
         foreach($where as $key=>$value){
-            if( !empty($value) || $value == 0 ){
+            if( !empty($value) || $value == '0' ){
                 $this->sql_value($value);
                 if( $key=='phone' || $key=='email' || $key=='weixin' || $key=='qq' || $key=='name_eral' || $key=='name_nick' ){
                     $return .= ' AND '.$key." LIKE '%$value%'";
