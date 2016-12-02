@@ -1,2 +1,0 @@
-INSERT INTO mingshop.qi_weixin_likes_up (member_id, weixin_likes_id, date_add, date_edit, status) VALUES (2, 11, '2016-08-28 16:34:14', null, 1);
-INSERT INTO mingshop.qi_weixin_likes_up (member_id, weixin_likes_id, date_add, date_edit, status) VALUES (1, 2, '2016-09-03 13:42:33', null, 1);

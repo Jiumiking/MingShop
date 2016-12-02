@@ -1,2 +1,0 @@
-INSERT INTO mingshop.qi_payment (name, `key`, date_add, date_edit, status) VALUES ('支付宝', 'alipay', null, '2016-11-30 14:15:55', 1);
-INSERT INTO mingshop.qi_payment (name, `key`, date_add, date_edit, status) VALUES ('微信支付', 'weixin', null, '2016-11-30 10:30:27', 2);

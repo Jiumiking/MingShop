@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2016-11-28 09:24:01
+Date: 2016-12-02 18:05:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3575,8 +3575,8 @@ CREATE TABLE `qi_article` (
 -- Records of qi_article
 -- ----------------------------
 INSERT INTO `qi_article` VALUES ('2', '3', '王宝强离婚', '王宝强离婚王宝强离婚', '/uploads/ueditor/image/20160719/1468906315586437.jpeg', '0', '2016-08-15 14:35:30', '2016-08-15 15:21:45', '1');
-INSERT INTO `qi_article` VALUES ('3', '7', '日本地震1', '日本地震日本地震日本地震日本地震', '', '0', '2016-08-15 15:24:47', '2016-08-16 10:55:49', '1');
-INSERT INTO `qi_article` VALUES ('7', '8', '如何编写开源项目的 README 文档', '', '', '0', '2016-11-24 05:54:54', null, '1');
+INSERT INTO `qi_article` VALUES ('3', '7', '日本地震1', '日本地震日本地震日本地震日本地震', '', '0', '2016-08-15 15:24:47', '2016-12-02 16:06:26', '1');
+INSERT INTO `qi_article` VALUES ('7', '8', '如何编写开源项目的 README 文档', '', '', '0', '2016-11-24 05:54:54', '2016-12-02 16:06:24', '1');
 
 -- ----------------------------
 -- Table structure for qi_article_category
@@ -3663,13 +3663,11 @@ CREATE TABLE `qi_cart` (
   `date_edit` datetime DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_cart
 -- ----------------------------
-INSERT INTO `qi_cart` VALUES ('21', '2', '4', '20', '摄像机-能看能听能说，手机远程观看asdf', '/uploads/ueditor/image/20160728/1469686384504117.png', '149.00', '3', '2016-08-05 14:04:35', '2016-08-09 11:11:33', '1');
-INSERT INTO `qi_cart` VALUES ('23', '2', '5', '21', 'U盘', '/uploads/ueditor/image/20160728/1469686384118728.png', '80.00', '2', '2016-08-08 14:20:06', '2016-08-09 11:11:32', '1');
 INSERT INTO `qi_cart` VALUES ('24', '1', '6', '22', 'T恤 白色 S', '/uploads/ueditor/image/20160728/1469686384136436.png', '100.00', '1', '2016-09-03 13:43:51', null, '1');
 
 -- ----------------------------
@@ -3726,9 +3724,9 @@ CREATE TABLE `qi_comment` (
 -- ----------------------------
 -- Records of qi_comment
 -- ----------------------------
-INSERT INTO `qi_comment` VALUES ('1', '2', '2', '6', '0', '0', '这件T恤真好看，为什么这么便宜呢', '2016-08-10 16:55:25', '2016-11-25 02:30:22', '1');
-INSERT INTO `qi_comment` VALUES ('2', '1', '2', '6', '1', '2', '因为便宜啊', '2016-08-10 16:58:40', '2016-11-25 02:30:30', '1');
-INSERT INTO `qi_comment` VALUES ('3', '1', '2', '6', '0', '0', '我也要买一件，太好看了', '2016-08-10 17:47:21', '2016-11-25 02:28:08', '2');
+INSERT INTO `qi_comment` VALUES ('1', '2', '2', '6', '0', '0', '这件T恤真好看，为什么这么便宜呢', '2016-08-10 16:55:25', '2016-12-02 16:22:27', '1');
+INSERT INTO `qi_comment` VALUES ('2', '1', '2', '6', '1', '2', '因为便宜啊', '2016-08-10 16:58:40', '2016-11-29 09:09:28', '1');
+INSERT INTO `qi_comment` VALUES ('3', '1', '2', '6', '0', '0', '我也要买一件，太好看了', '2016-08-10 17:47:21', '2016-11-29 09:07:08', '1');
 INSERT INTO `qi_comment` VALUES ('4', '2', '2', '6', '0', '0', '我也也要买一件', '2016-08-10 17:47:49', '2016-08-18 15:39:51', '1');
 INSERT INTO `qi_comment` VALUES ('5', '2', '2', '6', '0', '0', '评论测试', '2016-08-18 17:18:03', '2016-08-18 17:18:30', '1');
 INSERT INTO `qi_comment` VALUES ('6', '2', '2', '6', '5', '2', '回复测试', '2016-08-18 17:18:49', '2016-08-18 17:19:10', '1');
@@ -3763,6 +3761,29 @@ INSERT INTO `qi_comment_up` VALUES ('4', '2', '9', '2016-11-24 06:10:06', '2016-
 INSERT INTO `qi_comment_up` VALUES ('5', '2', '5', '2016-11-24 06:26:09', '2016-11-24 09:49:17', '1');
 INSERT INTO `qi_comment_up` VALUES ('6', '2', '4', '2016-11-24 06:26:26', null, '1');
 INSERT INTO `qi_comment_up` VALUES ('7', '2', '10', '2016-11-24 09:25:50', '2016-11-24 09:39:51', '0');
+
+-- ----------------------------
+-- Table structure for qi_express
+-- ----------------------------
+DROP TABLE IF EXISTS `qi_express`;
+CREATE TABLE `qi_express` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `key` varchar(50) NOT NULL,
+  `date_add` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `date_edit` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of qi_express
+-- ----------------------------
+INSERT INTO `qi_express` VALUES ('1', '顺丰', 'shunfeng', '2016-12-02 07:51:22', '2016-12-02 15:51:22', '1');
+INSERT INTO `qi_express` VALUES ('2', '申通', 'shentong', '2016-12-02 07:51:23', '2016-12-02 15:51:23', '1');
+INSERT INTO `qi_express` VALUES ('3', '中通', 'zhongtong', '2016-12-02 07:48:50', '2016-12-02 15:48:50', '2');
+INSERT INTO `qi_express` VALUES ('4', '圆通', 'yuantong', '2016-12-02 15:37:41', null, '2');
+INSERT INTO `qi_express` VALUES ('5', '韵达', 'yunda', '2016-12-02 15:37:51', null, '2');
 
 -- ----------------------------
 -- Table structure for qi_format
@@ -3900,7 +3921,7 @@ CREATE TABLE `qi_goods` (
 -- ----------------------------
 INSERT INTO `qi_goods` VALUES ('1', '丝袜10', 'g1231231231', '牛逼的丝袜', '/uploads/ueditor/image/20160715/1468561425103302.jpg', '7', '2', '11.00', '15.00', '2016-06-21 16:39:05', '2016-08-17 16:29:23', '2016-07-15 15:35:26', '2');
 INSERT INTO `qi_goods` VALUES ('2', 'iphone7', 'g1469065251', 'iphone7新品上市', '/uploads/ueditor/image/20160715/1468561425990720.jpg', '23', '3', '4000.00', '5380.00', '2016-07-21 09:40:51', '2016-08-15 15:23:41', '2016-08-15 15:23:41', '2');
-INSERT INTO `qi_goods` VALUES ('3', '平衡车', 'g1469686442', '年轻人的酷玩具，骑行遥控两种玩法', '/uploads/ueditor/image/20160728/1469686384926302.png', '6', '4', '1000.00', '1999.00', '2016-07-28 14:14:02', '2016-08-01 14:22:39', '2016-07-28 14:14:02', '1');
+INSERT INTO `qi_goods` VALUES ('3', '平衡车', 'g1469686442', '年轻人的酷玩具，骑行遥控两种玩法', '/uploads/ueditor/image/20160728/1469686384926302.png', '6', '4', '1000.00', '1999.00', '2016-07-28 14:14:02', '2016-12-02 15:57:33', '2016-07-28 14:14:02', '1');
 INSERT INTO `qi_goods` VALUES ('4', '摄像机-能看能听能说，手机远程观看asdf', 'g1469686539', '能看能听能说，手机远程观看', '/uploads/ueditor/image/20160728/1469686384504117.png', '6', '4', '100.00', '149.00', '2016-07-28 14:15:39', '2016-08-02 13:33:07', '2016-07-28 14:15:39', '1');
 INSERT INTO `qi_goods` VALUES ('5', 'U盘', 'g1469686646', '超级U盘，好看实惠', '/uploads/ueditor/image/20160728/1469686384118728.png', '0', '4', '20.00', '80.00', '2016-07-28 14:17:26', null, '2016-07-28 14:17:26', '1');
 INSERT INTO `qi_goods` VALUES ('6', 'T恤', 'g1469686850', '好看的T恤，来看这里', '/uploads/ueditor/image/20160728/1469686384136436.png', '25', '5', '50.00', '100.00', '2016-07-28 14:20:50', '2016-07-29 14:22:22', '2016-07-28 14:20:50', '1');
@@ -3908,8 +3929,8 @@ INSERT INTO `qi_goods` VALUES ('7', '商品1', 'g147159664470', '商品1商品1�
 INSERT INTO `qi_goods` VALUES ('8', '商品2', 'g147159667864', '商品2商品2', '/uploads/ueditor/image/20160728/1469686384926302.png', '6', '4', '100.00', '110.00', '2016-08-19 16:51:18', null, '2016-08-19 16:51:18', '1');
 INSERT INTO `qi_goods` VALUES ('9', '商品3', 'g147159671583', '商品3商品3', '/uploads/ueditor/image/20160728/1469686384504117.png', '6', '4', '100.00', '110.00', '2016-08-19 16:51:55', null, '2016-08-19 16:51:55', '1');
 INSERT INTO `qi_goods` VALUES ('10', '商品4', 'g147159675734', '商品4商品4', '/uploads/ueditor/image/20160719/1468896552139461.jpeg', '6', '4', '104.00', '144.00', '2016-08-19 16:52:37', null, '2016-08-19 16:52:37', '1');
-INSERT INTO `qi_goods` VALUES ('11', '商品5', 'g147159678950', '商品5商品5', '/uploads/ueditor/image/20160718/1468814303383025.jpg', '5', '4', '105.00', '155.00', '2016-08-19 16:53:09', null, '2016-08-19 16:53:09', '1');
-INSERT INTO `qi_goods` VALUES ('12', '商品6', 'g147159682956', '商品6商品6', '/uploads/ueditor/image/20160719/1468896552115355.jpeg', '5', '4', '106.00', '166.00', '2016-11-16 17:41:35', null, '2016-08-19 16:53:49', '1');
+INSERT INTO `qi_goods` VALUES ('11', '商品5', 'g147159678950', '商品5商品5', '/uploads/ueditor/image/20160718/1468814303383025.jpg', '5', '4', '105.00', '155.00', '2016-08-19 16:53:09', '2016-12-02 15:57:31', '2016-08-19 16:53:09', '1');
+INSERT INTO `qi_goods` VALUES ('12', '商品6', 'g147159682956', '商品6商品6', '/uploads/ueditor/image/20160719/1468896552115355.jpeg', '5', '4', '106.00', '166.00', '2016-11-16 17:41:35', '2016-12-02 15:57:30', '2016-11-29 09:11:38', '1');
 
 -- ----------------------------
 -- Table structure for qi_goods_amount
@@ -3954,8 +3975,8 @@ INSERT INTO `qi_goods_amount` VALUES ('16', '2', '11', '65', '64', '0', '0', nul
 INSERT INTO `qi_goods_amount` VALUES ('17', '2', '24', '65', '63', '0', '0', null, null, null, null, null, '100', '5300.00', '2016-07-21 09:40:51', null, '1');
 INSERT INTO `qi_goods_amount` VALUES ('18', '2', '24', '65', '64', '0', '0', null, null, null, null, null, '10', '6300.00', '2016-07-21 09:40:51', null, '1');
 INSERT INTO `qi_goods_amount` VALUES ('19', '3', '0', '0', '0', '0', '0', null, null, null, null, null, '0', '1998.00', '2016-07-28 14:14:02', '2016-08-01 14:22:39', '1');
-INSERT INTO `qi_goods_amount` VALUES ('20', '4', '0', '0', '0', '0', '0', null, null, null, null, null, '99', '149.00', '2016-07-28 14:15:39', '2016-08-02 13:33:07', '1');
-INSERT INTO `qi_goods_amount` VALUES ('21', '5', '0', '0', '0', '0', '0', null, null, null, null, null, '7', '80.00', '2016-07-28 14:17:26', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('20', '4', '0', '0', '0', '0', '0', null, null, null, null, null, '96', '149.00', '2016-07-28 14:15:39', '2016-08-02 13:33:07', '1');
+INSERT INTO `qi_goods_amount` VALUES ('21', '5', '0', '0', '0', '0', '0', null, null, null, null, null, '5', '80.00', '2016-07-28 14:17:26', null, '1');
 INSERT INTO `qi_goods_amount` VALUES ('22', '6', '2', '57', '0', '0', '0', null, null, null, null, null, '97', '100.00', '2016-07-28 14:20:50', '2016-07-29 14:22:22', '1');
 INSERT INTO `qi_goods_amount` VALUES ('23', '6', '2', '58', '0', '0', '0', null, null, null, null, null, '98', '100.00', '2016-07-28 14:20:50', '2016-07-29 14:22:22', '1');
 INSERT INTO `qi_goods_amount` VALUES ('24', '6', '2', '59', '0', '0', '0', null, null, null, null, null, '111', '100.00', '2016-07-28 14:20:50', '2016-07-29 14:22:22', '1');
@@ -3969,7 +3990,7 @@ INSERT INTO `qi_goods_amount` VALUES ('31', '8', '0', '0', '0', '0', '0', null, 
 INSERT INTO `qi_goods_amount` VALUES ('32', '9', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '110.00', '2016-08-19 16:51:55', null, '1');
 INSERT INTO `qi_goods_amount` VALUES ('33', '10', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '144.00', '2016-08-19 16:52:37', null, '1');
 INSERT INTO `qi_goods_amount` VALUES ('34', '11', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '155.00', '2016-08-19 16:53:09', null, '1');
-INSERT INTO `qi_goods_amount` VALUES ('35', '12', '0', '0', '0', '0', '0', null, null, null, null, null, '100', '166.00', '2016-08-19 16:53:49', null, '1');
+INSERT INTO `qi_goods_amount` VALUES ('35', '12', '0', '0', '0', '0', '0', null, null, null, null, null, '99', '1.00', '2016-08-19 16:53:49', '2016-12-01 15:53:45', '1');
 
 -- ----------------------------
 -- Table structure for qi_goods_detail
@@ -3999,7 +4020,7 @@ INSERT INTO `qi_goods_detail` VALUES ('8', '8', '<p>222<br/></p>', '2016-08-19 1
 INSERT INTO `qi_goods_detail` VALUES ('9', '9', '<p>商品3</p>', '2016-08-19 16:51:55', null, '1');
 INSERT INTO `qi_goods_detail` VALUES ('10', '10', '<p>商品4</p>', '2016-08-19 16:52:37', null, '1');
 INSERT INTO `qi_goods_detail` VALUES ('11', '11', '<p>商品5商品5</p>', '2016-08-19 16:53:09', null, '1');
-INSERT INTO `qi_goods_detail` VALUES ('12', '12', '<p>商品6商品6</p>', '2016-08-19 16:53:49', null, '1');
+INSERT INTO `qi_goods_detail` VALUES ('12', '12', '<p>商品6商品6</p>', '2016-08-19 16:53:49', '2016-12-01 15:53:45', '1');
 
 -- ----------------------------
 -- Table structure for qi_goods_type
@@ -4060,7 +4081,7 @@ CREATE TABLE `qi_log` (
   `ip_address` varchar(32) DEFAULT NULL,
   `date_add` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_log
@@ -4072,6 +4093,12 @@ INSERT INTO `qi_log` VALUES ('171', '100', '登录成功', '192.168.10.1', '2016
 INSERT INTO `qi_log` VALUES ('172', '100', '登录成功', '192.168.10.1', '2016-11-24 05:20:56');
 INSERT INTO `qi_log` VALUES ('173', '100', '登录成功', '192.168.10.1', '2016-11-25 01:27:29');
 INSERT INTO `qi_log` VALUES ('174', '100', '登录成功', '192.168.10.1', '2016-11-25 05:57:25');
+INSERT INTO `qi_log` VALUES ('175', '100', '登录成功', '192.168.10.1', '2016-11-28 02:27:06');
+INSERT INTO `qi_log` VALUES ('176', '100', '登录成功', '192.168.10.1', '2016-11-29 06:46:35');
+INSERT INTO `qi_log` VALUES ('177', '100', '登录成功', '192.168.10.1', '2016-11-30 10:15:08');
+INSERT INTO `qi_log` VALUES ('178', '100', '登录成功', '192.168.10.1', '2016-12-01 10:06:21');
+INSERT INTO `qi_log` VALUES ('179', '100', '登录成功', '192.168.10.1', '2016-12-01 13:23:53');
+INSERT INTO `qi_log` VALUES ('180', '100', '登录成功', '192.168.10.1', '2016-12-02 15:29:37');
 
 -- ----------------------------
 -- Table structure for qi_member
@@ -4102,7 +4129,7 @@ CREATE TABLE `qi_member` (
 -- Records of qi_member
 -- ----------------------------
 INSERT INTO `qi_member` VALUES ('1', 'jin1', '李4', 'edbbf7a5afd220a65983229ed6496ed9', '13665119181', '723528197@qq.com', '123', '', '123', '1', '0', '2', '2016-06-28', '', '2015-12-23 14:51:03', '2016-08-18 10:10:02', '1');
-INSERT INTO `qi_member` VALUES ('2', 'jin', '张3', 'edbbf7a5afd220a65983229ed6496ed9', '13665119187', '7235281971@qq.com', '', '', '', '0', '0', '1', '1988-03-19', '28.png', '2016-07-25 18:02:58', '2016-11-25 07:56:29', '1');
+INSERT INTO `qi_member` VALUES ('2', 'jin', '张3', 'edbbf7a5afd220a65983229ed6496ed9', '13665119187', '7235281971@qq.com', '', '', '', '0', '0', '1', '1988-03-19', '28.png', '2016-07-25 18:02:58', '2016-12-02 16:08:52', '1');
 
 -- ----------------------------
 -- Table structure for qi_member_address
@@ -4149,7 +4176,9 @@ CREATE TABLE `qi_order` (
   `accept_area` varchar(20) NOT NULL DEFAULT '',
   `accept_detail` varchar(200) NOT NULL DEFAULT '',
   `accept_phone` varchar(20) NOT NULL DEFAULT '0',
-  `remark` varchar(50) NOT NULL COMMENT '备注',
+  `express_id` int(20) NOT NULL DEFAULT '0',
+  `express_no` varchar(50) NOT NULL DEFAULT '' COMMENT '快递单号',
+  `remark` varchar(50) NOT NULL DEFAULT '' COMMENT '备注',
   `date_add` datetime DEFAULT NULL,
   `date_edit` datetime DEFAULT NULL,
   `date_pay` datetime DEFAULT NULL COMMENT '支付日期',
@@ -4157,14 +4186,16 @@ CREATE TABLE `qi_order` (
   `date_end` datetime DEFAULT NULL COMMENT '结束日期',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0订单取消1订单提交2付款成功3已经发货4订单完成',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_order
 -- ----------------------------
-INSERT INTO `qi_order` VALUES ('1', 'o147029813375', '2', '489.00', '0.00', '0.00', '489.00', '1', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '', '2016-08-04 16:08:53', null, null, null, null, '1');
-INSERT INTO `qi_order` VALUES ('2', 'o147036611021', '2', '200.00', '0.00', '0.00', '200.00', '2', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '', '2016-08-05 11:01:50', null, null, null, null, '1');
-INSERT INTO `qi_order` VALUES ('3', 'o147036720292', '2', '500.00', '0.00', '0.00', '500.00', '1', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '', '2016-08-05 11:20:02', null, null, null, null, '1');
+INSERT INTO `qi_order` VALUES ('1', 'o147029813375', '2', '489.00', '0.00', '0.00', '489.00', '1', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '0', '', '', '2016-08-04 16:08:53', '2016-12-02 16:38:58', null, null, null, '0');
+INSERT INTO `qi_order` VALUES ('2', 'o147036611021', '2', '200.00', '0.00', '0.00', '200.00', '2', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '0', '', '', '2016-08-05 11:01:50', null, null, null, null, '1');
+INSERT INTO `qi_order` VALUES ('3', 'o147036720292', '2', '500.00', '0.00', '0.00', '500.00', '1', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '0', '', '', '2016-08-05 11:20:02', null, null, null, null, '1');
+INSERT INTO `qi_order` VALUES ('4', 'o148048784299', '2', '607.00', '0.00', '0.00', '607.00', '1', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '0', '', '', '2016-11-30 14:37:22', '2016-12-02 18:02:03', '2016-12-01 11:19:22', '2016-12-02 18:02:03', null, '3');
+INSERT INTO `qi_order` VALUES ('5', 'o148057886245', '2', '1.00', '0.00', '10.00', '11.00', '1', 'jjm1', '江苏省', '无锡市', '惠山区', '百搭纯粹', '13411112222', '1', '123', '', '2016-12-01 15:54:22', '2016-12-02 17:59:14', '2016-12-01 16:01:34', '2016-12-02 17:42:10', '2016-12-02 17:59:14', '4');
 
 -- ----------------------------
 -- Table structure for qi_order_goods
@@ -4182,7 +4213,7 @@ CREATE TABLE `qi_order_goods` (
   `date_edit` datetime DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qi_order_goods
@@ -4194,6 +4225,9 @@ INSERT INTO `qi_order_goods` VALUES ('4', '2', '6', '26', 'T恤 黑色 S', '1', 
 INSERT INTO `qi_order_goods` VALUES ('5', '2', '6', '27', 'T恤 黑色 M', '1', '100.00', '2016-08-05 11:01:50', null, '1');
 INSERT INTO `qi_order_goods` VALUES ('6', '3', '6', '23', 'T恤 白色 M', '3', '100.00', '2016-08-05 11:20:02', null, '1');
 INSERT INTO `qi_order_goods` VALUES ('7', '3', '6', '22', 'T恤 白色 S', '2', '100.00', '2016-08-05 11:20:02', null, '1');
+INSERT INTO `qi_order_goods` VALUES ('8', '4', '5', '21', 'U盘', '2', '80.00', '2016-11-30 14:37:22', null, '1');
+INSERT INTO `qi_order_goods` VALUES ('9', '4', '4', '20', '摄像机-能看能听能说，手机远程观看asdf', '3', '149.00', '2016-11-30 14:37:22', null, '1');
+INSERT INTO `qi_order_goods` VALUES ('10', '5', '12', '35', '商品6', '1', '1.00', '2016-12-01 15:54:22', null, '1');
 
 -- ----------------------------
 -- Table structure for qi_payment
@@ -4202,7 +4236,7 @@ DROP TABLE IF EXISTS `qi_payment`;
 CREATE TABLE `qi_payment` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL DEFAULT '',
-  `detail` varchar(500) NOT NULL DEFAULT '',
+  `key` varchar(20) NOT NULL DEFAULT '',
   `date_add` datetime DEFAULT NULL,
   `date_edit` datetime DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
@@ -4212,8 +4246,8 @@ CREATE TABLE `qi_payment` (
 -- ----------------------------
 -- Records of qi_payment
 -- ----------------------------
-INSERT INTO `qi_payment` VALUES ('1', '支付宝', '', null, null, '1');
-INSERT INTO `qi_payment` VALUES ('2', '微信支付', '', null, null, '1');
+INSERT INTO `qi_payment` VALUES ('1', '支付宝', 'alipay', null, '2016-12-02 15:51:27', '1');
+INSERT INTO `qi_payment` VALUES ('2', '微信支付', 'weixin', null, '2016-12-02 15:42:06', '1');
 
 -- ----------------------------
 -- Table structure for qi_role
@@ -4325,7 +4359,7 @@ INSERT INTO `qi_weixin_likes` VALUES ('1', '1', '语文课上，老师：小明�
 INSERT INTO `qi_weixin_likes` VALUES ('2', '1', '老师把小明叫到了教室外。\r\n老师：“你的作业做的越来越差了，这是怎么回事？”\r\n小明：“老师，等我找找原因，下午告诉你好吗？”\r\n老师：“好吧！”\r\n下午，老师又把小明叫到了教室外。老师：“找到原因了吗？”\r\n小明：“找到了，我爷爷说作业越来越难，他也没办法。”\r\n老师：“滚出去！”', '1e38b38b36987ed109faadcf08f15cfc.jpeg', null, null, '1');
 INSERT INTO `qi_weixin_likes` VALUES ('3', '1', '考试后，老师训话：“都是学生，怎么有的考得好，有的考得差。”\r\n小明：“还不是因为监考老师不同。”\r\n老师：“滚出去！”', '3f8feaa559b127d3c5383ca83db49074.jpg', null, null, '1');
 INSERT INTO `qi_weixin_likes` VALUES ('4', '1', '政治老师花一整堂课讲述钱与人生的关系，下课前布置作业，思考题：“如果你们有钱能改变什么吗？”\r\n小明在角落冷哼一声：“如果有钱，我就不用在这听你废话了。”\r\n老师：“滚出去！”', '5eaa72e367063b02cf32769ac59a78bc.jpg', null, null, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('5', '1', '老师：“请用一句话，证明你找不到某个人的时候的愤怒情绪。”\r\n小明：“王八蛋，你特么在哪？”\r\n老师：“注意素质。”\r\n小明：“鳖，汝在何方？”\r\n老师：“滚……”', '9b01a030129e39edfce178cb1bbcb828.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('5', '1', '老师：“请用一句话，证明你找不到某个人的时候的愤怒情绪。”\r\n小明：“王八蛋，你特么在哪？”\r\n老师：“注意素质。”\r\n小明：“鳖，汝在何方？”\r\n老师：“滚……”', '9b01a030129e39edfce178cb1bbcb828.jpg', null, '2016-12-02 16:17:50', '2');
 INSERT INTO `qi_weixin_likes` VALUES ('6', '1', '老师：“请大家解释一下环境因素和遗传因素！”\r\n小明：“长的像爸爸就是遗传因素，长的像邻居就是环境因素！”\r\n老师：“老规矩……”\r\n小明默默地站起来……', '9b38cee9e952d77db9af2c0d1611d868.jpg', null, null, '1');
 INSERT INTO `qi_weixin_likes` VALUES ('7', '1', '老师问站在教室外的小明、霜霜、李华三人：“你们仨到底在课堂上做什么，给我老实交代。”\r\n小明：“指点江山，激扬文字，粪土粪土当年万户侯。”\r\n老师：“说人话。”\r\n小明：“斗地主。”\r\n老师：“外面站一天。”', '9d663d93804a5aafed1adb770770099b.jpg', null, null, '1');
 INSERT INTO `qi_weixin_likes` VALUES ('8', '1', '小明：“老师我喜欢你。”\r\n老师：“我不喜欢小孩。”\r\n小明：“我也不喜欢小孩，我们可以不要小孩。”\r\n老师：“滚！滚到外边去！”', '35cc4c00d2583f6dcca5c7e4d5ed0932.jpg', null, null, '1');
@@ -4337,11 +4371,11 @@ INSERT INTO `qi_weixin_likes` VALUES ('13', '1', '老师：“小明，如果你
 INSERT INTO `qi_weixin_likes` VALUES ('14', '1', '老师：“请大家说说你们的愿望。”\r\n小明：“去山东蓝翔学挖掘机。”\r\n老师：“给我个理由。”\r\n小明：“刨你家祖坟。”\r\n老师：“滚出去…………”', '865745bcc080595e63127f526e7e650a.jpg', null, null, '1');
 INSERT INTO `qi_weixin_likes` VALUES ('15', '1', '课堂上，老师在讲第7章，小明把书随便打开，就低头玩手机，结果被老师发现了。\r\n老师质问他：“讲的7章，怎么把书翻到8章？”\r\n小明淡淡的答到：“我是在前面等着你！”\r\n回答的挺合逻辑啊，怎么老师还是让小明滚出去了。。。\r\n老师：“小明，你来回答学校是什么地方！”\r\n小明：“学校就是连续签到五天，领取作业大礼包的地方！”\r\n老师：“你滚出去!”', '9136932b5a8c70d9c132def539fda8f9.jpeg', null, null, '1');
 INSERT INTO `qi_weixin_likes` VALUES ('16', '1', '小明：“老师，我想去上网。”\r\n老师：“滚！”\r\n小明以迅雷不及掩耳盗铃之势跑出教室。\r\n老师：“我艹，说顺口了，你给我回来！”', '59723259292f2e864c0b1661910de544.jpg', null, null, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('17', '1', '老师：“蒸一个包子一分钟，蒸三个包子要多久？”\r\n小明：“九分钟？”\r\n老师：“你傻呀！你们家蒸包子一个一个蒸呀？！”\r\n小明表示不服：“那我问你，吃一个馒头一分钟，吃十个馒头呢？”\r\n老师：“十分钟呀！你以为我跟你一样傻呀！”\r\n小明：“十分钟吃十个馒头！撑死你个饭桶！”\r\n老师：“。。。滚出去！”', 'a5ef60ddfaed7d6e54193e345ba038b1.jpg', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('17', '1', '老师：“蒸一个包子一分钟，蒸三个包子要多久？”\r\n小明：“九分钟？”\r\n老师：“你傻呀！你们家蒸包子一个一个蒸呀？！”\r\n小明表示不服：“那我问你，吃一个馒头一分钟，吃十个馒头呢？”\r\n老师：“十分钟呀！你以为我跟你一样傻呀！”\r\n小明：“十分钟吃十个馒头！撑死你个饭桶！”\r\n老师：“。。。滚出去！”', 'a5ef60ddfaed7d6e54193e345ba038b1.jpg', null, '2016-12-02 16:17:52', '2');
 INSERT INTO `qi_weixin_likes` VALUES ('18', '1', '小明：“老师，我以后再也不惹你生气了。”\r\n老师：“这样才是乖孩子，坐下听课吧，来大家翻开16页，这节课我们讲羊驼。”\r\n小明：“咦，艹泥马。”\r\n老师：“继续滚出去……”', 'b4ba2153012ff041a1c77b9533240175.jpg', null, null, '1');
 INSERT INTO `qi_weixin_likes` VALUES ('19', '1', '老师问小明：“如果有劫匪要捅我一刀，你会怎么办？”\r\n小明：“看他是否捅中。”\r\n老师：“没捅中了呢？”\r\n小明：“给他来瓶脉动。”\r\n老师：“为什么？”\r\n小明：“关键时候不在状态，速度回归。”\r\n老师：“捅中了呢？”\r\n小明：“来片炫迈。”\r\n老师：“什么意思？”\r\n小明：“根本停不下来！”\r\n老师：“有多远滚多远！”', 'b8faa48b454c5b9add35e888f0a43326.jpg', null, null, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('20', '1', '老师：“小明，你知道为什么要上地理课嘛？”\r\n小明：“老师，那为什么体育课那么少，作业那么多呢？”\r\n老师：“......”', 'fafb992a9e4478db6d9af286aaafe301.jpeg', null, null, '1');
-INSERT INTO `qi_weixin_likes` VALUES ('21', '1', '小王：“为什么一节课45分钟，而下课休息时间只有15分钟呢？”\r\n老师：“请回答正题！”\r\n小明：“因为没有天理。”\r\n老师：“滚去太平洋！！！”', '2bc7ebcb20e68f104a9be8156640fa5f.png', null, null, '1');
+INSERT INTO `qi_weixin_likes` VALUES ('20', '1', '老师：“小明，你知道为什么要上地理课嘛？”\r\n小明：“老师，那为什么体育课那么少，作业那么多呢？”\r\n老师：“......”', 'fafb992a9e4478db6d9af286aaafe301.jpeg', null, '2016-12-02 16:22:00', '1');
+INSERT INTO `qi_weixin_likes` VALUES ('21', '1', '小王：“为什么一节课45分钟，而下课休息时间只有15分钟呢？”\r\n老师：“请回答正题！”\r\n小明：“因为没有天理。”\r\n老师：“滚去太平洋！！！”', '2bc7ebcb20e68f104a9be8156640fa5f.png', null, '2016-12-02 16:21:57', '1');
 
 -- ----------------------------
 -- Table structure for qi_weixin_likes_up

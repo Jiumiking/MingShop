@@ -1,2 +1,0 @@
-INSERT INTO mingshop.qi_member_address (name, member_id, province, city, area, detail, phone, person, date_add, date_edit, status) VALUES ('公司', 2, 320000, 320200, 320211, '国家软件园', '13111121112', 'jjm', '2016-07-28 11:04:16', null, 1);
-INSERT INTO mingshop.qi_member_address (name, member_id, province, city, area, detail, phone, person, date_add, date_edit, status) VALUES ('父母家', 2, 320000, 320200, 320206, '百搭纯粹', '13411112222', 'jjm1', '2016-07-28 11:07:28', '2016-08-19 15:03:27', 2);

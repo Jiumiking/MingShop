@@ -1,5 +1,0 @@
-INSERT INTO mingshop.qi_goods_type (name, format1, format2, format3, format4, format5, date_add, date_edit, status) VALUES ('打底裤', 1, 2, 0, 0, 0, '2015-12-21 20:46:47', '2016-06-16 10:35:30', 1);
-INSERT INTO mingshop.qi_goods_type (name, format1, format2, format3, format4, format5, date_add, date_edit, status) VALUES ('丝袜', 1, 2, 0, 0, 0, '2015-12-21 20:47:25', '2016-06-16 14:23:45', 1);
-INSERT INTO mingshop.qi_goods_type (name, format1, format2, format3, format4, format5, date_add, date_edit, status) VALUES ('手机', 1, 2, 3, 0, 0, '2016-06-16 10:37:04', null, 1);
-INSERT INTO mingshop.qi_goods_type (name, format1, format2, format3, format4, format5, date_add, date_edit, status) VALUES ('其他', 0, 0, 0, 0, 0, '2016-06-16 14:23:56', '2016-07-28 14:12:24', 1);
-INSERT INTO mingshop.qi_goods_type (name, format1, format2, format3, format4, format5, date_add, date_edit, status) VALUES ('衣服', 1, 2, 0, 0, 0, '2016-07-28 14:18:50', null, 1);

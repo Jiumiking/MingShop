@@ -1,2 +1,0 @@
-INSERT INTO mingshop.qi_brand (name, remark, date_add, date_edit, status) VALUES ('苹果', '乔布斯的苹果', '2016-05-16 11:01:13', null, 1);
-INSERT INTO mingshop.qi_brand (name, remark, date_add, date_edit, status) VALUES ('小米', '雷军的小米', '2016-05-16 11:01:59', null, 1);
