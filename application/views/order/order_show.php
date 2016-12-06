@@ -102,6 +102,7 @@
                             <input type="hidden" name="id" value="<?php echo $data['id'];?>">
                             <input type="button" class="btn btn-default" onclick="back()" value="返回">
                             <?php if($data['status'] == 1){ ?>
+                            <input type="button" class="btn btn-danger" id="order_form_btn" onclick="status('<?php echo $data['id'];?>','0')" value="取消订单">
                             <input type="button" class="btn btn-primary" id="order_form_btn" onclick="order_form_submit()" value="去支付">
                             <?php } ?>
                         </div>

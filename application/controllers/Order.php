@@ -164,7 +164,7 @@ class Order extends M_Controller{
      */
     public function order_edit(){
         if( empty($_POST['id']) ){
-            $this->session->set_flashdata('msg', '参数错误');
+            $this->session->set_flashdata('msg', $this->config->item(0,'default_ajax_status'));
             redirect( $_SERVER['HTTP_REFERER'] );
         }
 

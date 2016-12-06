@@ -194,6 +194,25 @@ class P_Controller extends CI_Controller{
         $this->load->view( $this->this_controller.'/'.$this->this_controller.'_show', $this->this_view_data );
     }
     /**
+     * 状态ajax
+     * @access  public
+     * @return  void
+     */
+    public function my_status(){
+        if( empty($_GET['id']) ){
+            $this->ajax_views['msg'] = $this->config->item(0,'default_ajax_status');
+            $this->ajax_end();
+        }
+        $data['status'] = empty($_GET['status'])?0:$_GET['status'];
+        if( $this->{$this->this_model}->my_update( $_GET['id'], $data) ){
+            $this->ajax_views['sta'] = '1';
+            $this->ajax_views['msg'] = $this->config->item(1,'default_ajax_status');
+        }else{
+            $this->ajax_views['msg'] = $this->config->item(2,'default_ajax_status');
+        }
+        $this->ajax_end();
+    }
+    /**
      * 跳转方法
      * @access  protected
      * @return  void

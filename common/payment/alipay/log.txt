@@ -305,3 +305,39 @@
 ))
 2016-12-01 15:54:23  {"productCode":"QUICK_WAP_PAY","body":"","subject":"o148057886245","timeout_express":"1m","out_trade_no":"o148057886245","total_amount":"11.00"}
 2016-12-01 15:54:23  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"productCode":"QUICK_WAP_PAY","body":"","subject":"o148057886245","timeout_express":"1m","out_trade_no":"o148057886245","total_amount":"11.00"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016102400751227\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.wap.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2016-12-01 15:54:23\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20160411\'/><input type=\'hidden\' name=\'notify_url\' value=\'http://mingshop.h/order/notify_alipay\'/><input type=\'hidden\' name=\'return_url\' value=\'http://mingshop.h/order/return_alipay\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'etHy6BsO9BV1mARCQTplDSC5YNBz+tTQTlZ9iJUklCP4HKRUL38P2xBrEVm9KXHrhqT33KtyHli2a3PcDbHS57EtyPJFeCBy4fvxGg3sZe5CRcLApjf2q9Wyffu1jj07KZFy1un5sSdx4l7TBvJXvJ0NOftBdyzwzkom7xj+how=\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2016-12-05 09:35:43  {"trade_no":"","out_trade_no":"o147036720292"}
+2016-12-05 09:35:43  response: stdClass::__set_state(array(
+   'alipay_trade_query_response' => 
+  stdClass::__set_state(array(
+     'code' => '40004',
+     'msg' => 'Business Failed',
+     'sub_code' => 'ACQ.TRADE_NOT_EXIST',
+     'sub_msg' => '交易不存在',
+     'buyer_pay_amount' => '0.00',
+     'invoice_amount' => '0.00',
+     'out_trade_no' => 'o147036720292',
+     'point_amount' => '0.00',
+     'receipt_amount' => '0.00',
+  )),
+   'sign' => 'GxZXaU0kQns835PnLMQzaMAjNa6c9Zrqpwvdn7cQiCQs+rtzbClsvPSzJxd6yQwzPk31VcNTcLYZw+vhWLJBqQVPJ8Epjfde4MJn2hr+vSHGbSVoQFsV5S4kfAsi80lPhrtd6HOAiZjcGiAqlWLNneT9pSQvKKqq0Paa9IgfSOI=',
+))
+2016-12-05 09:35:43  {"productCode":"QUICK_WAP_PAY","body":"","subject":"o147036720292","timeout_express":"1m","out_trade_no":"o147036720292","total_amount":"500.00"}
+2016-12-05 09:35:43  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"productCode":"QUICK_WAP_PAY","body":"","subject":"o147036720292","timeout_express":"1m","out_trade_no":"o147036720292","total_amount":"500.00"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016102400751227\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.wap.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2016-12-05 09:35:43\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20160411\'/><input type=\'hidden\' name=\'notify_url\' value=\'http://mingshop.h/order/notify_alipay\'/><input type=\'hidden\' name=\'return_url\' value=\'http://mingshop.h/order/return_alipay\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'MCZFcru/IchGyiES5xLQSzNto/eTRrRqVL/NIOhbat6RDei32zkMhTtCMQ2zANJH2srI9hZbcBmrn1lF+vQD/bYyCFVmtpXwM+UW1L33/FYMSkqcxbKNNW65upy8/wqJlBM97JdNQJJbxNp6/ghV7/Q0sz5K5/O7DrES0A9H4ko=\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
+2016-12-05 09:36:05  {"trade_no":"","out_trade_no":"o147036720292"}
+2016-12-05 09:36:05  response: stdClass::__set_state(array(
+   'alipay_trade_query_response' => 
+  stdClass::__set_state(array(
+     'code' => '40004',
+     'msg' => 'Business Failed',
+     'sub_code' => 'ACQ.TRADE_NOT_EXIST',
+     'sub_msg' => '交易不存在',
+     'buyer_pay_amount' => '0.00',
+     'invoice_amount' => '0.00',
+     'out_trade_no' => 'o147036720292',
+     'point_amount' => '0.00',
+     'receipt_amount' => '0.00',
+  )),
+   'sign' => 'GxZXaU0kQns835PnLMQzaMAjNa6c9Zrqpwvdn7cQiCQs+rtzbClsvPSzJxd6yQwzPk31VcNTcLYZw+vhWLJBqQVPJ8Epjfde4MJn2hr+vSHGbSVoQFsV5S4kfAsi80lPhrtd6HOAiZjcGiAqlWLNneT9pSQvKKqq0Paa9IgfSOI=',
+))
+2016-12-05 09:36:05  {"productCode":"QUICK_WAP_PAY","body":"","subject":"o147036720292","timeout_express":"1m","out_trade_no":"o147036720292","total_amount":"500.00"}
+2016-12-05 09:36:05  response: '<form id=\'alipaysubmit\' name=\'alipaysubmit\' action=\'https://openapi.alipaydev.com/gateway.do?charset=UTF-8\' method=\'POST\'><input type=\'hidden\' name=\'biz_content\' value=\'{"productCode":"QUICK_WAP_PAY","body":"","subject":"o147036720292","timeout_express":"1m","out_trade_no":"o147036720292","total_amount":"500.00"}\'/><input type=\'hidden\' name=\'app_id\' value=\'2016102400751227\'/><input type=\'hidden\' name=\'version\' value=\'1.0\'/><input type=\'hidden\' name=\'format\' value=\'json\'/><input type=\'hidden\' name=\'sign_type\' value=\'RSA\'/><input type=\'hidden\' name=\'method\' value=\'alipay.trade.wap.pay\'/><input type=\'hidden\' name=\'timestamp\' value=\'2016-12-05 09:36:05\'/><input type=\'hidden\' name=\'alipay_sdk\' value=\'alipay-sdk-php-20160411\'/><input type=\'hidden\' name=\'notify_url\' value=\'http://mingshop.h/order/notify_alipay\'/><input type=\'hidden\' name=\'return_url\' value=\'http://mingshop.h/order/return_alipay\'/><input type=\'hidden\' name=\'charset\' value=\'UTF-8\'/><input type=\'hidden\' name=\'sign\' value=\'jfPF/5wQJkdRcy6YWmQlwGdc8vAcK181pGiCkBlVzBI9WMpMjpkPXpsMlxYf0+OrQoENNNLMSs1katXw9jJMospZ2cADflXpvqGBJUoTUjdj0kq6CxVl+5vJDnFf8ntSn2NqD6FdF4pgrrws4e+Q9QdYZ2Li97/T4dWxqMQTyTs=\'/><input type=\'submit\' value=\'ok\' style=\'display:none;\'\'></form><script>document.forms[\'alipaysubmit\'].submit();</script>'
