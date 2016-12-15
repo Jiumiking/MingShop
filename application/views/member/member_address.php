@@ -1,10 +1,9 @@
-<div class="panel">
-    <?php if(!empty($ajax)){ ?>
-    <a href="javascript:address_edit(0)" class="btn btn-info btn-xs">新增地址</a>
-    <?php }else{ ?>
-    <a class="btn btn-info" href="<?php echo site_url('member/address_edit');?>">新增地址</a>
-    <?php } ?>
-</div>
+ <?php if(!empty($ajax)){ ?>
+<a href="javascript:address_edit(0)" class="btn btn-info btn-xs">新增地址</a>
+<?php }else{ ?>
+<a class="btn btn-info" href="<?php echo site_url('member/address_edit');?>">新增地址</a>
+<?php } ?>
+
 <?php if($data_member_address){ foreach($data_member_address as $v){ ?>
 <div id="panel_<?php echo $v['id'];?>" class="panel panel-default">
     <div class="panel-heading">

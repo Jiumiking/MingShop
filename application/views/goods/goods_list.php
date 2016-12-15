@@ -3,12 +3,11 @@
 <?php $this->load->view('base/header_nav'); ?>
 <?php $this->load->view('base/header_menu'); ?>
 <div class="container" id="site_main">
-    
-    <div class="row">
-        <div class="col-md-3" id="main_menu">
-            <?php $this->load->view('goods/goods_category'); ?>
-        </div>
-        <div class="col-md-9 " id="main_content">
+    <div class="col-md-3" id="main_menu">
+        <?php $this->load->view('goods/goods_category'); ?>
+    </div>
+    <div class="col-md-9 " id="main_content">
+        <div class="row">
             <div class="row" id="list_content">
                 <?php $this->load->view('goods/goods_tb'); ?>
             </div>

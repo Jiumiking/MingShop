@@ -13,4 +13,8 @@
         </div>
     </div>
 </div>
-<?php }} ?>
+<?php }}else{ ?>
+<div class="col-sm-6 col-md-3 masonry-list">
+      无
+</div>
+<?php } ?>
