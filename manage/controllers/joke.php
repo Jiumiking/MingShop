@@ -19,7 +19,7 @@ class Joke extends MY_Controller{
      * 导入模板
      * @access  public
      */
-    public function my_import_template(){
+    public function my_import_template(){echo 1;exit;
         $this->load->library('PHPExcel');
         $this->load->library('PHPExcel/IOFactory');
         // Set document properties

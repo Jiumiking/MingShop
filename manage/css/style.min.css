@@ -3101,3 +3101,8 @@ ul.profile-details li div i {
 .ming-alert .alert li{
   margin-right: 10px;
 }
+/**分页**/
+.page-input {
+  width:25px;
+  text-align: center;
+}
